@@ -17,7 +17,7 @@ export function CarouselDemo() {
             <div className="">
               <Card className="bg-black">
                 <CardContent className="flex aspect-square items-center justify-center p-0 bg-black">
-                  <img src={home} alt="" className="w-full h-full rounded-md border-2 border-black  object-cover "/>
+                  <img src={home} alt="" className="w-full h-full rounded-md border-5 border-black  object-cover "/>
                 </CardContent>
               </Card>
             </div>

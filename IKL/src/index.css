@@ -1,4 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Inria+Serif&family=Montserrat:wght@900&family=Space+Mono&display=swap');
+
 body, html {
     min-height: 100%;
+}
+
+h1, h2, h3, p, a, li, ul {
+    font-family: 'Inria Serif', serif;
 }
 

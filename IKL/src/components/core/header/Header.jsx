@@ -16,6 +16,7 @@ const linkStyle = {
     transition: 'all 0.3s ease-in-out',
     alignItems: 'center',
     color:'#ffffff',
+    fontFamily: 'Inria Serif',
 };
 
 const Header = () => {

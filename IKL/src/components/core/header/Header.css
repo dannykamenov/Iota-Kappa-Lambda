@@ -2,7 +2,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 150px;
 }
 
 .list {
@@ -17,6 +16,7 @@
     text-align: center;
     display: flex;
     justify-content: space-between;
+    margin-top: 25px;
 }
 
 .link {

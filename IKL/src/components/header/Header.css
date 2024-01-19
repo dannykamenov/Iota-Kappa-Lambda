@@ -1,6 +1,30 @@
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
 
+.list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    position: fixed;
+    top: 0;
+    width: 80%;
+    z-index: 1;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+}
 
-
+.link {
+    display: flex;
+    justify-content: center;
+    height: 150px;
+    align-items: center;
+}
 
 .logo-img {
     width: 150px;
@@ -12,5 +36,4 @@
     background-color: transparent;
     cursor: pointer;
     outline: none;
-    -webkit-tap-highlight-color: transparent;
 }

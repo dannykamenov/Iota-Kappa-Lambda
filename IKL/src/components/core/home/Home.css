@@ -5,6 +5,8 @@
     align-items: center;
     background-image: url('../../../assets/HOME.jpg');
     background-size: cover;
+    /* background-position: center; */
+    padding-bottom: 100px;
 } 
 
 .our-mission {
@@ -19,10 +21,10 @@
     text-align: center;
     margin-bottom: 1rem;
     text-shadow: 
-    -1px -1px 1px #000, /* Top-left shadow */
-    1px -1px 1px #000, /* Top-right shadow */
-    -1px 1px 1px #000, /* Bottom-left shadow */
-    1px 1px 1px #000; /* Bottom-right shadow */
+    -1px -1px 1px #000, 
+    1px -1px 1px #000, 
+    -1px 1px 1px #000, 
+    1px 1px 1px #000; 
 }
 
 .our-mission-text {
@@ -36,4 +38,22 @@
 .calendar-box {
     margin-top: 200px;
     flex-basis: 40%;
+}
+
+.slogan-div {
+    margin-top: -100px;
+}
+
+.slogan-text {
+    font-size: 5rem;
+    font-weight: 400;
+    color: #938807;
+    text-align: center;
+    margin-bottom: 1rem;
+    filter: opacity(75%);
+    text-shadow: 
+    -1px -1px 1px #000, 
+    1px -1px 1px #000, 
+    -1px 1px 1px #000, 
+    1px 1px 1px #000; 
 }

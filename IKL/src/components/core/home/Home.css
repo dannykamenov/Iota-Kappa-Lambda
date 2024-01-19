@@ -65,3 +65,18 @@
 .section2-box {
     height: 1000px;
 }
+
+.carousel-box {
+    height: 500px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-image {
+    height: 400px;
+    width: 400px;
+    border-radius: 25px;
+    object-fit: cover;
+}

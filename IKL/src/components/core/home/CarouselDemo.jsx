@@ -6,18 +6,18 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
-import home from "../../../assets/HOME.jpg"
+import home from "../../../assets/HOME2.jpg"
 
 export function CarouselDemo() {
   return (
-    <Carousel className="w-full max-w-xs">
-      <CarouselContent>
-        {Array.from({ length: 5 }).map((_, index) => (
-          <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-            <div className="p-1">
-              <Card>
-                <CardContent className="flex aspect-square items-center justify-center p-6">
-                  <img src={home} alt="" className="w-full h-full object-fill"/>
+    <Carousel className=" w-2/3 bg-black">
+      <CarouselContent className="bg-black">
+        {Array.from({ length: 10 }).map((_, index) => (
+          <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 bg-black">
+            <div className="">
+              <Card className="bg-black">
+                <CardContent className="flex aspect-square items-center justify-center p-0 bg-black">
+                  <img src={home} alt="" className="w-full h-full rounded-md border-2 border-black  object-cover "/>
                 </CardContent>
               </Card>
             </div>

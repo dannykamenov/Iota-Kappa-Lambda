@@ -19,6 +19,7 @@ const Home = () => {
             </div>
         </div>
         <div className='slogan-div'><h1 className='slogan-text'>MANLY DEEDS, SCHOLARSHIP <br /> AND LOVE FOR ALL MANKIND</h1></div>
+        <div className='section2-box'></div>
     </>
     )
 }

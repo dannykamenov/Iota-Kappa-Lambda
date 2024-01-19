@@ -38,10 +38,11 @@
 .calendar-box {
     margin-top: 200px;
     flex-basis: 40%;
+    z-index: 0;
 }
 
 .slogan-div {
-    margin-top: -100px;
+    position: relative;
 }
 
 .slogan-text {
@@ -56,4 +57,11 @@
     1px -1px 1px #000, 
     -1px 1px 1px #000, 
     1px 1px 1px #000; 
+    position: absolute;
+    top: -100px;
+    left : 21.5%;
+}
+
+.section2-box {
+    height: 1000px;
 }

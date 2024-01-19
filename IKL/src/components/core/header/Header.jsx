@@ -22,7 +22,7 @@ const Header = () => {
 
 
     return (
-        <nav className='navbar'>
+        <header className='navbar'>
             <ul className='header list'>
             <li className='header home link'><Link to="/" style={linkStyle} className='link-comp'>HOME</Link></li>
             <li className='header contact link'><Link to="contact-us" style={linkStyle} className='link-comp'>CONTACT US</Link></li>
@@ -32,7 +32,7 @@ const Header = () => {
             <li className='header help link'><Link to="help" style={linkStyle} className='link-comp'>HELPFUL LINKS</Link></li>
             <li className='header profile link'><Link to="profile" style={linkStyle} ><FontAwesomeIcon icon={faUser} style={linkStyle} className='link-comp'/></Link></li>
             </ul>
-        </nav>
+        </header>
     )
 };
 

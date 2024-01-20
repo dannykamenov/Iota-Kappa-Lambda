@@ -1,0 +1,53 @@
+.section-image {
+    background-image: url(../../../assets/HOME3.jpg);
+    height: 1000px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+}
+
+.ikl-logo {
+    text-align: center;
+    width: 100%;
+    padding-top: 200px;
+}
+
+.ikl-logo-image {
+    height: 200px;
+    width: 200px;
+    margin: 0 auto;
+}
+
+.ikl-leadership-title {
+    font-size: 50px;
+    font-family: 'Inria Serif', serif;
+    font-weight: bold;
+    color: #938807;
+    text-shadow: 
+    -1px -1px 1px #000, 
+    1px -1px 1px #000, 
+    -1px 1px 1px #000, 
+    1px 1px 1px #000; 
+}
+
+.ikl-leadership-text {
+    width: 70%;
+    margin: 0 auto;
+    font-size: 25px;
+    color: white;
+}
+
+.blockquote {
+    width: 70%;
+    font-size: 25px;
+    color: #938807;
+    text-shadow: 
+    -1px -1px 1px #000, 
+    1px -1px 1px #000, 
+    -1px 1px 1px #000, 
+    1px 1px 1px #000; 
+    text-align: end;
+    margin: 0 auto;
+    font-style: italic;
+}

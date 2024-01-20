@@ -40,7 +40,7 @@
     width: 150px;
     height: 150px;
     cursor: pointer;
-    padding-top: 3px;
+    padding-top: 1px;
 }
 
 .link-comp:hover {

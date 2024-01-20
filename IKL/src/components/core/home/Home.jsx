@@ -1,7 +1,7 @@
-import React from "react";
 import "./Home.css";
-import home from "../../../assets/HOME.jpg";
 import logo from "../../../assets/logo.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPaypal } from "@fortawesome/free-brands-svg-icons";
 
 import {
   Carousel,
@@ -56,8 +56,8 @@ const Home = () => {
             <img src={logo} alt="" className="card-image" />
             <p className="card-info">
               Since 1969 the Brothers of Iota Kappa Lambda Chapter of Alpha Phi
-              Alpha Inc., have enjoyed strong leadership from its members who have served the Syracuse
-              Community well.
+              Alpha Inc., have enjoyed strong leadership from its members who
+              have served the Syracuse Community well.
             </p>
             <h1 className="card-title">Iota Kappa Lambda</h1>
           </div>
@@ -73,14 +73,31 @@ const Home = () => {
           <div className="info-card">
             <img src={logo} alt="" className="card-image" />
             <p className="card-info">
-              KNOWLEDGE, INTEGRITY, HONOR
-              We value those who believe that their membership in Alpha Phi
-              Alpha is the presentation of their personal commitment to these
-              time-valued words.
+              KNOWLEDGE, INTEGRITY, HONOR We value those who believe that their
+              membership in Alpha Phi Alpha is the presentation of their
+              personal commitment to these time-valued words.
             </p>
             <h1 className="card-title">Membership</h1>
           </div>
         </div>
+      </div>
+      <div className="section4-box">
+        <h1 className="section4-title">Servants of all</h1>
+        <p className="section4-content">
+          The Iota Kappa Lambda Chapter is involved in many of the National
+          programs of Alpha Phi Alpha Inc. They are also involved in local
+          community service programs unique and helpful to the Syracuse and
+          Central NY Community. Please feel free to contact brothers who are
+          here to serve and better the community. Additionally, volunteers are
+          always welcomed as the fraternity strives to involve the community in
+          its efforts. To be involved either as a brother or a willing volunteer
+          please follow the links to contact us and support us and our efforts
+          for a better Syracuse.
+        </p>
+        <a href="https://www.paypal.com/donate?token=iATyvnDZNJrY_yj5iJ454A4h2jF2UDCFnDzELuCx946ghOMHuq4JmguRv9g_WHUx21lZBIPZB3RwukJC" target="_blank" rel="noreferrer" className="donate-button">
+            <FontAwesomeIcon icon={faPaypal} className="donate-icon" />
+            <p className="donate-text">Donate</p>
+        </a>
       </div>
     </>
   );

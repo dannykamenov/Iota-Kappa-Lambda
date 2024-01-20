@@ -1,0 +1,60 @@
+.footer {
+    background-color: #938807;
+    height: 200px;
+}
+
+.footer-container {
+    height: 100%;
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.copyright {
+    color: white;
+    font-size: 1rem;
+    font-family: 'Inria Serif', serif;
+    text-align: center;
+}
+
+.connect-box {
+    text-align: center;
+}
+
+.connect-text {
+    color: white;
+    font-size: 1.5rem;
+    font-family: 'Inria Serif', serif;
+    text-align: center;
+
+}
+
+.social-icon {
+    height: 50px;
+    width: 50px;
+    margin: 10px 10px;
+    cursor: pointer;
+    color: white;
+}
+
+.tel-num {
+    color: white;
+    font-size: 1.5rem;
+    font-family: 'Inria Serif', serif;
+}
+
+.email-footer {
+    color: white;
+    font-size: 1.5rem;
+    font-family: 'Inria Serif', serif;
+}
+
+.fb {
+    color: #1877F2;
+}
+
+.insta {
+    color: #E1306C
+}

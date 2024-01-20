@@ -46,6 +46,10 @@ const Home = () => {
             <CarouselDemo></CarouselDemo>
         </div>
       </div>
+      <div className="section3-box">
+        <div className="section3-title"></div>
+        <div className="card-content"></div>
+      </div>
     </>
   );
 };

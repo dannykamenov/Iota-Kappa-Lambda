@@ -50,7 +50,6 @@
     font-weight: 400;
     color: #938807;
     text-align: center;
-    margin-bottom: 1rem;
     filter: opacity(75%);
     text-shadow: 
     -1px -1px 1px #000, 
@@ -83,4 +82,24 @@
 .section3-box {
     background-color: white;
     height: 500px;
+}
+
+.section3-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #938807;
+    text-align: center;
+    padding-top: 0.6rem;
+    text-shadow: 
+    -1px -1px 1px #000, 
+    1px -1px 1px #000, 
+    -1px 1px 1px #000, 
+    1px 1px 1px #000; 
+}
+
+.card-content {
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+    justify-content: space-between;
 }

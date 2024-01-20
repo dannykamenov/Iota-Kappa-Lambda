@@ -47,8 +47,14 @@ const Home = () => {
         </div>
       </div>
       <div className="section3-box">
-        <div className="section3-title"></div>
-        <div className="card-content"></div>
+        <div className="section3-title">
+            <h1 className="section3-title">Onward and Upward</h1>
+        </div>
+        <div className="card-content">
+            <div className="info-card"></div>
+            <div className="info-card"></div>
+            <div className="info-card"></div>
+        </div>
       </div>
     </>
   );

@@ -7,13 +7,10 @@
 
 
 .list {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
     background-color: transparent;
     position: fixed;
     top: 0;
-    width: 80%;
+    width: 85%;
     text-align: center;
     display: flex;
     justify-content: space-between;
@@ -40,9 +37,23 @@
     width: 150px;
     height: 150px;
     cursor: pointer;
-    padding-top: 1px;
+    flex-grow: 1;
 }
 
 .link-comp:hover {
     color: #938807 !important;
+}
+
+.split {
+    display: flex;
+}
+
+.left-links {
+    justify-content: space-around;
+    flex: 1;
+}
+
+.right-links {
+    justify-content: space-around;
+    flex: 1;
 }

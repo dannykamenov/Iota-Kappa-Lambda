@@ -99,7 +99,40 @@
 
 .card-content {
     display: flex;
-    width: 80%;
+    width: 70%;
     margin: 0 auto;
     justify-content: space-between;
+}
+
+.info-card {
+    flex-basis: 28%;
+}
+
+.card-image {
+    height: 100px;
+    width: 100px;
+    margin: 0 auto;
+}
+
+.card-info {
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: #938807;
+    text-align: center;
+    margin-bottom: 1rem;
+    border: 5px solid black;
+    padding: 3rem 1rem 1rem 1rem;
+    margin-top: -3rem;
+    background-color: black;
+    border-radius: 15px;
+    box-shadow: 1px 1px 10px 1px #000000;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #938807;
+    text-align: center;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
 }

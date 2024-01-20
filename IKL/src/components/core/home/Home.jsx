@@ -1,6 +1,7 @@
 import React from "react";
 import "./Home.css";
 import home from "../../../assets/HOME.jpg";
+import logo from "../../../assets/logo.png";
 
 import {
   Carousel,
@@ -43,17 +44,42 @@ const Home = () => {
       </div>
       <div className="section2-box">
         <div className="carousel-box">
-            <CarouselDemo></CarouselDemo>
+          <CarouselDemo></CarouselDemo>
         </div>
       </div>
       <div className="section3-box">
         <div className="section3-title">
-            <h1 className="section3-title">Onward and Upward</h1>
+          <h1 className="section3-title">Onward and Upward</h1>
         </div>
         <div className="card-content">
-            <div className="info-card"></div>
-            <div className="info-card"></div>
-            <div className="info-card"></div>
+          <div className="info-card">
+            <img src={logo} alt="" className="card-image" />
+            <p className="card-info">
+              Since 1969 the Brothers of Iota Kappa Lambda Chapter of Alpha Phi
+              Alpha Inc., have enjoyed strong leadership from its members who have served the Syracuse
+              Community well.
+            </p>
+            <h1 className="card-title">Iota Kappa Lambda</h1>
+          </div>
+          <div className="info-card">
+            <img src={logo} alt="" className="card-image" />
+            <p className="card-info">
+              Alpha Phi Alpha Fraternity, Inc. develops leaders, promotes
+              brotherhood and academic excellence, while providing service and
+              advocacy for our communities.
+            </p>
+            <h1 className="card-title">Alpha Phi Alpha Inc.</h1>
+          </div>
+          <div className="info-card">
+            <img src={logo} alt="" className="card-image" />
+            <p className="card-info">
+              KNOWLEDGE, INTEGRITY, HONOR
+              We value those who believe that their membership in Alpha Phi
+              Alpha is the presentation of their personal commitment to these
+              time-valued words.
+            </p>
+            <h1 className="card-title">Membership</h1>
+          </div>
         </div>
       </div>
     </>

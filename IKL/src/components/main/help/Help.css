@@ -80,10 +80,10 @@
 
 .link-box {
     border: #938807 2px solid;
-    width: fit-content;
     padding: 20px 20px;
     flex-basis: 40%;
     margin: 10px 10px;
+    border-radius: 10px;
 }
 
 .link-name {

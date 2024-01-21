@@ -79,7 +79,7 @@ const Help = () => {
           <div className="link-container">
             <div className="link-box college-box college-box">
               <h1 className="link-name">Alpha Chapter</h1>
-              <p className="link-info">Cornell University Ithaca, NY</p>
+              <p className="link-info">Cornell University Ithaca, <br />NY</p>
               <a
                 href="http://www.alphachapter1906.com/"
                 target="_blank"

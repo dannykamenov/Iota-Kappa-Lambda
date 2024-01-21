@@ -132,7 +132,7 @@ const Help = () => {
             </div>
             <div className="link-box college-box">
               <h1 className="link-name">More Coming Soon...</h1>
-              <p className="link-info">USA</p>
+              <p className="link-info">USA <br /> The World</p>
               <a
                 href="https://ikl1906.com/"
                 target="_blank"

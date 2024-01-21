@@ -109,7 +109,7 @@
     font-weight: bold;
 }
 
-.alumni-box {
+/* .alumni-box {
     background-color: #000;
 }
 
@@ -119,12 +119,21 @@
 
 .alumni-box p {
     color: white;
+} */
+
+.alumni-box a {
+    color: black;
+} 
+
+.college-box h1 {
+    color: white;
 }
 
-.college-box {
-    background-color: #fff;
+.college-box p {
+    color: white;
+    font-size: 19.3px;
 }
 
 .college-box a {
-    color: black;
+    color: white;
 }

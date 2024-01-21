@@ -1,6 +1,9 @@
 import "./Leadership.css";
 import logo from "../../../assets/logo.png";
 import president from "../../../assets/President.png";
+import vp from "../../../assets/VP.png";
+import treasurer from "../../../assets/Treasurer.png";
+import secretary from "../../../assets/Secretary.png";
 
 const Leadership = () => {
   return (
@@ -32,14 +35,34 @@ const Leadership = () => {
       <div className="current-leadership">
         <h1 className="current-title">Chapter Leadership 2023-2025</h1>
         <div className="current-leadership-container">
-            <div className="president">
-                <img src={president} alt="" className="president-photo"/>
-                <div className="president-info">
-                    <h1 className="president-title">President</h1>
-                    <p className="president-text">Brother  Mark W. Hammons II, Esq.</p>
-                </div>
+          <div className="president">
+            <img src={president} alt="" className="president-photo" />
+            <div className="president-info">
+              <h1 className="president-title">President</h1>
+              <p className="president-text">Brother Mark W. Hammons II, Esq.</p>
             </div>
+          </div>
+          <div className="president">
+            <div className="president-info">
+              <h1 className="president-title">Vice President</h1>
+              <p className="president-text">Brother Julius A. Allen I</p>
+            </div>
+            <img src={vp} alt="" className="president-photo" />
+          </div>
+          <div className="president-others">
+            <div className="president-info-others">
+              <h1 className="president-title-others">Treasurer</h1>
+              <p className="president-text-others">Brother Ronnie J. Bradford</p>
+            </div>
+            <img src={treasurer} alt="" className="president-photo-others" />
+            <img src={secretary} alt="" className="president-photo-others" />
+            <div className="president-info-others">
+              <h1 className="president-title-others">Secretary</h1>
+              <p className="president-text-others">Brother Kameron D.H. Mohammed</p>
+            </div>
+          </div>
         </div>
+        <h1 className="chapter-officers">Chapter Officers</h1>
       </div>
     </>
   );

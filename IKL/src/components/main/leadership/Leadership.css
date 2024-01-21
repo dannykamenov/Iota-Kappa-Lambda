@@ -1,6 +1,5 @@
 .section-image {
     background-image: url(../../../assets/HOME3.jpg);
-    height: 1000px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -50,4 +49,25 @@
     text-align: end;
     margin: 0 auto;
     font-style: italic;
+    padding-bottom: 75px;
+}
+
+.current-leadership {
+    width: 100%;
+    text-align: center;
+    height: 1000px;
+    background-color: black;
+}
+
+.current-title {
+    font-size: 50px;
+    font-family: 'Inria Serif', serif;
+    font-weight: bold;
+    color: #938807;
+    text-shadow: 
+    -1px -1px 1px #000, 
+    1px -1px 1px #000, 
+    -1px 1px 1px #000, 
+    1px 1px 1px #000; 
+    padding-top: 50px;
 }

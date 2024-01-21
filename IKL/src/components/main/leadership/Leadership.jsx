@@ -22,10 +22,14 @@ const Leadership = () => {
         </div>
         <div className="blockquote">
           <p className="blockquote-text">
-            <u>Esprit de Fraternite&apos;</u> <br /> Brother Charles H. Garvin, <br /> 4th General
-            President, <br /> Alpha Phi Alpha Fraternity, Inc.
+            <u>Esprit de Fraternite&apos;</u> <br /> Brother Charles H. Garvin,{" "}
+            <br /> 4th General President, <br /> Alpha Phi Alpha Fraternity,
+            Inc.
           </p>
         </div>
+      </div>
+      <div className="current-leadership">
+        <h1 className="current-title">Chapter Leadership 2023-2025</h1>
       </div>
     </>
   );

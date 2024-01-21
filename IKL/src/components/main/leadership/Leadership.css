@@ -71,3 +71,42 @@
     1px 1px 1px #000; 
     padding-top: 50px;
 }
+
+.current-leadership-container {
+    width: 50%;
+    margin: 0 auto;
+    padding-top: 50px;
+}
+
+.president {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.president-photo {
+    width: 275px;
+    height: 375px;
+    object-fit: cover;
+}
+
+.president-info {
+    width: 100%;
+}
+
+.president-title {
+    font-size: 50px;
+    font-family: 'Inria Serif', serif;
+    font-weight: bold;
+    color: #938807;
+    text-shadow: 
+    -1px -1px 1px #000, 
+    1px -1px 1px #000, 
+    -1px 1px 1px #000, 
+    1px 1px 1px #000; 
+}
+
+.president-text {
+    font-size: 25px;
+    color: white;
+}

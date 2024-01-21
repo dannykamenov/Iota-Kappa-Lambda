@@ -1,5 +1,6 @@
 import "./Leadership.css";
 import logo from "../../../assets/logo.png";
+import president from "../../../assets/President.png";
 
 const Leadership = () => {
   return (
@@ -30,6 +31,15 @@ const Leadership = () => {
       </div>
       <div className="current-leadership">
         <h1 className="current-title">Chapter Leadership 2023-2025</h1>
+        <div className="current-leadership-container">
+            <div className="president">
+                <img src={president} alt="" className="president-photo"/>
+                <div className="president-info">
+                    <h1 className="president-title">President</h1>
+                    <p className="president-text">Brother  Mark W. Hammons II, Esq.</p>
+                </div>
+            </div>
+        </div>
       </div>
     </>
   );

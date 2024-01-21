@@ -162,3 +162,37 @@
     padding-top: 25px;
     padding-bottom: 25px;
 }
+
+.chapter-officers-info {
+    width: 50%;
+    margin: 0 auto;
+    padding-top: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-bottom: 25px;
+
+}
+
+.officer-info {
+    flex-basis: 33%;
+    text-align: center;
+    padding: 10px;
+}
+
+.officer-title {
+    font-size: 25px;
+    font-family: 'Inria Serif', serif;
+    font-weight: bold;
+    color: #938807;
+    text-shadow: 
+    -1px -1px 1px #000, 
+    1px -1px 1px #000, 
+    -1px 1px 1px #000, 
+    1px 1px 1px #000; 
+}
+
+.officer-text {
+    font-size: 20px;
+    color: white;
+}

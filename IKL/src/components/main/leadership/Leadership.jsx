@@ -63,6 +63,40 @@ const Leadership = () => {
           </div>
         </div>
         <h1 className="chapter-officers">Chapter Officers</h1>
+        <div className="chapter-officers-info">
+            <div className="officer-info">
+                <h1 className="officer-title">Historian</h1>
+                <p className="officer-text">Brother Shakir Hancock-Patterson</p>
+            </div>
+            <div className="officer-info">
+                <h1 className="officer-title">Assoc. Editor of the Sphinx</h1>
+                <p className="officer-text">Brother Dr. Ade Obayemi, Jr. </p>
+            </div>
+            <div className="officer-info">
+                <h1 className="officer-title">Intake Coordinator</h1>
+                <p className="officer-text">Brother Christopher Jones</p>
+            </div>
+            <div className="officer-info">
+                <h1 className="officer-title">Director of Educational Activities</h1>
+                <p className="officer-text"> Brother Willjavian Dawson</p>
+            </div>
+            <div className="officer-info">
+                <h1 className="officer-title">Sergeant-At- Arms</h1>
+                <p className="officer-text">Brother Floyd Mitchell III</p>
+            </div>
+            <div className="officer-info">
+                <h1 className="officer-title">Chaplin</h1>
+                <p className="officer-text">Brother Rashon Barksdale</p>
+            </div>
+            <div className="officer-info">
+                <h1 className="officer-title">Reclamation Coordinator</h1>
+                <p className="officer-text">Brother Christopher Jones</p>
+            </div>
+            <div className="officer-info">
+                <h1 className="officer-title">Parliamentarian</h1>
+                <p className="officer-text">Brother Adam King, Esq.</p>
+            </div>
+        </div>
       </div>
     </>
   );

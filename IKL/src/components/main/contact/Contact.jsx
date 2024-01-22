@@ -63,6 +63,7 @@ const Contact = () => {
                 value={formData.description}
                 onChange={handleChange}
                 className="description-input"
+                maxLength={250}
               />
             </div>
             <div className="radio-main-div">
@@ -77,7 +78,7 @@ const Contact = () => {
                     onChange={handleChange}
                     className="radio-input"
                   />
-                  <p className="form-label">Yes</p>
+                  <p className="form-label radio-answer">Yes</p>
                 </div>
                 <div className="radio-content">
                   <input
@@ -88,7 +89,7 @@ const Contact = () => {
                     onChange={handleChange}
                     className="radio-input"
                   />
-                  <p className="form-label">No</p>
+                  <p className="form-label radio-answer">No</p>
                 </div>
               </div>
             </div>

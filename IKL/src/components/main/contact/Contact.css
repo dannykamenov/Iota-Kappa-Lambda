@@ -65,9 +65,25 @@
 
 .radio-div {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
 .radio-content {
     display: flex;
+    margin: 5px 5px;
+}
+
+.form-label {
+    font-size: 25px;
+    font-weight: bold;
+    color: #938807;
+    text-shadow: 
+    -1px -1px 1px #000, 
+    1px -1px 1px #000, 
+    -1px 1px 1px #000, 
+    1px 1px 1px #000; 
+}
+
+.radio-answer {
+    margin-left: 5px;
 }

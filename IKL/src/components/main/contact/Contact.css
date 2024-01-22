@@ -24,7 +24,6 @@
     width: 100%;
     background-color: black;
     display: flex;
-    height: 700px;
 }
 
 .contact-images {
@@ -49,7 +48,7 @@
 
 .google-maps {
     width: 50%;
-    height: 40%;
+    height: 325px;
     margin: 30px auto;
     border: #938807 5px solid;
 }

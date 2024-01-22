@@ -44,6 +44,7 @@ const Contact = () => {
                 value={formData.name}
                 onChange={handleChange}
                 className="name-input"
+                placeholder="Name"
               />
             </div>
             <div className="email-div">
@@ -54,6 +55,7 @@ const Contact = () => {
                 value={formData.email}
                 onChange={handleChange}
                 className="email-input"
+                placeholder="Email"
               />
             </div>
             <div className="desc-div">
@@ -64,6 +66,7 @@ const Contact = () => {
                 onChange={handleChange}
                 className="description-input"
                 maxLength={250}
+                placeholder="How can we help you and/or what programs are you interested in working with?"
               />
             </div>
             <div className="radio-main-div">

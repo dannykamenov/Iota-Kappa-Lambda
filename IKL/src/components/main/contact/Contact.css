@@ -21,9 +21,10 @@
 }
 
 .contact-section {
-    width: 100%;
+    width: 80%;
     background-color: black;
     display: flex;
+    margin: 0 auto;
 }
 
 .contact-images {
@@ -42,13 +43,31 @@
 
 .contact-photo1 {
     width: 50%;
+    height: 250px;
     margin: 30px auto;
     border: #938807 5px solid;
 }
 
 .google-maps {
     width: 50%;
-    height: 325px;
+    height: 250px;
     margin: 30px auto;
     border: #938807 5px solid;
+}
+
+.form-details {
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 50px;
+    text-align: center;
+    color: white;
+}
+
+.radio-div {
+    display: flex;
+    justify-content: center;
+}
+
+.radio-content {
+    display: flex;
 }

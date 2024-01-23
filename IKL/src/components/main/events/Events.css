@@ -1,0 +1,21 @@
+.event-image {
+    background-image: url(../../../assets/HOME.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+}
+
+.event-title {
+    font-size: 75px;
+    font-family: 'Inria Serif', serif;
+    font-weight: bold;
+    color: #938807;
+    text-shadow: 
+    -1px -1px 1px #000, 
+    1px -1px 1px #000, 
+    -1px 1px 1px #000, 
+    1px 1px 1px #000; 
+    padding-top: 200px;
+    padding-bottom: 75px;
+}

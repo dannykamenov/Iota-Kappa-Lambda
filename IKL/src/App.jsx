@@ -6,6 +6,7 @@ import Footer from './components/core/footer/Footer'
 import Leadership from './components/main/leadership/Leadership'
 import Help from './components/main/help/Help'
 import Contact from './components/main/contact/Contact'
+import Events from './components/main/events/Events'
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
         <Route path="/leadership" element={<Leadership />} />
         <Route path="/contact-us" element={<Contact />} />
         <Route path="/help" element={<Help />} />
+        <Route path="/events-and-photos" element={<Events />} />
       </Routes>
       <Footer />
     </Router>

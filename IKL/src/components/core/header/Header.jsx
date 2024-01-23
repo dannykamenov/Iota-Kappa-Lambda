@@ -61,7 +61,7 @@ const Header = () => {
                     <li className='header logo'><Link to="/" style={logoStyle}><img src={logo} alt="Logo" className='logo-img' /></Link></li>
                 </div>
                 <div className="right-links split">
-                    <li className='header events link'><Link to="events-and-photos" style={linkStyle} className='link-comp'>EVENT & PHOTOS</Link></li>
+                    <li className='header events link'><Link to="events-and-photos" style={linkStyle} className='link-comp'>EVENTS & PHOTOS</Link></li>
                     <li className='header help link'><Link to="help" style={linkStyle} className='link-comp'>HELPFUL LINKS</Link></li>
                     <li className='header profile link'><Link to="profile" style={linkStyle} ><FontAwesomeIcon icon={faUser} style={linkStyle} className='link-comp'/></Link></li>
                 </div>

@@ -14,11 +14,42 @@ const Contact = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const [errors, setErrors] = useState({});
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic here (e.g., send data to an API)
-    console.log(formData);
+    const formErrors = validate(formData);
+    setErrors(formErrors);
+
+    if (Object.keys(formErrors).length === 0) {
+        // Handle form submission logic here (e.g., send data to an API)
+        console.log(formData);
+    }
   };
+
+  const validate = (values) => {
+    let errors = {};
+
+    if (!values.name) {
+        errors.name = 'Name is required';
+    }
+
+    if (!values.email) {
+        errors.email = 'Email is required';
+    } else if (!/\S+@\S+\.\S+/.test(values.email)) {
+        errors.email = 'Email address is invalid';
+    }
+
+    if (!values.description) {
+        errors.description = 'Description is required';
+    }
+
+    if (!values.membershipInterest) {
+        errors.membershipInterest = 'Please select your interest in membership';
+    }
+
+    return errors;
+};
 
   return (
     <>
@@ -46,6 +77,7 @@ const Contact = () => {
                 className="name-input"
                 placeholder="Name"
               />
+            {errors.name && <p className="form-error">{errors.name}</p>}
             </div>
             <div className="email-div">
               <p className="form-label">Email:</p>
@@ -57,6 +89,7 @@ const Contact = () => {
                 className="email-input"
                 placeholder="Email"
               />
+              {errors.email && <p className="form-error">{errors.email}</p>}
             </div>
             <div className="desc-div">
               <p className="form-label">Description:</p>
@@ -68,6 +101,7 @@ const Contact = () => {
                 maxLength={250}
                 placeholder="How can we help you and/or what programs are you interested in working with?"
               />
+              {errors.description && <p className="form-error">{errors.description}</p>}
             </div>
             <div className="radio-main-div">
               <p className="form-label">Are you interested in a membership?</p>
@@ -95,6 +129,7 @@ const Contact = () => {
                   <p className="form-label radio-answer">No</p>
                 </div>
               </div>
+                {errors.membershipInterest && <p className="form-error">{errors.membershipInterest}</p>}
             </div>
             <button type="submit" className="submit-btn-form">
               Submit

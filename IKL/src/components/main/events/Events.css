@@ -19,3 +19,13 @@
     padding-top: 200px;
     padding-bottom: 50px;
 }
+
+.event-container {
+    width: 100%;
+    min-height: 600px;
+}
+
+.event-years {
+    color: white;
+    margin: 10px;
+}

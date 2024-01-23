@@ -94,7 +94,7 @@ const Home = () => {
           please follow the links to contact us and support us and our efforts
           for a better Syracuse.
         </p>
-        <a href="https://www.paypal.com/donate?token=iATyvnDZNJrY_yj5iJ454A4h2jF2UDCFnDzELuCx946ghOMHuq4JmguRv9g_WHUx21lZBIPZB3RwukJC" target="_blank" rel="noreferrer" className="donate-button">
+        <a href="https://www.paypal.com/donate?token=Qy9ToviYwgBiC0m9h172Ro5CqTureDKe_PD0yULw03wDL_TsFDjZti-qIw0rXttpa8-78Ask6tuddAaD" target="_blank" rel="noreferrer" className="donate-button">
             <FontAwesomeIcon icon={faPaypal} className="donate-icon" />
             <p className="donate-text">Donate</p>
         </a>

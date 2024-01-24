@@ -1,3 +1,10 @@
 .file-upload-btn::-webkit-file-upload-button {
     visibility: hidden;
+    margin-right: 0;
 }
+
+.file-upload-btn2::-webkit-file-upload-button {
+    visibility: hidden;
+    margin-right: -6px;
+}
+

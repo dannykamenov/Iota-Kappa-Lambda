@@ -67,7 +67,7 @@ const DashboardComponent = () => {
             placeholder="Title"
             type="file"
             id="mainImg"
-            className="file-upload-btn"
+            className="file-upload-btn cursor-pointer"
             onChange={(e) => {
               if (e.target.files && e.target.files.length > 0) {
                 setFile(e.target.files[0]);
@@ -85,7 +85,7 @@ const DashboardComponent = () => {
             placeholder="Title"
             type="file"
             id="imgLib"
-            className="file-upload-btn2"
+            className="file-upload-btn2 cursor-pointer"
             onChange={(e) => {
                 if (e.target.files && e.target.files.length > 0) {
                     setFiles(Array.from(e.target.files));

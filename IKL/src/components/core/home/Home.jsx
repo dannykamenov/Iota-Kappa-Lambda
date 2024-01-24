@@ -14,7 +14,7 @@ import { CarouselDemo } from "./CarouselDemo";
 
 const Home = () => {
   return (
-    <>
+    <main>
       <div className="section1-box">
         <div className="our-mission">
           <h1 className="our-mission-title">Our Mission</h1>
@@ -99,7 +99,7 @@ const Home = () => {
             <p className="donate-text">Donate</p>
         </a>
       </div>
-    </>
+    </main>
   );
 };
 

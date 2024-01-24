@@ -1,15 +1,14 @@
-import './App.css'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import Header from './components/core/header/Header'
-import Home from './components/core/home/Home'
-import Footer from './components/core/footer/Footer'
-import Leadership from './components/main/leadership/Leadership'
-import Help from './components/main/help/Help'
-import Contact from './components/main/contact/Contact'
-import Events from './components/main/events/Events'
+import "./App.css";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Header from "./components/core/header/Header";
+import Home from "./components/core/home/Home";
+import Footer from "./components/core/footer/Footer";
+import Leadership from "./components/main/leadership/Leadership";
+import Help from "./components/main/help/Help";
+import Contact from "./components/main/contact/Contact";
+import Events from "./components/main/events/Events";
 
 function App() {
-
   return (
     <Router>
       <Header />
@@ -22,7 +21,7 @@ function App() {
       </Routes>
       <Footer />
     </Router>
-  )
+  );
 }
 
-export default App
+export default App;

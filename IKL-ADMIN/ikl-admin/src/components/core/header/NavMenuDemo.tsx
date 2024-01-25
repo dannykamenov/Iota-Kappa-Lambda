@@ -57,9 +57,23 @@ export function NavigationMenuDemo() {
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <Link to="/docs">
+          <Link to="/dashboard">
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Documentation
+              Dashboard
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <Link to="/manage-events">
+            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+              Manage Events
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <Link to="/photo-gallery">
+            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+              Photo Gallery
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>

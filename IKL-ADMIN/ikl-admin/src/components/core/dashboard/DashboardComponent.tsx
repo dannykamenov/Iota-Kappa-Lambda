@@ -52,6 +52,10 @@ const DashboardComponent = () => {
           </Popover>
         </div>
         <div className="p-2 px-5">
+          <Label>Event Time</Label>
+          
+        </div>
+        <div className="p-2 px-5">
           <Label>Event Description</Label>
           <Textarea
             placeholder="Describe the event here..."

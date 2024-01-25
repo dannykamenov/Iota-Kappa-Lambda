@@ -14,6 +14,13 @@ import {
 import { cn } from "@/lib/utils";
 import { Textarea } from "@/components/ui/textarea";
 import "./Dashboard.css";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const DashboardComponent = () => {
   const [formData, setFormData] = useState({});
@@ -52,8 +59,38 @@ const DashboardComponent = () => {
           </Popover>
         </div>
         <div className="p-2 px-5">
-          <Label>Event Time</Label>
-          
+          <Label>Event Start Time</Label>
+          <Select>
+            <SelectTrigger className="">
+              <SelectValue placeholder="Pick a time" className="time-select"/>
+            </SelectTrigger>
+            <SelectContent>
+                <SelectItem value="1">1:00 AM</SelectItem>
+                <SelectItem value="2">2:00 AM</SelectItem>
+                <SelectItem value="3">3:00 AM</SelectItem>
+                <SelectItem value="4">4:00 AM</SelectItem>
+                <SelectItem value="5">5:00 AM</SelectItem>
+                <SelectItem value="6">6:00 AM</SelectItem>
+                <SelectItem value="7">7:00 AM</SelectItem>
+                <SelectItem value="8">8:00 AM</SelectItem>
+                <SelectItem value="9">9:00 AM</SelectItem>
+                <SelectItem value="10">10:00 AM</SelectItem>
+                <SelectItem value="11">11:00 AM</SelectItem>
+                <SelectItem value="12">12:00 PM</SelectItem>
+                <SelectItem value="13">1:00 PM</SelectItem>
+                <SelectItem value="14">2:00 PM</SelectItem>
+                <SelectItem value="15">3:00 PM</SelectItem>
+                <SelectItem value="16">4:00 PM</SelectItem>
+                <SelectItem value="17">5:00 PM</SelectItem>
+                <SelectItem value="18">6:00 PM</SelectItem>
+                <SelectItem value="19">7:00 PM</SelectItem>
+                <SelectItem value="20">8:00 PM</SelectItem>
+                <SelectItem value="21">9:00 PM</SelectItem>
+                <SelectItem value="22">10:00 PM</SelectItem>
+                <SelectItem value="23">11:00 PM</SelectItem>
+                <SelectItem value="24">12:00 AM</SelectItem>
+            </SelectContent>
+          </Select>
         </div>
         <div className="p-2 px-5">
           <Label>Event Description</Label>
@@ -91,19 +128,17 @@ const DashboardComponent = () => {
             id="imgLib"
             className="file-upload-btn2 cursor-pointer"
             onChange={(e) => {
-                if (e.target.files && e.target.files.length > 0) {
-                    setFiles(Array.from(e.target.files));
-                } else {
-                    setFiles(null);
+              if (e.target.files && e.target.files.length > 0) {
+                setFiles(Array.from(e.target.files));
+              } else {
+                setFiles(null);
               }
             }}
             multiple
           />
         </div>
         <div className="p-2 px-5 text-center">
-            <Button type="submit">
-                Submit
-            </Button>
+          <Button type="submit">Submit</Button>
         </div>
       </form>
     </>

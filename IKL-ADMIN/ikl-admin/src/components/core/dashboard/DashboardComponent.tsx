@@ -64,11 +64,11 @@ const DashboardComponent = () => {
     const formDataEvent = {
       title,
       summary,
-      eventDate: date?.toString() || "",
-      startTime: selectedTime || "",
+      date: date?.toString() || "",
+      time: selectedTime || "",
       description,
       mainImg: "",
-      imgLib: [] as string[],
+      images: [] as string[],
     };
     const year = date?.getFullYear();
     if (file) {
@@ -80,13 +80,14 @@ const DashboardComponent = () => {
       uploadFiles(files, title, year || 0).then((urls) => {
         if (urls) {
           for(const url of urls){
-            formDataEvent.imgLib.push(url);
+            formDataEvent.images.push(url);
           }
         }
       });
     }
     setFormData(formDataEvent);
-    console.log(formData);
+    
+
   };
 
   return (

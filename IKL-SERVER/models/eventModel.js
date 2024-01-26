@@ -27,7 +27,7 @@ const eventSchema = new mongoose.Schema({
         trim: true,
         maxlength: [500, 'Event description cannot be more than 500 characters']
     },
-    mainImage: {
+    mainImg: {
         type: String,
         required: [true, 'Event main image is required'],
     },

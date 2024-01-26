@@ -40,10 +40,11 @@ const DashboardComponent = () => {
     formData.append("eventDate", date?.toString() || "");
     formData.append("startTime", selectedTime || "");
     formData.append("description", description);
-    formData.append("mainImage", file || "");
-    files?.forEach((file) => {
-      formData.append("imageLibrary", file);
-    });
+    //upload mainimg to firebase storage
+    if (file) {
+        //upload file to firebase storage
+        
+    }
     setFormData(formData);
     console.log(formData);
   };

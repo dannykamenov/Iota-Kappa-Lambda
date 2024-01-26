@@ -22,6 +22,9 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
+import { storage } from "@/firebase";
+import uploadFile from "@/components/middleware/uploadFile";
+
 const DashboardComponent = () => {
   const [formData, setFormData] = useState({});
   const [date, setDate] = React.useState<Date | undefined>(new Date());
@@ -43,7 +46,9 @@ const DashboardComponent = () => {
     //upload mainimg to firebase storage
     if (file) {
         //upload file to firebase storage
-        
+        uploadFile(file, title).then((url) => {
+            formData.append("mainImg", url);
+        });
     }
     setFormData(formData);
     console.log(formData);

@@ -5,8 +5,8 @@ import DashboardComponent from './DashboardComponent';
 const Dashboard = () => {
     return (
         <>
-            <h1 className="w-1/4 my-5 mx-auto p-10 text-4xl text-center font-bold  md:w-80 ">Add Event</h1>
-            <div className=" w-1/4 my-5 mx-auto md:w-3/4 xl:w-1/2 sm:w-full ">
+            <h1 className="w-1/4 my-5 mx-auto p-10 text-4xl text-center font-bold small:w-full medium:w-3/4 xl:w-1/2 ">Add Event</h1>
+            <div className=" w-1/3 my-5 mx-auto small:w-full medium:w-3/4 xl:w-1/2">
                 <DashboardComponent />
             </div>
         </>

@@ -24,12 +24,13 @@ import {
 
 import { storage } from "@/firebase";
 import uploadFile from "@/components/middleware/uploadFile";
+import uploadFiles from "@/components/middleware/uploadFiles";
 
 const DashboardComponent = () => {
   const [formData, setFormData] = useState({});
   const [date, setDate] = React.useState<Date | undefined>(new Date());
   const [file, setFile] = React.useState<File | null>(null);
-  const [files, setFiles] = React.useState<File[] | null>(null);
+    const [files, setFiles] = React.useState<File[] | null>(null);
   const [selectedTime, setSelectedTime] = React.useState<string | null>(null);
   const [title, setTitle] = React.useState<string>("");
   const [summary, setSummary] = React.useState<string>("");
@@ -43,15 +44,22 @@ const DashboardComponent = () => {
     formData.append("eventDate", date?.toString() || "");
     formData.append("startTime", selectedTime || "");
     formData.append("description", description);
-    //upload mainimg to firebase storage
+    const year = date?.getFullYear();
     if (file) {
-        //upload file to firebase storage
-        uploadFile(file, title).then((url) => {
+        uploadFile(file, title, year || 0).then((url) => {
             formData.append("mainImg", url);
         });
     }
+    if (files) {
+        uploadFiles(files, title, year || 0).then((urls) => {
+            if (urls) {
+                for (const url of urls) {
+                    formData.append("imgLib", url);
+                }
+            }
+        });
+    }
     setFormData(formData);
-    console.log(formData);
   };
 
   return (

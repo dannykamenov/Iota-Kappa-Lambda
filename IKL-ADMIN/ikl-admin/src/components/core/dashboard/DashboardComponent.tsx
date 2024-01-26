@@ -27,10 +27,25 @@ const DashboardComponent = () => {
   const [date, setDate] = React.useState<Date | undefined>(new Date());
   const [file, setFile] = React.useState<File | null>(null);
   const [files, setFiles] = React.useState<File[] | null>(null);
+  const [selectedTime, setSelectedTime] = React.useState<string | null>(null);
+  const [title, setTitle] = React.useState<string>("");
+  const [summary, setSummary] = React.useState<string>("");
+  const [description, setDescription] = React.useState<string>("");
 
   const handleForm = (e: any) => {
     e.preventDefault();
-    console.log("Form submitted");
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("summary", summary);
+    formData.append("eventDate", date?.toString() || "");
+    formData.append("startTime", selectedTime || "");
+    formData.append("description", description);
+    formData.append("mainImage", file || "");
+    files?.forEach((file) => {
+      formData.append("imageLibrary", file);
+    });
+    setFormData(formData);
+    console.log(formData);
   };
 
   return (
@@ -38,11 +53,23 @@ const DashboardComponent = () => {
       <form onSubmit={handleForm} className="rounded-md border">
         <div className="p-5 px-5 pb-2">
           <Label>Title</Label>
-          <Input placeholder="Title" type="text" />
+          <Input
+            placeholder="Title"
+            type="text"
+            onChange={(e) => {
+              setTitle(e.target.value);
+            }}
+          />
         </div>
         <div className="p-2 px-5">
           <Label>Summary</Label>
-          <Input placeholder="Quick Summary" type="text" />
+          <Input
+            placeholder="Quick Summary"
+            type="text"
+            onChange={(e) => {
+              setSummary(e.target.value);
+            }}
+          />
         </div>
         <div className="p-2 px-5 mx-auto block">
           <Label>Event Date</Label>
@@ -60,35 +87,35 @@ const DashboardComponent = () => {
         </div>
         <div className="p-2 px-5">
           <Label>Event Start Time</Label>
-          <Select>
+          <Select onValueChange={setSelectedTime}>
             <SelectTrigger className="">
-              <SelectValue placeholder="Pick a time" className="time-select"/>
+              <SelectValue placeholder="Pick a time" className="time-select" />
             </SelectTrigger>
             <SelectContent>
-                <SelectItem value="1">1:00 AM</SelectItem>
-                <SelectItem value="2">2:00 AM</SelectItem>
-                <SelectItem value="3">3:00 AM</SelectItem>
-                <SelectItem value="4">4:00 AM</SelectItem>
-                <SelectItem value="5">5:00 AM</SelectItem>
-                <SelectItem value="6">6:00 AM</SelectItem>
-                <SelectItem value="7">7:00 AM</SelectItem>
-                <SelectItem value="8">8:00 AM</SelectItem>
-                <SelectItem value="9">9:00 AM</SelectItem>
-                <SelectItem value="10">10:00 AM</SelectItem>
-                <SelectItem value="11">11:00 AM</SelectItem>
-                <SelectItem value="12">12:00 PM</SelectItem>
-                <SelectItem value="13">1:00 PM</SelectItem>
-                <SelectItem value="14">2:00 PM</SelectItem>
-                <SelectItem value="15">3:00 PM</SelectItem>
-                <SelectItem value="16">4:00 PM</SelectItem>
-                <SelectItem value="17">5:00 PM</SelectItem>
-                <SelectItem value="18">6:00 PM</SelectItem>
-                <SelectItem value="19">7:00 PM</SelectItem>
-                <SelectItem value="20">8:00 PM</SelectItem>
-                <SelectItem value="21">9:00 PM</SelectItem>
-                <SelectItem value="22">10:00 PM</SelectItem>
-                <SelectItem value="23">11:00 PM</SelectItem>
-                <SelectItem value="24">12:00 AM</SelectItem>
+              <SelectItem value="1">1:00 AM</SelectItem>
+              <SelectItem value="2">2:00 AM</SelectItem>
+              <SelectItem value="3">3:00 AM</SelectItem>
+              <SelectItem value="4">4:00 AM</SelectItem>
+              <SelectItem value="5">5:00 AM</SelectItem>
+              <SelectItem value="6">6:00 AM</SelectItem>
+              <SelectItem value="7">7:00 AM</SelectItem>
+              <SelectItem value="8">8:00 AM</SelectItem>
+              <SelectItem value="9">9:00 AM</SelectItem>
+              <SelectItem value="10">10:00 AM</SelectItem>
+              <SelectItem value="11">11:00 AM</SelectItem>
+              <SelectItem value="12">12:00 PM</SelectItem>
+              <SelectItem value="13">1:00 PM</SelectItem>
+              <SelectItem value="14">2:00 PM</SelectItem>
+              <SelectItem value="15">3:00 PM</SelectItem>
+              <SelectItem value="16">4:00 PM</SelectItem>
+              <SelectItem value="17">5:00 PM</SelectItem>
+              <SelectItem value="18">6:00 PM</SelectItem>
+              <SelectItem value="19">7:00 PM</SelectItem>
+              <SelectItem value="20">8:00 PM</SelectItem>
+              <SelectItem value="21">9:00 PM</SelectItem>
+              <SelectItem value="22">10:00 PM</SelectItem>
+              <SelectItem value="23">11:00 PM</SelectItem>
+              <SelectItem value="24">12:00 AM</SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -98,6 +125,9 @@ const DashboardComponent = () => {
             placeholder="Describe the event here..."
             maxLength={500}
             className=" resize-none "
+            onChange={(e) => {
+                setDescription(e.target.value);
+              }}
           />
         </div>
         <div className="p-5 px-5 pb-2 grid max-w-sm items-center gap-1.5 justify-center mx-auto">

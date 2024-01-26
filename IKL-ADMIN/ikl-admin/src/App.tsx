@@ -4,6 +4,7 @@ import Dashboard from "./components/core/dashboard/Dashboard";
 import { ThemeProvider } from "./components/theme-provider";
 import Header from "./components/core/header/Header";
 import "./firebase";
+import ManageComponent from "./components/core/manage/Manage";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Header />
           <Routes>
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/manage-events" element={<ManageComponent />} />
           </Routes>
         </Router>
       </ThemeProvider>

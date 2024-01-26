@@ -38,29 +38,6 @@ const DashboardComponent = () => {
 
   const handleForm = (e: any) => {
     e.preventDefault();
-/*     const formDataEvent = new FormData();
-    formDataEvent.append("title", title);
-    formDataEvent.append("summary", summary);
-    formDataEvent.append("eventDate", date?.toString() || "");
-    formDataEvent.append("startTime", selectedTime || "");
-    formDataEvent.append("description", description);
-    const year = date?.getFullYear();
-    if (file) {
-      uploadFile(file, title, year || 0).then((url) => {
-        formDataEvent.append("mainImg", url);
-      });
-    }
-    if (files) {
-      uploadFiles(files, title, year || 0).then((urls) => {
-        if (urls) {
-          for (const url of urls) {
-            formDataEvent.append("imgLib", url);
-          }
-        }
-      });
-    }
-    setFormData(formDataEvent); */
-    //without using form data
     const formDataEvent = {
       title,
       summary,

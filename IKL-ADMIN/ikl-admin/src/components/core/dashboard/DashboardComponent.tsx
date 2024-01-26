@@ -27,7 +27,7 @@ import uploadFile from "@/components/middleware/uploadFile";
 import uploadFiles from "@/components/middleware/uploadFiles";
 
 const DashboardComponent = () => {
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = React.useState({});
   const [date, setDate] = React.useState<Date | undefined>(new Date());
   const [file, setFile] = React.useState<File | null>(null);
   const [files, setFiles] = React.useState<File[] | null>(null);
@@ -86,7 +86,7 @@ const DashboardComponent = () => {
       });
     }
     setFormData(formDataEvent);
-    console.log(formDataEvent);
+    console.log(formData);
   };
 
   return (

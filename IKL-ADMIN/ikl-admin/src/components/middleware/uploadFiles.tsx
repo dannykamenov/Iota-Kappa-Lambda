@@ -1,10 +1,10 @@
 import { storage } from '@/firebase';
 
-const uploadFiles = async (files: File[], title: string) => {
+const uploadFiles = async (files: File[], title: string, year: number) => {
     const storageRef = storage.ref();
     // create folder under file name
     const uploadTask = files.map((file) => {
-        const fileRef = storageRef.child(`${title}/${file.name}`);
+        const fileRef = storageRef.child(`${year}/${title}/library/${file.name}`);
         return fileRef.put(file);
     });
 

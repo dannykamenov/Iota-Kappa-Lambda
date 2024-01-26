@@ -25,6 +25,7 @@ import {
 import { storage } from "@/firebase";
 import uploadFile from "@/components/middleware/uploadFile";
 import uploadFiles from "@/components/middleware/uploadFiles";
+import { uploadEvent } from "@/components/api/eventApi";
 
 const DashboardComponent = () => {
   const [formData, setFormData] = React.useState({});
@@ -63,8 +64,10 @@ const DashboardComponent = () => {
       });
     }
     setFormData(formDataEvent);
-    
-
+    console.log(formData);
+    uploadEvent(formData).then((res) => {
+      console.log(res);
+    });
   };
 
   return (

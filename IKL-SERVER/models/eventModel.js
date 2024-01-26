@@ -29,7 +29,6 @@ const eventSchema = new mongoose.Schema({
     },
     mainImg: {
         type: String,
-        required: [true, 'Event main image is required'],
     },
     images: [String],
 });

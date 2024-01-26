@@ -30,7 +30,7 @@ const DashboardComponent = () => {
   const [formData, setFormData] = useState({});
   const [date, setDate] = React.useState<Date | undefined>(new Date());
   const [file, setFile] = React.useState<File | null>(null);
-    const [files, setFiles] = React.useState<File[] | null>(null);
+  const [files, setFiles] = React.useState<File[] | null>(null);
   const [selectedTime, setSelectedTime] = React.useState<string | null>(null);
   const [title, setTitle] = React.useState<string>("");
   const [summary, setSummary] = React.useState<string>("");
@@ -38,28 +38,55 @@ const DashboardComponent = () => {
 
   const handleForm = (e: any) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append("title", title);
-    formData.append("summary", summary);
-    formData.append("eventDate", date?.toString() || "");
-    formData.append("startTime", selectedTime || "");
-    formData.append("description", description);
+/*     const formDataEvent = new FormData();
+    formDataEvent.append("title", title);
+    formDataEvent.append("summary", summary);
+    formDataEvent.append("eventDate", date?.toString() || "");
+    formDataEvent.append("startTime", selectedTime || "");
+    formDataEvent.append("description", description);
     const year = date?.getFullYear();
     if (file) {
-        uploadFile(file, title, year || 0).then((url) => {
-            formData.append("mainImg", url);
-        });
+      uploadFile(file, title, year || 0).then((url) => {
+        formDataEvent.append("mainImg", url);
+      });
     }
     if (files) {
-        uploadFiles(files, title, year || 0).then((urls) => {
-            if (urls) {
-                for (const url of urls) {
-                    formData.append("imgLib", url);
-                }
-            }
-        });
+      uploadFiles(files, title, year || 0).then((urls) => {
+        if (urls) {
+          for (const url of urls) {
+            formDataEvent.append("imgLib", url);
+          }
+        }
+      });
     }
-    setFormData(formData);
+    setFormData(formDataEvent); */
+    //without using form data
+    const formDataEvent = {
+      title,
+      summary,
+      eventDate: date?.toString() || "",
+      startTime: selectedTime || "",
+      description,
+      mainImg: "",
+      imgLib: [] as string[],
+    };
+    const year = date?.getFullYear();
+    if (file) {
+      uploadFile(file, title, year || 0).then((url) => {
+        formDataEvent.mainImg = url;
+      });
+    }
+    if (files) {
+      uploadFiles(files, title, year || 0).then((urls) => {
+        if (urls) {
+          for(const url of urls){
+            formDataEvent.imgLib.push(url);
+          }
+        }
+      });
+    }
+    setFormData(formDataEvent);
+    console.log(formDataEvent);
   };
 
   return (
@@ -106,30 +133,30 @@ const DashboardComponent = () => {
               <SelectValue placeholder="Pick a time" className="time-select" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="1">1:00 AM</SelectItem>
-              <SelectItem value="2">2:00 AM</SelectItem>
-              <SelectItem value="3">3:00 AM</SelectItem>
-              <SelectItem value="4">4:00 AM</SelectItem>
-              <SelectItem value="5">5:00 AM</SelectItem>
-              <SelectItem value="6">6:00 AM</SelectItem>
-              <SelectItem value="7">7:00 AM</SelectItem>
-              <SelectItem value="8">8:00 AM</SelectItem>
-              <SelectItem value="9">9:00 AM</SelectItem>
-              <SelectItem value="10">10:00 AM</SelectItem>
-              <SelectItem value="11">11:00 AM</SelectItem>
-              <SelectItem value="12">12:00 PM</SelectItem>
-              <SelectItem value="13">1:00 PM</SelectItem>
-              <SelectItem value="14">2:00 PM</SelectItem>
-              <SelectItem value="15">3:00 PM</SelectItem>
-              <SelectItem value="16">4:00 PM</SelectItem>
-              <SelectItem value="17">5:00 PM</SelectItem>
-              <SelectItem value="18">6:00 PM</SelectItem>
-              <SelectItem value="19">7:00 PM</SelectItem>
-              <SelectItem value="20">8:00 PM</SelectItem>
-              <SelectItem value="21">9:00 PM</SelectItem>
-              <SelectItem value="22">10:00 PM</SelectItem>
-              <SelectItem value="23">11:00 PM</SelectItem>
-              <SelectItem value="24">12:00 AM</SelectItem>
+              <SelectItem value="1 AM">1:00 AM</SelectItem>
+              <SelectItem value="2 AM">2:00 AM</SelectItem>
+              <SelectItem value="3 AM">3:00 AM</SelectItem>
+              <SelectItem value="4 AM">4:00 AM</SelectItem>
+              <SelectItem value="5 AM">5:00 AM</SelectItem>
+              <SelectItem value="6 AM">6:00 AM</SelectItem>
+              <SelectItem value="7 AM">7:00 AM</SelectItem>
+              <SelectItem value="8 AM">8:00 AM</SelectItem>
+              <SelectItem value="9 AM">9:00 AM</SelectItem>
+              <SelectItem value="10 AM">10:00 AM</SelectItem>
+              <SelectItem value="11 AM">11:00 AM</SelectItem>
+              <SelectItem value="12 PM">12:00 PM</SelectItem>
+              <SelectItem value="1 PM">1:00 PM</SelectItem>
+              <SelectItem value="2 PM">2:00 PM</SelectItem>
+              <SelectItem value="3 PM">3:00 PM</SelectItem>
+              <SelectItem value="4 PM">4:00 PM</SelectItem>
+              <SelectItem value="5 PM">5:00 PM</SelectItem>
+              <SelectItem value="6 PM">6:00 PM</SelectItem>
+              <SelectItem value="7 PM">7:00 PM</SelectItem>
+              <SelectItem value="8 PM">8:00 PM</SelectItem>
+              <SelectItem value="9 PM">9:00 PM</SelectItem>
+              <SelectItem value="10 PM">10:00 PM</SelectItem>
+              <SelectItem value="11 PM">11:00 PM</SelectItem>
+              <SelectItem value="12 AM">12:00 AM</SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -140,8 +167,8 @@ const DashboardComponent = () => {
             maxLength={500}
             className=" resize-none "
             onChange={(e) => {
-                setDescription(e.target.value);
-              }}
+              setDescription(e.target.value);
+            }}
           />
         </div>
         <div className="p-5 px-5 pb-2 grid max-w-sm items-center gap-1.5 justify-center mx-auto">

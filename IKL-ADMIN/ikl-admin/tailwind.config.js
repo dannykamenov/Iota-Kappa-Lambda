@@ -2,10 +2,10 @@
 module.exports = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
   ],
   prefix: "",
   theme: {
@@ -14,7 +14,9 @@ module.exports = {
       padding: "2rem",
       screens: {
         "2xl": "1400px",
-        
+        medium: "800px",
+        small: "640px",
+        xsmall: "480px",
       },
     },
     extend: {
@@ -72,7 +74,23 @@ module.exports = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      screens: {
+        "2xl": { max: "1535px" },
+        // => @media (max-width: 1535px) { ... }
+
+        xl: { max: "1279px" },
+        // => @media (max-width: 1279px) { ... }
+
+        lg: { max: "1023px" },
+        // => @media (max-width: 1023px) { ... }
+
+        md: { max: "767px" },
+        // => @media (max-width: 767px) { ... }
+
+        sm: { max: "639px" },
+        // => @media (max-width: 639px) { ... }
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],
-}
+};

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { getEvents } from "@/components/api/eventApi";
 
 import {
@@ -17,16 +17,58 @@ import {
 } from "@/components/ui/hover-card";
 
 const ManageComponent = () => {
+
+    const [events, setEvents] = useState<any[]>([]);
+
   useEffect(() => {
     getEvents().then((res) => {
-      console.log(res);
+      setEvents(res.data.events);
+      console.log(events)
     });
   }, []);
 
   return (
-    <>
-      <h1>Manage</h1>
-    </>
+    <div className=" w-1/2 mx-auto ">
+      {events.map((event) => {
+        return (
+          <HoverCard>
+            <HoverCardTrigger>
+              <Card className={event._id}>
+                <CardHeader>
+                  <CardTitle>{event.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription>{event.summary}</CardDescription>
+                </CardContent>
+                <CardContent>
+                  <CardDescription>{event.description}</CardDescription>
+                </CardContent>
+                <CardFooter>
+                  <span className="text-sm text-gray-400">
+                    {new Date(event.date).toLocaleDateString()} {event.time}
+                  </span>
+                </CardFooter>
+              </Card>
+            </HoverCardTrigger>
+            <HoverCardContent>
+              <Card>
+                <CardHeader>
+                  <CardTitle>{event.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription>{event.summary}</CardDescription>
+                </CardContent>
+                <CardFooter>
+                  <span className="text-sm text-gray-400">
+                    {event.date} {event.time}
+                  </span>
+                </CardFooter>
+              </Card>
+            </HoverCardContent>
+          </HoverCard>
+        );
+      })}
+    </div>
   );
 };
 

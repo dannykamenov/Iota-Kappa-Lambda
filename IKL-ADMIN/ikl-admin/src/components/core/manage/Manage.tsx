@@ -47,7 +47,7 @@ const ManageComponent = () => {
     <div className=" w-1/2 mx-auto">
       {events.map((event) => {
         return (
-          <Card id={event._id} className="my-10">
+          <Card id={event._id} className="my-10" key={event._id}>
             <CardHeader>
               <CardTitle>
                 <strong>Title: </strong>
@@ -85,8 +85,8 @@ const ManageComponent = () => {
                 className="w-full max-w-sm mx-auto"
               >
                 <CarouselContent>
-                  {event.images.map((image: any) => (
-                    <CarouselItem className="medium:basis-1/2 large:basis-1/3">
+                  {event.images.map((image: any, index) => (
+                    <CarouselItem className="medium:basis-1/2 large:basis-1/3" key={index}>
                       <div className="p-1">
                         <Card>
                           <CardContent className="flex aspect-square items-center justify-center p-0">

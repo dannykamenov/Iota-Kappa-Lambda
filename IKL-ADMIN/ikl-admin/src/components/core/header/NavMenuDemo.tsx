@@ -19,24 +19,18 @@ export function NavigationMenuDemo() {
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <Link to="/dashboard">
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+          <Link to="/dashboard" className={navigationMenuTriggerStyle()}>
               Dashboard
-            </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link to="/manage-events">
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+          <Link to="/manage-events" className={navigationMenuTriggerStyle()}>
               Manage Events
-            </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link to="/photo-gallery">
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+          <Link to="/photo-gallery" className={navigationMenuTriggerStyle()}>
               Photo Gallery
-            </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
       </NavigationMenuList>

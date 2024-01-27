@@ -64,9 +64,8 @@ const DashboardComponent = () => {
       });
     }
     setFormData(formDataEvent);
-    console.log(formData);
     uploadEvent(formData).then((res) => {
-      console.log(res);
+      
     });
   };
 

@@ -36,7 +36,23 @@ async function getAllEvents(req, res) {
     }
 }
 
+async function deleteEvent(req, res) {
+    try {
+        await Event.findByIdAndDelete(req.params.id);
+        res.status(204).json({
+            status: 'success',
+            data: null
+        });
+    } catch (err) {
+        res.status(400).json({
+            status: 'fail',
+            message: err.message
+        });
+    }
+}
+
 module.exports = {
     createEvent,
-    getAllEvents
+    getAllEvents,
+    deleteEvent
 };

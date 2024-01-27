@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getEvents } from "@/components/api/eventApi";
+import { getEvents, deleteEvent } from "@/components/api/eventApi";
 
 import {
   Card,
@@ -29,6 +29,19 @@ const ManageComponent = () => {
       setEvents(res.data.events);
     });
   }, []);
+
+  const handleDelete = (e: any) => {
+    const id = e.target.id;
+
+    deleteEvent(id)
+        .then(() => {
+            const newEvents = events.filter(event => event._id !== id);
+            setEvents(newEvents);
+        })
+        .catch((error) => {
+            console.error('Error deleting event:', error);
+        });
+};
 
   return (
     <div className=" w-1/2 mx-auto">
@@ -98,11 +111,13 @@ const ManageComponent = () => {
               </span>
             </CardFooter>
             <CardFooter className="justify-evenly">
-              <Link className={buttonVariants({ variant: "outline" })} to={`/dashboard/${event._id}`}>
+              <Link
+                className={`${buttonVariants({ variant: "outline" })} w-1/3`}
+                to={`/dashboard/${event._id}`}
+              >
                 Edit
               </Link>
-
-              <Button variant="outline" className="w-1/3" id={event._id}>
+              <Button variant="outline" className="w-1/3" id={event._id} onClick={handleDelete}>
                 Delete
               </Button>
             </CardFooter>

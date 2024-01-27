@@ -15,3 +15,13 @@ export const getEvents = async () => {
     const response = await fetch(`${api}/events`);
     return response.json();
 };
+
+export const deleteEvent = async (id: string) => {
+    const response = await fetch(`${api}/events/${id}`, {
+        method: 'DELETE',
+    });
+
+    if (!response.ok) {
+        throw new Error(`Error: ${response.status}`);
+    }
+};

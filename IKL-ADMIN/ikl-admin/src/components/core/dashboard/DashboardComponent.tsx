@@ -28,7 +28,6 @@ import uploadFiles from "@/components/middleware/uploadFiles";
 import { uploadEvent } from "@/components/api/eventApi";
 
 const DashboardComponent = () => {
-  const [formData, setFormData] = React.useState({});
   const [date, setDate] = React.useState<Date | undefined>(new Date());
   const [file, setFile] = React.useState<File | null>(null);
   const [files, setFiles] = React.useState<File[] | null>(null);
@@ -37,8 +36,11 @@ const DashboardComponent = () => {
   const [summary, setSummary] = React.useState<string>("");
   const [description, setDescription] = React.useState<string>("");
 
-  const handleForm = (e: any) => {
+  const handleForm = async (e: any) => {
     e.preventDefault();
+    let mainImgUrl = "";
+    let imageUrls = [];
+
     const formDataEvent = {
       title,
       summary,
@@ -50,23 +52,23 @@ const DashboardComponent = () => {
     };
     const year = date?.getFullYear();
     if (file) {
-      uploadFile(file, title, year || 0).then((url) => {
-        formDataEvent.mainImg = url;
-      });
+      mainImgUrl = await uploadFile(file, title, year || 0);
+      formDataEvent.mainImg = mainImgUrl;
     }
+
+    // Handle additional images upload
     if (files) {
-      uploadFiles(files, title, year || 0).then((urls) => {
-        if (urls) {
-          for(const url of urls){
-            formDataEvent.images.push(url);
-          }
-        }
-      });
+      imageUrls = (await uploadFiles(files, title, year || 0)) || [];
+      formDataEvent.images = imageUrls;
     }
-    setFormData(formDataEvent);
-    uploadEvent(formData).then((res) => {
-      
-    });
+    try {
+      const res = await uploadEvent(formDataEvent);
+      console.log(res);
+      // Handle the response here (e.g., show a success message, navigate to another page)
+    } catch (error) {
+      console.error("Error uploading event:", error);
+      // Handle the error here (e.g., show an error message)
+    }
   };
 
   return (

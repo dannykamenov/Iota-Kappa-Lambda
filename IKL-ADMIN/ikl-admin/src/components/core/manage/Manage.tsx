@@ -20,6 +20,8 @@ import {
 
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { storage } from "@/firebase";
+import { deleteObject } from "firebase/storage";
 
 const ManageComponent = () => {
   const [events, setEvents] = useState<any[]>([]);
@@ -30,18 +32,37 @@ const ManageComponent = () => {
     });
   }, []);
 
-  const handleDelete = (e: any) => {
+  const handleDelete = async (e: any) => {
     const id = e.target.id;
+    const event = events.find((event) => event._id === id);
+    if (!event) return;
 
-    deleteEvent(id)
-        .then(() => {
-            const newEvents = events.filter(event => event._id !== id);
-            setEvents(newEvents);
-        })
-        .catch((error) => {
-            console.error('Error deleting event:', error);
-        });
-};
+    const eventYear = new Date(event.date).getFullYear();
+    const eventTitle = event.title;
+    const libraryFolderPath = `${eventYear}/${eventTitle}/library`; // Assuming 'library' is your subfolder name
+    const eventFolderRef = storage.ref(`${eventYear}/${eventTitle}`);
+
+    try {
+      const libraryFolderRef = storage.ref(libraryFolderPath);
+      const libraryFiles = await libraryFolderRef.listAll();
+      await Promise.all(libraryFiles.items.map((fileRef) => fileRef.delete()));
+
+      const eventFiles = await eventFolderRef.listAll();
+      for (const fileRef of eventFiles.items) {
+        if (fileRef.fullPath !== libraryFolderPath) {
+          await fileRef.delete();
+        }
+      }
+
+      await deleteEvent(id);
+      const newEvents = events.filter((event) => event._id !== id);
+      setEvents(newEvents);
+
+      console.log("Event and associated files deleted successfully");
+    } catch (error) {
+      console.error("Error deleting event and associated files:", error);
+    }
+  };
 
   return (
     <div className=" w-1/2 mx-auto">
@@ -86,7 +107,10 @@ const ManageComponent = () => {
               >
                 <CarouselContent>
                   {event.images.map((image: any, index) => (
-                    <CarouselItem className="medium:basis-1/2 large:basis-1/3" key={index}>
+                    <CarouselItem
+                      className="medium:basis-1/2 large:basis-1/3"
+                      key={index}
+                    >
                       <div className="p-1">
                         <Card>
                           <CardContent className="flex aspect-square items-center justify-center p-0">
@@ -117,7 +141,12 @@ const ManageComponent = () => {
               >
                 Edit
               </Link>
-              <Button variant="outline" className="w-1/3" id={event._id} onClick={handleDelete}>
+              <Button
+                variant="outline"
+                className="w-1/3"
+                id={event._id}
+                onClick={handleDelete}
+              >
                 Delete
               </Button>
             </CardFooter>

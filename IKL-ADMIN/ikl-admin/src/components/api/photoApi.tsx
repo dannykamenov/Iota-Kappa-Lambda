@@ -10,3 +10,8 @@ export const uploadPhoto = async (url, name) => {
     });
     return response.json();
 };
+
+export const getPhotos = async () => {
+    const response = await fetch(`${api}/photos`);
+    return response.json();
+};

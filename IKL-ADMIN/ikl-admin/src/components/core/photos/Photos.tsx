@@ -5,14 +5,22 @@ import { Button } from "@/components/ui/button";
 import { toast } from "react-toastify";
 import { storage } from "@/firebase";
 import './Photos.css'
-import { uploadPhoto } from "@/components/api/photoApi";
+import { uploadPhoto, getPhotos } from "@/components/api/photoApi";
 
 const PhotosComponent = () => {
 
     const [files, setFiles] = React.useState<File[] | null>(null);
+    const [photos, setPhotos] = React.useState<any[]>([]);
+
+    React.useEffect(() => {
+        getPhotos().then((res) => {
+            setPhotos(res.data.photos);
+        });
+    }, []);
 
     const handleForm = async (e: any) => {
         e.preventDefault();
+        if(!files){toast.error("Please select a file!"); return;}
         if(files?.length > 0){
             for(const file of files){
                 const storageRef = storage.ref();
@@ -56,6 +64,24 @@ const PhotosComponent = () => {
           </div>
         </form>
       </div>
+      <h1 className="w-1/4 my-5 mx-auto p-10 text-4xl text-center font-bold small:w-full medium:w-3/4 xl:w-1/2 ">
+        Photo Library
+      </h1>
+        <div className="w-10/12 mx-auto">
+          <div className="grid grid-cols-3 gap-4">
+            {photos.map((photo, index) => {
+              return (
+                <div className="p-2" key={index}>
+                  <img
+                    src={photo.photoUrl}
+                    alt=""
+                    className="rounded-md border-5 border-black"
+                  />
+                </div>
+              );
+            })}
+          </div>
+        </div>
     </>
   );
 };

@@ -25,3 +25,19 @@ export const deleteEvent = async (id: string) => {
         throw new Error(`Error: ${response.status}`);
     }
 };
+
+export const getEvent = async (id: string | undefined) => {
+    const response = await fetch(`${api}/events/${id}`);
+    return response.json();
+};
+
+export const editEvent = async (data: any, id: string | undefined) => {
+    const response = await fetch(`${api}/events/${id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data),
+    });
+    return response.json();
+};

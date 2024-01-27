@@ -2,16 +2,27 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@radix-ui/react-label";
 import React from "react";
 import { Button } from "@/components/ui/button";
-
+import { toast } from "react-toastify";
+import { storage } from "@/firebase";
 import './Photos.css'
+import { uploadPhoto } from "@/components/api/photoApi";
 
 const PhotosComponent = () => {
 
-    const [photoName, setPhotoName] = React.useState<string>("");
     const [files, setFiles] = React.useState<File[] | null>(null);
 
     const handleForm = async (e: any) => {
-        return;
+        e.preventDefault();
+        if(files?.length > 0){
+            for(const file of files){
+                const storageRef = storage.ref();
+                const fileRef = storageRef.child(`photoLibrary/${file.name}`);
+                await fileRef.put(file);
+                const url = await fileRef.getDownloadURL();
+                await uploadPhoto(url, file.name);
+            }
+        }
+        toast.success("Photos uploaded successfully!");
     };
 
   return (

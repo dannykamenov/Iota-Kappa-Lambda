@@ -7,6 +7,8 @@ import "./firebase";
 import ManageComponent from "./components/core/manage/Manage";
 import EditComponent from "./components/core/manage/EditComponent";
 import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import PhotosComponent from "./components/core/photos/Photos";
 
 function App() {
   return (
@@ -29,6 +31,7 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/manage-events" element={<ManageComponent />} />
             <Route path="/dashboard/:id" element={<EditComponent />} />
+            <Route path="/photo-gallery" element={<PhotosComponent />} />
           </Routes>
         </Router>
       </ThemeProvider>

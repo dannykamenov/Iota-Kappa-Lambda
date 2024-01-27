@@ -11,18 +11,16 @@ import {
 } from "@/components/ui/card";
 
 import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "@/components/ui/hover-card";
-
-import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+
+import {
+    Button
+} from "@/components/ui/button";
 
 const ManageComponent = () => {
   const [events, setEvents] = useState<any[]>([]);
@@ -39,13 +37,13 @@ const ManageComponent = () => {
         return (
           <Card id={event._id} className="my-10">
             <CardHeader>
-              <CardTitle>{event.title}</CardTitle>
+              <CardTitle>Title: {event.title}</CardTitle>
             </CardHeader>
             <CardContent>
-              <CardDescription>{event.summary}</CardDescription>
+              <CardDescription>Summary: {event.summary}</CardDescription>
             </CardContent>
             <CardContent>
-              <CardDescription>{event.description}</CardDescription>
+              <CardDescription>Description: {event.description}</CardDescription>
             </CardContent>
             <CardContent className="mx-auto">
               <strong>Main Image</strong>
@@ -87,7 +85,7 @@ const ManageComponent = () => {
             </CardContent>
             <CardFooter>
               <span className="text-sm text-gray-400">
-                {new Date(event.date).toLocaleDateString()} {event.time}
+                Date & Time: {new Date(event.date).toLocaleDateString()} {event.time}
               </span>
             </CardFooter>
           </Card>

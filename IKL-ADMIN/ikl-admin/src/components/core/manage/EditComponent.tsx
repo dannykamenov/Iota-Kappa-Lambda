@@ -5,6 +5,7 @@ import { Popover, PopoverTrigger, PopoverContent } from "@radix-ui/react-popover
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@radix-ui/react-select";
 import { setDate } from "date-fns";
 import { CalendarIcon, Calendar } from "lucide-react";
+import React from "react";
 import { useState, useEffect } from "react";
 import { Button } from "react-day-picker";
 import { useParams } from "react-router-dom";
@@ -37,7 +38,6 @@ const EditComponent = () => {
 
   const handleSubmit = async (formData: FormData) => {
     try {
-      // update event with new data
       const response = await fetch(`/api/events/${id}`, {
         method: "PUT",
         body: formData,

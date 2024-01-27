@@ -22,6 +22,9 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { storage } from "@/firebase";
 import { deleteObject } from "firebase/storage";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const ManageComponent = () => {
   const [events, setEvents] = useState<any[]>([]);
@@ -58,9 +61,10 @@ const ManageComponent = () => {
       const newEvents = events.filter((event) => event._id !== id);
       setEvents(newEvents);
 
-      console.log("Event and associated files deleted successfully");
+      toast.success("Event deleted successfully."); 
     } catch (error) {
       console.error("Error deleting event and associated files:", error);
+      toast.error("Failed to delete the event. Please try again.");
     }
   };
 

@@ -3,15 +3,12 @@ import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import { CalendarIcon } from "@radix-ui/react-icons";
 import { Label } from "@/components/ui/label";
-import { useState } from "react";
-import { FormDescription } from "@/components/ui/form";
 import * as React from "react";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { cn } from "@/lib/utils";
 import { Textarea } from "@/components/ui/textarea";
 import "./Dashboard.css";
 import {
@@ -22,10 +19,10 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-import { storage } from "@/firebase";
 import uploadFile from "@/components/middleware/uploadFile";
 import uploadFiles from "@/components/middleware/uploadFiles";
 import { uploadEvent } from "@/components/api/eventApi";
+import { toast } from "react-toastify";
 
 const DashboardComponent = () => {
   const [date, setDate] = React.useState<Date | undefined>(new Date());
@@ -55,19 +52,16 @@ const DashboardComponent = () => {
       mainImgUrl = await uploadFile(file, title, year || 0);
       formDataEvent.mainImg = mainImgUrl;
     }
-
-    // Handle additional images upload
     if (files) {
       imageUrls = (await uploadFiles(files, title, year || 0)) || [];
       formDataEvent.images = imageUrls;
     }
     try {
       const res = await uploadEvent(formDataEvent);
-      console.log(res);
-      // Handle the response here (e.g., show a success message, navigate to another page)
+      toast.success("Event uploaded successfully");
     } catch (error) {
       console.error("Error uploading event:", error);
-      // Handle the error here (e.g., show an error message)
+      toast.error("Failed to upload the event. Please try again.");
     }
   };
 

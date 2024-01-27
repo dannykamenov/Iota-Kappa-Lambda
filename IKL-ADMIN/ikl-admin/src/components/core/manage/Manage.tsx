@@ -18,9 +18,8 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
-import {
-    Button
-} from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const ManageComponent = () => {
   const [events, setEvents] = useState<any[]>([]);
@@ -37,13 +36,22 @@ const ManageComponent = () => {
         return (
           <Card id={event._id} className="my-10">
             <CardHeader>
-              <CardTitle>Title: {event.title}</CardTitle>
+              <CardTitle>
+                <strong>Title: </strong>
+                {event.title}
+              </CardTitle>
             </CardHeader>
             <CardContent>
-              <CardDescription>Summary: {event.summary}</CardDescription>
+              <CardDescription>
+                <strong>Summary: </strong>
+                {event.summary}
+              </CardDescription>
             </CardContent>
             <CardContent>
-              <CardDescription>Description: {event.description}</CardDescription>
+              <CardDescription>
+                <strong>Description: </strong>
+                {event.description}
+              </CardDescription>
             </CardContent>
             <CardContent className="mx-auto">
               <strong>Main Image</strong>
@@ -85,8 +93,18 @@ const ManageComponent = () => {
             </CardContent>
             <CardFooter>
               <span className="text-sm text-gray-400">
-                Date & Time: {new Date(event.date).toLocaleDateString()} {event.time}
+                <strong>Date & Time: </strong>
+                {new Date(event.date).toLocaleDateString()} {event.time}
               </span>
+            </CardFooter>
+            <CardFooter className="justify-evenly">
+              <Link className={buttonVariants({ variant: "outline" })} to={`/dashboard/${event._id}`}>
+                Edit
+              </Link>
+
+              <Button variant="outline" className="w-1/3" id={event._id}>
+                Delete
+              </Button>
             </CardFooter>
           </Card>
         );

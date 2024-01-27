@@ -10,3 +10,8 @@ export const uploadEvent = async (data: any) => {
     });
     return response.json();
 };
+
+export const getEvents = async () => {
+    const response = await fetch(`${api}/events`);
+    return response.json();
+};

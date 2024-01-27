@@ -30,7 +30,6 @@ const ManageComponent = () => {
   useEffect(() => {
     getEvents().then((res) => {
       setEvents(res.data.events);
-      console.log(events);
     });
   }, []);
 

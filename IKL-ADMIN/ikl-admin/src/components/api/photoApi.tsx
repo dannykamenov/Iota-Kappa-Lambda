@@ -15,3 +15,13 @@ export const getPhotos = async () => {
     const response = await fetch(`${api}/photos`);
     return response.json();
 };
+
+export const deletePhoto = async (id) => {
+    const response = await fetch(`${api}/photos/${id}`, {
+        method: 'DELETE',
+    });
+
+    if (!response.ok) {
+        throw new Error(`Error: ${response.status}`);
+    }
+};

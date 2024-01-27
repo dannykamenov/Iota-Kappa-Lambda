@@ -9,5 +9,6 @@ router.get('/events/:id', getEvent);
 router.put('/events/:id', editEvent);
 router.post('/photos', createPhoto);
 router.get('/photos', getAllPhotos);
+router.delete('/photos/:id', deletePhoto);
 
 module.exports = router;

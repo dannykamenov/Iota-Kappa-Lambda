@@ -3,8 +3,10 @@ const Photo = require("../models/photoModel");
 
 
 async function createPhoto(req, res) {
+    const photoUrl = req.body.url;
+    const photoName = req.body.name;
     try {
-        const newPhoto = await Photo.create(req.body);
+        const newPhoto = await Photo.create({ photoName, photoUrl });
         res.status(201).json({
         status: "success",
         data: {

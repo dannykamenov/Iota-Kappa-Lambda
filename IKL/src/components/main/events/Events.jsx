@@ -3,7 +3,7 @@ import "./Events.css";
 import PaginationDemo from "./paginationDemo";
 
 const Events = () => {
-  const [currentPage, setCurrentPage] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
   useEffect(() => {
     //on load redirect to current year
     setCurrentPage(new Date().getFullYear().toString());

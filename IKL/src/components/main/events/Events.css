@@ -29,3 +29,8 @@
     color: white;
     margin: 10px;
 }
+
+.btn-active {
+    background-color: #938807;
+    color: white;
+}

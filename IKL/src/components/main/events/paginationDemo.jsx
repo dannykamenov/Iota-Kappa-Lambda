@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import {
   Pagination,
   PaginationContent,
@@ -8,55 +9,67 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const PaginationDemo = () => {
-  //auto display current year on page load
+const PaginationDemo = ({ onYearChange }) => {
+  const years = [
+    "2024",
+    "2023",
+    "2022",
+    "2021",
+    "2020",
+    "2019",
+    "2018",
+    "2017",
+    "2016",
+    "2015",
+    "Vintage",
+  ];
   const [currentPage, setCurrentPage] = useState(
     new Date().getFullYear().toString()
   );
 
-  //function to handle pagination click
+  const navigate = useNavigate();
 
+  const handlePageChange = (year) => {
+    setCurrentPage(year);
+    navigate(`/events-and-photos/${year}`);
+    if (onYearChange) {
+      onYearChange(year);
+    }
+  };
+
+  const handleNext = () => {
+    const currentIndex = years.indexOf(currentPage);
+    if (currentIndex < years.length - 1) {
+      handlePageChange(years[currentIndex - 1]);
+    }
+  };
+
+  const handlePrevious = () => {
+    const currentIndex = years.indexOf(currentPage);
+    if (currentIndex > 0) {
+      handlePageChange(years[currentIndex + 1]);
+    }
+  };
 
   return (
     <Pagination>
       <PaginationContent>
-        <PaginationPrevious>Previous</PaginationPrevious>
-        <PaginationItem>
-          <PaginationLink href="/events-and-photos/2024">2024</PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink href="/events-and-photos/2023">2023</PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink href="/events-and-photos/2022">2022</PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink href="/events-and-photos/2021">2021</PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink href="/events-and-photos/2020">2020</PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink href="/events-and-photos/2019">2019</PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink href="/events-and-photos/2018">2018</PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink href="/events-and-photos/2017">2017</PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink href="/events-and-photos/2016">2016</PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink href="/events-and-photos/2015">2015</PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink href="/events-and-photos/vintage">Vintage</PaginationLink>
-        </PaginationItem>
-        <PaginationNext>Next</PaginationNext>
+        <Button onClick={handleNext}>Next</Button>
+        {years.map((year) => (
+          <PaginationItem key={year}>
+            <PaginationLink
+              href={`/events-and-photos/${year}`}
+              onClick={() => handlePageChange(year)}
+              className={currentPage === year ? "btn-active" : ""}
+            >
+              {year}
+            </PaginationLink>
+          </PaginationItem>
+        ))}
+        <Button onClick={handlePrevious}>Previous</Button>
       </PaginationContent>
     </Pagination>
   );

@@ -91,6 +91,12 @@ const ManageComponent = () => {
                 {event.description}
               </CardDescription>
             </CardContent>
+            <CardContent>
+              <CardDescription>
+                <strong>Description: </strong>
+                {event.location || "No location specified"}
+              </CardDescription>
+            </CardContent>
             <CardContent className="mx-auto">
               <strong>Main Image</strong>
               <CardDescription className="mx-auto">

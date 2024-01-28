@@ -32,6 +32,7 @@ const DashboardComponent = () => {
   const [title, setTitle] = React.useState<string>("");
   const [summary, setSummary] = React.useState<string>("");
   const [description, setDescription] = React.useState<string>("");
+  const [location, setLocation] = React.useState<string>("");
 
   const handleForm = async (e: any) => {
     e.preventDefault();
@@ -41,6 +42,7 @@ const DashboardComponent = () => {
     const formDataEvent = {
       title,
       summary,
+      location,
       date: date?.toString() || "",
       time: selectedTime || "",
       description,
@@ -85,6 +87,16 @@ const DashboardComponent = () => {
             type="text"
             onChange={(e) => {
               setSummary(e.target.value);
+            }}
+          />
+        </div>
+        <div className="p-2 px-5">
+          <Label>Location</Label>
+          <Input
+            placeholder="Event Location"
+            type="text"
+            onChange={(e) => {
+              setLocation(e.target.value);
             }}
           />
         </div>

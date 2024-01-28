@@ -33,6 +33,7 @@ const EditComponent = () => {
   const [summary, setSummary] = React.useState<string>("");
   const [description, setDescription] = React.useState<string>("");
   const [originalTitle, setOriginalTitle] = React.useState<string>("");
+  const [location, setLocation] = React.useState<string>("");
 
   React.useEffect(() => {
     const getEventById = async () => {
@@ -44,6 +45,7 @@ const EditComponent = () => {
       setSelectedTime(event.time);
       setDescription(event.description);
       setOriginalTitle(event.title);
+      setLocation(event.location);
     };
     getEventById();
   }, []);
@@ -69,6 +71,7 @@ const EditComponent = () => {
     const formDataEvent = {
       title,
       summary,
+      location,
       date: date?.toISOString().split("T")[0] || "", // Format date as YYYY-MM-DD
       time: selectedTime || "",
       description,
@@ -190,6 +193,17 @@ const EditComponent = () => {
                 setSummary(e.target.value);
               }}
               value={summary}
+            />
+          </div>
+          <div className="p-2 px-5">
+            <Label>Location</Label>
+            <Input
+              placeholder="Update Location"
+              type="text"
+              onChange={(e) => {
+                setLocation(e.target.value);
+              }}
+              value={location}
             />
           </div>
           <div className="p-2 px-5 mx-auto block">

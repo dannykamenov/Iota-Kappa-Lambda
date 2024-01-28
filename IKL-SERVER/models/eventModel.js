@@ -13,6 +13,12 @@ const eventSchema = new mongoose.Schema({
         trim: true,
         maxlength: [150, 'Event summary cannot be more than 150 characters']
     },
+    location: {
+        type: String,
+        required: [true, 'Event location is required'],
+        trim: true,
+        maxlength: [50, 'Event location cannot be more than 50 characters']
+    },
     date: {
         type: Date,
         required: [true, 'Event date is required'],

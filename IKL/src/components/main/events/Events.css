@@ -33,4 +33,9 @@
 .btn-active {
     background-color: #938807;
     color: white;
+    cursor: pointer;
+}
+
+.btn-inactive {
+    cursor: pointer;
 }

@@ -7,6 +7,7 @@ import Leadership from "./components/main/leadership/Leadership";
 import Help from "./components/main/help/Help";
 import Contact from "./components/main/contact/Contact";
 import Events from "./components/main/events/Events";
+import EventLoaded from "./components/main/events/EventLoaded";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/contact-us" element={<Contact />} />
         <Route path="/help" element={<Help />} />
         <Route path="/events-and-photos" element={<Events />} />
+        <Route path="/events-and-photos/:id" element={<EventLoaded />} />
       </Routes>
       <Footer />
     </Router>

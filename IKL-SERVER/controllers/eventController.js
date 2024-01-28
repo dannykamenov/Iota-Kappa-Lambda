@@ -85,10 +85,38 @@ async function editEvent(req, res) {
   }
 }
 
+async function getEventByYear(req, res) {
+  try {
+    const year = req.params.year;
+    const startDate = new Date(`${year}-01-01T00:00:00.000Z`);
+    const endDate = new Date(`${year}-12-31T23:59:59.999Z`);
+
+    const events = await Event.find({
+      date: {
+        $gte: startDate,
+        $lte: endDate,
+      },
+    });
+
+    res.status(200).json({
+      status: "success",
+      data: {
+        events,
+      },
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: "fail",
+      message: err.message,
+    });
+  }
+}
+
 module.exports = {
   createEvent,
   getAllEvents,
   deleteEvent,
   getEvent,
   editEvent,
+  getEventByYear,
 };

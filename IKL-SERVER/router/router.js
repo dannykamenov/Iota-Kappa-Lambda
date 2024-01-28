@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { createEvent, getAllEvents, deleteEvent, getEvent, editEvent } = require('../controllers/eventController');
+const { createEvent, getAllEvents, deleteEvent, getEvent, editEvent, getEventByYear } = require('../controllers/eventController');
 const { createPhoto, getAllPhotos, deletePhoto } = require('../controllers/photoController');
 
 router.post('/events', createEvent);
@@ -10,5 +10,7 @@ router.put('/events/:id', editEvent);
 router.post('/photos', createPhoto);
 router.get('/photos', getAllPhotos);
 router.delete('/photos/:id', deletePhoto);
+router.get('/events/year/:year', getEventByYear);
+
 
 module.exports = router;

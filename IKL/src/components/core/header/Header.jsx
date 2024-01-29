@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./Header.css";
 import { Link } from "react-router-dom";
 import logo from "../../../assets/logo.png";
@@ -50,6 +50,12 @@ const Header = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  const navRef = useRef();
+
+  const showMenu = () => {
+    navRef.current.classList.toggle("active");
+  };
 
   return (
     <header className="navbar">
@@ -108,16 +114,108 @@ const Header = () => {
           </div>
         </ul>
       ) : (
-        <div
-          className="mobile-header list"
-        >
-          <div className="">
-            <li className="header menu link text-5xl">
-              <FontAwesomeIcon
-                icon={isMenuOpen ? faTimes : faBars}
-                className="text-white text-5xl"
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-              />
+        <div className="block w-11/12">
+          <ul className="header list flex">
+            <div className="header list">
+              <div className="logo-div">
+                <li className="header logo">
+                  <Link to="/" style={logoStyle}>
+                    <img src={logo} alt="Logo" className="logo-img" />
+                  </Link>
+                </li>
+              </div>
+              <div className="flex align-middle">
+                <li className="header menu link text-5xl align-middle">
+                  <FontAwesomeIcon
+                    icon={isMenuOpen ? faTimes : faBars}
+                    className="text-white text-5xl align-middle icon-link"
+                    onClick={() => {
+                      setIsMenuOpen(!isMenuOpen);
+                      showMenu();
+                    }}
+                  />
+                </li>
+              </div>
+            </div>
+          </ul>
+          <div className="overlay" ref={navRef}>
+            <li className="header home link">
+              <Link
+                to="/"
+                style={linkStyle}
+                className="link-comp"
+                onClick={() => {
+                  setIsMenuOpen(!isMenuOpen);
+                  showMenu();
+                }}
+              >
+                HOME
+              </Link>
+            </li>
+            <li className="header contact link">
+              <Link
+                to="contact-us"
+                style={linkStyle}
+                className="link-comp"
+                onClick={() => {
+                  setIsMenuOpen(!isMenuOpen);
+                  showMenu();
+                }}
+              >
+                CONTACT US
+              </Link>
+            </li>
+            <li className="header leadership link">
+              <Link
+                to="leadership"
+                style={linkStyle}
+                className="link-comp"
+                onClick={() => {
+                  setIsMenuOpen(!isMenuOpen);
+                  showMenu();
+                }}
+              >
+                LEADERSHIP
+              </Link>
+            </li>
+            <li className="header events link">
+              <Link
+                to="events-and-photos"
+                style={linkStyle}
+                className="link-comp"
+                onClick={() => {
+                  setIsMenuOpen(!isMenuOpen);
+                  showMenu();
+                }}
+              >
+                EVENTS & PHOTOS
+              </Link>
+            </li>
+            <li className="header help link">
+              <Link
+                to="help"
+                style={linkStyle}
+                className="link-comp"
+                onClick={() => {
+                  setIsMenuOpen(!isMenuOpen);
+                  showMenu();
+                }}
+              >
+                HELPFUL LINKS
+              </Link>
+            </li>
+            <li className="header profile link">
+              <Link to="profile" style={linkStyle}>
+                <FontAwesomeIcon
+                  icon={faUser}
+                  style={linkStyle}
+                  className="link-comp"
+                  onClick={() => {
+                    setIsMenuOpen(!isMenuOpen);
+                    showMenu();
+                  }}
+                />
+              </Link>
             </li>
           </div>
         </div>

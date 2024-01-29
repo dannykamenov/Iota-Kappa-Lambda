@@ -56,6 +56,60 @@
     flex: 1;
 }
 
+.icon-link {
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+}
+
+.icon-link:hover {
+    color: #938807 !important;
+}
+
+@keyframes slideUp {
+    from {
+        top: 125px;
+        opacity: 0.9;
+    }
+    to {
+        top: 0;
+        display: none;
+        opacity: 0;
+    }
+}
+
+.overlay {
+    z-index: 1;
+    background-color: #000000;
+    position: absolute;
+    width: 100%;
+    opacity: 0.9;
+    margin: 0 auto;
+    left: 0;
+    height: auto;
+    display: block;
+    animation: slideUp 0.5s ease-in-out forwards;
+    z-index: 2;
+}
+
+@keyframes slideDown {
+    from {
+        top: 50px;
+        opacity: 0;
+    }
+    to {
+        top: 125px;
+        opacity: 0.9;
+    }
+}
+
+.active {
+    left: 0;
+    height: auto;
+    display: block;
+    animation: slideDown 0.5s ease-in-out forwards;
+    z-index: 2;
+}
+
 @media screen and (max-width: 1420px) {
     .link-comp {
         font-size: 20px !important;
@@ -89,6 +143,9 @@
 @media screen and (max-width: 800px) {
     .list {
         width: 95%;
+        position: static;
+        margin: 10px 10px;
+        z-index: 3;
     }
 
     .logo-img {

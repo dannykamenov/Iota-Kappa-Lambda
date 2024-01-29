@@ -5,9 +5,7 @@ import PaginationDemo from "./paginationDemo";
 const Events = () => {
   const [currentPage, setCurrentPage] = useState(1);
   useEffect(() => {
-    //on load redirect to current year
     setCurrentPage(new Date().getFullYear().toString());
-    // redirect to current year
     window.location.href = `events-and-photos/${currentPage}`;
   });
 

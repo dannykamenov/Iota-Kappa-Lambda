@@ -18,7 +18,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-import { uploadEvent, getEvent, editEvent } from "@/components/api/eventApi";
+import { getEvent, editEvent } from "@/components/api/eventApi";
 import { toast } from "react-toastify";
 import { useParams } from "react-router-dom";
 import { storage } from "@/firebase";
@@ -27,7 +27,7 @@ const EditComponent = () => {
   const { id } = useParams<{ id: string | undefined }>();
   const [date, setDate] = React.useState<Date | undefined>(new Date());
   const [selectedTime, setSelectedTime] = React.useState<string | undefined>(
-    null
+    ""
   );
   const [title, setTitle] = React.useState<string>("");
   const [summary, setSummary] = React.useState<string>("");
@@ -89,7 +89,6 @@ const EditComponent = () => {
       const newLibraryFolderPath = `${newFolderPath}/library`;
 
       try {
-        // Move main image and files directly under the main folder
         const mainFolderContents = await storageRef
           .child(oldFolderPath)
           .listAll();
@@ -107,7 +106,6 @@ const EditComponent = () => {
           }
         }
 
-        // Move files in the 'library' subfolder
         const libraryFolderContents = await storageRef
           .child(oldLibraryFolderPath)
           .listAll();
@@ -120,7 +118,6 @@ const EditComponent = () => {
           );
         }
 
-        // Fetching new download URLs for library images
         const newLibraryFolderContents = await storageRef
           .child(newLibraryFolderPath)
           .listAll();
@@ -128,7 +125,6 @@ const EditComponent = () => {
           newLibraryFolderContents.items.map((item) => item.getDownloadURL())
         );
 
-        // Delete old files and folders
         await deleteFilesInFolder(oldFolderPath, storageRef);
         await deleteFilesInFolder(oldLibraryFolderPath, storageRef);
 
@@ -137,7 +133,6 @@ const EditComponent = () => {
         console.error("Error updating event folder:", error);
       }
     } else {
-      // Title is the same, so just get the main image and library images
       const eventFolderRef = storage.ref(`${year}/${title}`);
       const libraryFolderRef = storage.ref(`${year}/${title}/library`);
 

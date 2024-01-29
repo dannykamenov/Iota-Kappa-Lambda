@@ -29,7 +29,6 @@
 .link {
     display: flex;
     justify-content: center;
-    height: 150px;
     align-items: center;
 }
 
@@ -37,7 +36,6 @@
     width: 150px;
     height: 150px;
     cursor: pointer;
-    flex-grow: 1;
 }
 
 .link-comp:hover {
@@ -56,4 +54,48 @@
 .right-links {
     justify-content: space-around;
     flex: 1;
+}
+
+@media screen and (max-width: 1420px) {
+    .link-comp {
+        font-size: 20px !important;
+    }
+
+    .logo-img {
+        width: 115px;
+        height: 115px;
+        cursor: pointer;
+        flex-grow: 1;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .list {
+        width: 95%;
+    }
+
+    .link-comp {
+        font-size: 17px !important;
+    }
+
+    .logo-img {
+        width: 100px;
+        height: 100px;
+        cursor: pointer;
+        flex-grow: 1;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .list {
+        width: 95%;
+    }
+
+    .logo-img {
+        width: 85px;
+        height: 85px;
+        cursor: pointer;
+        flex-grow: 1;
+    }
+    
 }

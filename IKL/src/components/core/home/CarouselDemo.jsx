@@ -6,12 +6,8 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
-import home from "../../../assets/HOME2.jpg"
-
 import { getPhotos } from "@/components/api/photoApi"
 import { useEffect, useState } from "react"
-
-
 
 export function CarouselDemo() {
 

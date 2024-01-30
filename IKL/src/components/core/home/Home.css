@@ -197,3 +197,102 @@
     transition: 0.3s ease-in-out;
 }
 
+@media screen and (max-width: 1450px) {
+    .section1-box {
+        flex-direction: column;
+        margin-top: 0px;
+    }
+
+    .our-mission {
+        width: 80%;
+        margin-top: 200px;
+    }
+
+    .calendar-box {
+        width: 80%;
+        margin-top: 25px;
+    }
+
+    .slogan-div {
+        margin-top: -80px;
+    }
+
+    .slogan-text {
+        font-size: 3.5rem;
+    }
+
+    .carousel-box {
+        margin-top: 0px;
+    }
+
+    .carousel-image {
+        height: 300px;
+        width: 300px;
+    }
+
+    .section3-title {
+        font-size: 3rem;
+        margin-bottom: 20px;
+    }
+
+    .card-image {
+        margin-bottom: -40px;
+    }
+
+    .card-content {
+        width: 60%;
+        flex-direction: column;
+    }
+
+    .info-card {
+        flex-basis: 100%;
+        margin-bottom: 20px;
+    }
+
+    .card-info {
+        margin-top: 0px;
+    }
+
+    .section4-title {
+        font-size: 3rem;
+    }
+
+    .section4-content {
+        font-size: 1.3rem;
+    }
+
+    .donate-button {
+        width: fit-content;
+    }
+
+    .donate-text {
+        font-size: 1.3rem;
+        padding: 5px 5px;
+    }
+    
+}
+
+@media screen and (max-width: 800px) {
+    .our-mission {
+        margin-top: 50px;
+    }
+
+    .slogan-text {
+        font-size: 2.5rem;
+        margin-top: 25px;
+        margin-bottom: 25px;
+    }
+
+    .card-content {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 550px) {
+
+
+    .slogan-text {
+        font-size: 1.5rem;
+        margin-top: 100px;
+    }
+}

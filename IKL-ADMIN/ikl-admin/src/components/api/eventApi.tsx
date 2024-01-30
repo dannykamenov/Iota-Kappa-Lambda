@@ -1,4 +1,4 @@
-const api = 'http://localhost:3000/api';
+const api = 'https://iota-kappa-lambda.onrender.com/api';
 
 export const uploadEvent = async (data: any) => {
     const response = await fetch(`${api}/events`, {

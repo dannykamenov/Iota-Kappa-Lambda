@@ -22,7 +22,6 @@ const Contact = () => {
     setErrors(formErrors);
 
     if (Object.keys(formErrors).length === 0) {
-        // Handle form submission logic here (e.g., send data to an API)
         console.log(formData);
     }
   };

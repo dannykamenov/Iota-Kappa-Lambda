@@ -29,12 +29,12 @@ const EventLoaded = () => {
         <div className="event-years">
           <PaginationDemo onYearChange={handleYearChange} />
         </div>
-        <div className="w-11/12 flex mx-auto my-10 justify-center">
+        <div className="w-9/12 flex mx-auto my-10 justify-center flex-wrap">
           {events.map((event, index) => {
             return (
               <div
                 key={index}
-                className="flex basis-1/3 items-center justify-center"
+                className="flex basis-1/3 items-center justify-center large:basis-1/2 m-2"
               >
                 <div className="w-fit text-center">
                   <img

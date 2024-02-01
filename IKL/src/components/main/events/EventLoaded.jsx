@@ -29,23 +29,23 @@ const EventLoaded = () => {
         <div className="event-years">
           <PaginationDemo onYearChange={handleYearChange} />
         </div>
-        <div className="w-9/12 flex mx-auto my-10 justify-center flex-wrap">
+        <div className="w-9/12 flex mx-auto my-10 justify-center flex-wrap xs:my-5 xs:w-full">
           {events.map((event, index) => {
             return (
               <div
                 key={index}
-                className="flex items-center justify-center large:basis-1/2 m-4"
+                className="flex items-center justify-center large:basis-3/5 m-4 large:w-11/12 xmedium:basis-9/12"
               >
-                <div className="w-fit text-center">
+                <div className="text-center">
                   <img
                     src={event.mainImg}
                     alt=""
-                    className=" w-80 h-80 rounded-md object-contain mx-auto "
+                    className=" w-80 h-80 rounded-md object-contain mx-auto medium:w-full medium:h-full"
                   />
                   <h1 className="text-3xl font-bold text-center current-event-title">
                     {event.title}
                   </h1>
-                  <p className="text-xl font-semibold text-center text-white">
+                  <p className=" text-lg font-semibold text-center text-white">
                     {event.summary}
                   </p>
                   <p className="text-md font-semibold text-center text-white italic ">

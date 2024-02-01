@@ -39,3 +39,7 @@
 .btn-inactive {
     cursor: pointer;
 }
+
+.current-event-title {
+    color: #938807;
+}

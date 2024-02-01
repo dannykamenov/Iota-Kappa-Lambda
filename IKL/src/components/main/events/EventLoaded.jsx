@@ -42,13 +42,13 @@ const EventLoaded = () => {
                     alt=""
                     className=" w-80 h-80 rounded-md object-contain mx-auto "
                   />
-                  <h1 className="text-3xl font-bold text-center text-white">
+                  <h1 className="text-3xl font-bold text-center current-event-title">
                     {event.title}
                   </h1>
                   <p className="text-xl font-semibold text-center text-white">
                     {event.summary}
                   </p>
-                  <p className="text-md font-semibold text-center text-white">
+                  <p className="text-md font-semibold text-center text-white italic ">
                     {event.location}
                   </p>
                 </div>

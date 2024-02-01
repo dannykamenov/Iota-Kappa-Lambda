@@ -11,7 +11,7 @@ const Pagination = ({
   <nav
     role="navigation"
     aria-label="pagination"
-    className={cn("mx-auto flex w-full justify-center large:w-1/2 large:w-fit", className)}
+    className={cn("mx-auto flex w-full justify-center", className)}
     {...props} />
 )
 Pagination.displayName = "Pagination"
@@ -19,13 +19,13 @@ Pagination.displayName = "Pagination"
 const PaginationContent = React.forwardRef(({ className, ...props }, ref) => (
   <ul
     ref={ref}
-    className={cn("flex flex-row items-center gap-1 large:flex-wrap large:justify-center", className)}
+    className={cn("flex items-center gap-1 small:flex-wrap small:justify-center xs:w-full xmedium:flex-wrap xmedium:justify-center", className)}
     {...props} />
 ))
 PaginationContent.displayName = "PaginationContent"
 
 const PaginationItem = React.forwardRef(({ className, ...props }, ref) => (
-  <li ref={ref} className={cn("large:basis-1/3 large:w-fit large:text-sm", className)} {...props} />
+  <li ref={ref} className={cn("small:basis-1/3 small:w-fit small:text-sm small:text-center", className)} {...props} />
 ))
 PaginationItem.displayName = "PaginationItem"
 
@@ -52,7 +52,7 @@ const PaginationPrevious = ({
   <PaginationLink
     aria-label="Go to previous page"
     size="default"
-    className={cn("gap-1 pl-2.5", className)}
+    className={cn("gap-1 pl-2.5 small:hidden", className)}
     {...props}>
     <ChevronLeft className="h-4 w-4" />
     <span>Previous</span>

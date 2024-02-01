@@ -86,6 +86,10 @@ module.exports = {
 
         small: { max: "639px" },
         // => @media (max-width: 639px) { ... }
+
+        xs: { max: "450px" },
+
+        xmedium: { max: "800px" },
       },
     },
   },

@@ -59,7 +59,7 @@ const PaginationDemo = ({ onYearChange }) => {
 
   return (
     <Pagination>
-      <Button onClick={handlePrevious}>Previous</Button>
+      {/* <Button onClick={handlePrevious}>Previous</Button> */}
       <PaginationContent>
         {years.map((year) => (
           <PaginationItem key={year}>
@@ -72,7 +72,7 @@ const PaginationDemo = ({ onYearChange }) => {
           </PaginationItem>
         ))}
       </PaginationContent>
-      <Button onClick={handleNext}>Next</Button>
+      {/* <Button onClick={handleNext}>Next</Button> */}
     </Pagination>
   );
 };

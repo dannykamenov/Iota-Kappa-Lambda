@@ -34,7 +34,7 @@ const EventLoaded = () => {
             return (
               <div
                 key={index}
-                className="flex basis-1/3 items-center justify-center large:basis-1/2 m-2"
+                className="flex items-center justify-center large:basis-1/2 m-4"
               >
                 <div className="w-fit text-center">
                   <img

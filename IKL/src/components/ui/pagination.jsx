@@ -11,7 +11,7 @@ const Pagination = ({
   <nav
     role="navigation"
     aria-label="pagination"
-    className={cn("mx-auto flex w-full justify-center", className)}
+    className={cn("mx-auto flex w-full justify-center large:w-1/2 large:w-fit", className)}
     {...props} />
 )
 Pagination.displayName = "Pagination"
@@ -19,13 +19,13 @@ Pagination.displayName = "Pagination"
 const PaginationContent = React.forwardRef(({ className, ...props }, ref) => (
   <ul
     ref={ref}
-    className={cn("flex flex-row items-center gap-1", className)}
+    className={cn("flex flex-row items-center gap-1 large:flex-wrap large:justify-center", className)}
     {...props} />
 ))
 PaginationContent.displayName = "PaginationContent"
 
 const PaginationItem = React.forwardRef(({ className, ...props }, ref) => (
-  <li ref={ref} className={cn("", className)} {...props} />
+  <li ref={ref} className={cn("large:basis-1/3 large:w-fit large:text-sm", className)} {...props} />
 ))
 PaginationItem.displayName = "PaginationItem"
 
@@ -39,7 +39,7 @@ const PaginationLink = ({
     aria-current={isActive ? "page" : undefined}
     className={cn(buttonVariants({
       variant: isActive ? "outline" : "ghost",
-      size: "default",
+      size: "sm",
     }), className)}
     {...props} />
 )

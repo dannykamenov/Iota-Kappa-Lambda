@@ -109,18 +109,6 @@
     font-weight: bold;
 }
 
-/* .alumni-box {
-    background-color: #000;
-}
-
-.alumni-box h1 {
-    color: white;
-}
-
-.alumni-box p {
-    color: white;
-} */
-
 .alumni-box a {
     color: black;
 } 
@@ -136,4 +124,46 @@
 
 .college-box a {
     color: white;
+}
+
+@media screen and (max-width: 1250px){
+    .link-box {
+        flex-basis: 90%;
+    }
+}
+
+@media screen and (max-width: 800px){
+    .help-title {
+        padding-top: 50px;
+        padding-bottom: 25px;
+    }
+
+    .helpful-container {
+        display: block;
+    }
+
+    .alumni-chapters {
+        width: 100%;
+    }
+
+    .college-chapters {
+        width: 100%;
+    }
+
+    .alumni-title {
+        font-size: 40px;
+        padding-bottom: 25px;
+        padding-top: 25px;
+    }
+
+    .college-title {
+        font-size: 40px;
+        padding-bottom: 25px;
+        padding-top: 25px;
+    }
+
+    .link-box {
+        flex-basis: 90%;
+    }
+    
 }

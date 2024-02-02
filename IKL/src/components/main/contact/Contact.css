@@ -196,3 +196,27 @@ input[type="radio"] {
     }
     
 }
+
+@media screen and (max-width: 800px) {
+
+    .contact-title {
+        padding-top: 50px;
+    }
+
+    .contact-title {
+        font-size: 50px;
+    }
+
+    .form-details input {
+        width: 90%;
+    }
+
+    .form-details textarea {
+        width: 90%;
+    }
+
+    .submit-btn-form {
+        width: 60%;
+    }
+    
+}

@@ -218,5 +218,14 @@ input[type="radio"] {
     .submit-btn-form {
         width: 60%;
     }
+
+    .contact-photo1 {
+        width: 90%;
+        height: auto;
+    }
+
+    .radio-content {
+        flex-direction: column;
+    }
     
 }

@@ -133,3 +133,66 @@ input[type="radio"] {
     font-size: 15px !important;
     margin: 0;
 }
+
+@media screen and (max-width: 1350px){
+    .contact-section {
+        width: 90%;
+    }
+
+    .contact-photo1 {
+        width: 60%;
+    }
+
+    .google-maps {
+        width: 60%;
+    }
+
+    .form-details input {
+        width: 70%;
+    }
+
+    .form-details textarea {
+        width: 70%;
+    }
+
+    .submit-btn-form {
+        width: 40%;
+    }
+    
+}
+
+@media screen and (max-width: 999px) {
+    .contact-section {
+        flex-direction: column-reverse;
+    }
+
+    .contact-images {
+        width: 100%;
+    }
+
+    .contact-form {
+        width: 100%;
+    }
+
+    .contact-photo1 {
+        width: 80%;
+        height: fit-content;
+    }
+
+    .google-maps {
+        width: 80%;
+    }
+
+    .form-details input {
+        width: 80%;
+    }
+
+    .form-details textarea {
+        width: 80%;
+    }
+
+    .submit-btn-form {
+        width: 50%;
+    }
+    
+}

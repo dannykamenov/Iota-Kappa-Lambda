@@ -130,18 +130,6 @@ const Help = () => {
                 Find out more
               </a>
             </div>
-            <div className="link-box college-box">
-              <h1 className="link-name">More Coming Soon...</h1>
-              <p className="link-info">USA <br /> The World</p>
-              <a
-                href="https://ikl1906.com/"
-                target="_blank"
-                rel="noreferrer"
-                className="info-button"
-              >
-                Find out more
-              </a>
-            </div>
           </div>
         </div>
       </div>

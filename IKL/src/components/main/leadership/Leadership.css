@@ -196,3 +196,183 @@
     font-size: 20px;
     color: white;
 }
+
+@media screen and (max-width: 1499px){
+    .current-leadership-container {
+        width: 75%;
+    }
+
+    .chapter-officers-info {
+        width: 75%;
+    }
+
+    .president-others {
+        width: fit-content;
+    }
+}
+
+@media screen and (max-width: 1024px){
+    .current-leadership-container {
+        width: 95%;
+    }
+
+    .chapter-officers-info {
+        width: 95%;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .ikl-logo {
+        padding-top: 50px;
+    }
+
+    .ikl-leadership-title {
+        font-size: 40px;
+    }
+
+    .ikl-leadership-text {
+        width: 90%;
+        font-size: 20px;
+    }
+
+    .blockquote {
+        width: 90%;
+        font-size: 20px;
+    }
+
+    .current-title {
+        font-size: 40px;
+    }
+
+    .current-leadership-container {
+        width: 80%;
+    }
+
+    .president-photo {
+        width: 200px;
+        height: 275px;
+    }
+
+    .president-title {
+        font-size: 40px;
+    }
+
+    .president-photo-others {
+        width: 175px;
+        height: 225px;
+    }
+
+    .president-others {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .president-text {
+        font-size: 20px;
+    }
+
+    .president-title-others {
+        font-size: 25px;
+    }
+
+    .president-text-others {
+        font-size: 20px;
+    }
+
+    .chapter-officers {
+        font-size: 40px;
+    }
+
+    .chapter-officers-info {
+        width: 80%;
+    }
+
+    .officer-info {
+        flex-basis: 100%;
+    }
+
+    .officer-title {
+        font-size: 20px;
+    }
+
+    .officer-text {
+        font-size: 15px;
+    }
+    
+}
+
+@media screen and (max-width: 500px) {
+    .ikl-leadership-title {
+        font-size: 30px;
+    }
+
+    .ikl-leadership-text {
+        width: 95%;
+        font-size: 15px;
+    }
+
+    .blockquote {
+        width: 90%;
+        font-size: 15px;
+    }
+
+    .current-title {
+        font-size: 30px;
+    }
+
+    .current-leadership-container {
+        width: 95%;
+    }
+
+    .president-photo {
+        width: 150px;
+        height: 200px;
+    }
+
+    .president-title {
+        font-size: 30px;
+    }
+
+    .president-photo-others {
+        width: 125px;
+        height: 175px;
+    }
+
+    .president-others {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .president-text {
+        font-size: 15px;
+    }
+
+    .president-title-others {
+        font-size: 20px;
+    }
+
+    .president-text-others {
+        font-size: 15px;
+    }
+
+    .chapter-officers {
+        font-size: 35px;
+    }
+
+    .chapter-officers-info {
+        width: 100%;
+    }
+
+    .officer-info {
+        flex-basis: 100%;
+    }
+
+    .officer-title {
+        font-size: 20px;
+    }
+
+    .officer-text {
+        font-size: 15px;
+    }
+    
+}

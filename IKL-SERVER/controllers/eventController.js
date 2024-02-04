@@ -119,7 +119,7 @@ async function getEventByYear(req, res) {
 async function getUpcomingEvents(req, res) {
   try {
     const today = new Date();
-    const events = await Event.find({
+    let events = await Event.find({
       date: {
         $gte: today,
       },

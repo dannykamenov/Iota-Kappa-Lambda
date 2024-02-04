@@ -49,7 +49,7 @@ const EventLoaded = () => {
                     {event.summary}
                   </p>
                   <p className="text-md font-semibold text-center text-white italic ">
-                    {event.location}
+                    {event.location} + {event.date}
                   </p>
                 </div>
               </div>

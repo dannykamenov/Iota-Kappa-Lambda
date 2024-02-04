@@ -98,6 +98,10 @@ async function getEventByYear(req, res) {
       },
     });
 
+    events.sort((a, b) => {
+      return a.date - b.date;
+    });
+
     res.status(200).json({
       status: "success",
       data: {

@@ -118,33 +118,21 @@ async function getEventByYear(req, res) {
 
 async function getUpcomingEvents(req, res) {
   try {
-    const today = new Date();
-    let events = await Event.find({
-      date: {
-        $gte: today,
-      },
-    }).sort({ date: 1 });
+    const latestEvent = await Event.findOne().sort({ date: -1 }); 
 
-    if (events.length === 0) {
-      return res.status(200).json({
+    if (!latestEvent) {
+      return res.status(404).json({
         status: "success",
-        message: "No upcoming events",
+        message: "No events found",
       });
-    }
-
-    if (events.length > 0 && events.length < 4) {
-      const lastFourEvents = await Event.find().sort({ date: -1 }).limit(4);
-      events = lastFourEvents.sort((a, b) => a.date - b.date);
     }
 
     res.status(200).json({
       status: "success",
-      data: {
-        events,
-      },
+      data: latestEvent,
     });
   } catch (err) {
-    res.status(400).json({
+    res.status(500).json({
       status: "fail",
       message: err.message,
     });

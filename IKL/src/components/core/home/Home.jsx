@@ -11,8 +11,8 @@ const Home = () => {
 
   useEffect(() => {
     getLatestEvents().then((res) => {
-      /* setEvents(res.data.events); */
-      console.log(res);
+      setEvents(res.data.events);
+      console.log(events);
     });
   }, []);
 

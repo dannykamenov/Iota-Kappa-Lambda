@@ -125,7 +125,7 @@ async function getUpcomingEvents(req, res) {
       },
     }).sort({ date: 1 });
 
-    if (events.length > 0 && events.length < 4) {
+    if (events.length == 0 && events.length < 4) {
       const lastFourEvents = await Event.find().sort({ date: -1 }).limit(4);
       events = lastFourEvents.sort((a, b) => a.date - b.date);
     }

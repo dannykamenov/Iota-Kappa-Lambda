@@ -2,17 +2,20 @@ import "./Home.css";
 import logo from "../../../assets/logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaypal } from "@fortawesome/free-brands-svg-icons";
-
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
 import { CarouselDemo } from "./CarouselDemo";
+import { useEffect, useState } from "react";
+import { getLatestEvents } from "@/components/api/eventApi";
 
 const Home = () => {
+  const [events, setEvents] = useState([]);
+
+  useEffect(() => {
+    getLatestEvents().then((res) => {
+      /* setEvents(res.data.events); */
+      console.log(res);
+    });
+  }, []);
+
   return (
     <main>
       <div className="section1-box">

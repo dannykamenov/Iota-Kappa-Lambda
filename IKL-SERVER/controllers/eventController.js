@@ -162,4 +162,5 @@ module.exports = {
   getEvent,
   editEvent,
   getEventByYear,
+  getUpcomingEvents
 };

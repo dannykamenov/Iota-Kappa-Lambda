@@ -125,13 +125,6 @@ async function getUpcomingEvents(req, res) {
       },
     }).sort({ date: 1 });
 
-    if (events.length === 0) {
-      return res.status(200).json({
-        status: "success",
-        message: "No upcoming events",
-      });
-    }
-
     if (events.length > 0 && events.length < 4) {
       const lastFourEvents = await Event.find().sort({ date: -1 }).limit(4);
       events = lastFourEvents.sort((a, b) => a.date - b.date);

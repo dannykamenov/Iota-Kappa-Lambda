@@ -11,7 +11,7 @@ router.post('/photos', createPhoto);
 router.get('/photos', getAllPhotos);
 router.delete('/photos/:id', deletePhoto);
 router.get('/events/year/:year', getEventByYear);
-router.get('/events/latest', getUpcomingEvents)
+router.get('/home', getUpcomingEvents)
 
 
 module.exports = router;

@@ -14,7 +14,7 @@ export const getEventsByYear = (year) => {
 };
 
 export const getLatestEvents = () => {
-  return fetch(`${api}/events/latest`, {
+  return fetch(`${api}/home`, {
     method: "GET",
     headers: {
       Accept: "application/json",

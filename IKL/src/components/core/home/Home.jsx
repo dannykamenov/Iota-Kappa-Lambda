@@ -38,8 +38,9 @@ const Home = () => {
             const date = new Date(event.date);
             const day = date.getDate();
             const month = date.toLocaleString("default", { month: "short" }).toUpperCase();
+            const year = date.getFullYear();
             let eventDay = `${day} `;
-            let eventMonth = `${month}`;
+            let eventMonth = `${month} ${year}`;
             if (event.summary.length > 50) {
               event.summary = event.summary.substring(0, 25) + "...";
             }

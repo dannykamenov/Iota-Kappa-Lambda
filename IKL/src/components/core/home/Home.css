@@ -58,6 +58,49 @@
     padding: 5px 5px;
 }
 
+.event-calendar-month {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #938807;
+}
+
+.event-calendar-day {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #938807;
+    margin-bottom: 0.5rem;
+}
+
+.event-calendar-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+
+}
+
+.event-calendar-summary {
+    font-size: 1rem;
+    font-weight: 400;
+    color: black;
+    margin-bottom: 0.5rem;
+}
+
+.clock-icon {
+    margin-right: 5px;
+    font-size: 0.7rem;
+}
+
+.event-calendar-time {
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: white;
+    background-color: black;
+    padding: 0.2rem 0.7rem;
+    border-radius: 15px;
+    width: fit-content;
+    opacity: 75%;
+}
+
 .slogan-div {
     position: relative;
     margin-top: -110px;
@@ -299,6 +342,7 @@
     .card-content {
         width: 80%;
     }
+
 }
 
 @media screen and (max-width: 550px) {
@@ -307,5 +351,9 @@
     .slogan-text {
         font-size: 1.5rem;
         margin-top: 100px;
+    }
+
+    .event-calendar-box {
+        flex-basis: 80%;
     }
 }

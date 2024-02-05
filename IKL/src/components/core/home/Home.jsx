@@ -5,6 +5,7 @@ import { faPaypal } from "@fortawesome/free-brands-svg-icons";
 import { CarouselDemo } from "./CarouselDemo";
 import { useEffect, useState } from "react";
 import { getLatestEvents } from "@/components/api/eventApi";
+import { faClock } from "@fortawesome/free-solid-svg-icons";
 
 const Home = () => {
   const [events, setEvents] = useState([]);
@@ -36,10 +37,9 @@ const Home = () => {
           {events.map((event, index) => {
             const date = new Date(event.date);
             const day = date.getDate();
-            const month = date.toLocaleString("default", { month: "short" });
+            const month = date.toLocaleString("default", { month: "short" }).toUpperCase();
             let eventDay = `${day} `;
             let eventMonth = `${month}`;
-            // make event.summary 50 characters long and append "..."
             if (event.summary.length > 50) {
               event.summary = event.summary.substring(0, 25) + "...";
             }
@@ -51,7 +51,7 @@ const Home = () => {
                   <h1 className="event-calendar-day"> {eventDay} </h1>
                   <h1 className="event-calendar-title">{event.title}</h1>
                   <p className="event-calendar-summary">{event.summary}</p>
-                  <p className="event-calendar-time">{event.time}</p>
+                  <p className="event-calendar-time"><FontAwesomeIcon icon={faClock} className="clock-icon"/> {event.time}</p>
                 </div>
               </div>
             );

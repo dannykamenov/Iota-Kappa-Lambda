@@ -8,7 +8,6 @@ import Help from "./components/main/help/Help";
 import Contact from "./components/main/contact/Contact";
 import Events from "./components/main/events/Events";
 import EventLoaded from "./components/main/events/EventLoaded";
-import Register from "./components/auth/register/Register";
 
 import { KindeProvider } from "@kinde-oss/kinde-auth-react";
 

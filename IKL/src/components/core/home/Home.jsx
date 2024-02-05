@@ -12,7 +12,6 @@ const Home = () => {
   useEffect(() => {
     getLatestEvents().then((res) => {
       setEvents(res.data.events);
-      console.log(res.data.events);
     });
   }, []);
 
@@ -35,12 +34,18 @@ const Home = () => {
         </div>
         <div className="calendar-box">
           {events.map((event, index) => {
+            const date = new Date(event.date);
+            const day = date.getDate();
+            const month = date.toLocaleString("default", { month: "short" });
+            event.date = `${day} ${month}`;
+
             return (
-              <div key={index} className="event-box">
-                <div className="event-info">
-                  <h1 className="event-title">{event.title}</h1>
-                  <p className="event-summary">{event.summary}</p>
-                  <p className="event-date">{event.date}</p>
+              <div key={index} className="event-calendar-box">
+                <div className="event-calendar-info">
+                  <h1 className="event-calendar-date"> {event.date} </h1>
+                  <h1 className="event-calendar-title">{event.title}</h1>
+                  <p className="event-calendar-summary">{event.summary}</p>
+                  <p className="event-calendar-time">{event.time}</p>
                 </div>
               </div>
             );

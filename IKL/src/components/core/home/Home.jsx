@@ -37,12 +37,18 @@ const Home = () => {
             const date = new Date(event.date);
             const day = date.getDate();
             const month = date.toLocaleString("default", { month: "short" });
-            event.date = `${day} ${month}`;
+            let eventDay = `${day} `;
+            let eventMonth = `${month}`;
+            // make event.summary 50 characters long and append "..."
+            if (event.summary.length > 50) {
+              event.summary = event.summary.substring(0, 25) + "...";
+            }
 
             return (
               <div key={index} className="event-calendar-box">
                 <div className="event-calendar-info">
-                  <h1 className="event-calendar-date"> {event.date} </h1>
+                  <p className="event-calendar-month">{eventMonth}</p>
+                  <h1 className="event-calendar-day"> {eventDay} </h1>
                   <h1 className="event-calendar-title">{event.title}</h1>
                   <p className="event-calendar-summary">{event.summary}</p>
                   <p className="event-calendar-time">{event.time}</p>

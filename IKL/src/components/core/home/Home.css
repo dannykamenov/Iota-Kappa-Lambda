@@ -54,6 +54,10 @@
     border-radius: 15px;
 }
 
+.event-calendar-info {
+    padding: 5px 5px;
+}
+
 .slogan-div {
     position: relative;
     margin-top: -110px;

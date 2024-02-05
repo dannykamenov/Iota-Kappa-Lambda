@@ -20,6 +20,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
+import { useKindeAuth } from "@kinde-oss/kinde-auth-react";
+
 const linkStyle = {
   textDecoration: "none",
   fontSize: "1.5rem",
@@ -41,6 +43,8 @@ const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 800);
+
+  const { login, register, logout } = useKindeAuth();
 
   const handleScroll = () => {
     const offset = window.scrollY;
@@ -120,28 +124,34 @@ const Header = () => {
             <li className="header profile link">
               <DropdownMenu>
                 <DropdownMenuTrigger>
-                    <FontAwesomeIcon
-                      icon={faUser}
-                      style={linkStyle}
-                      className="link-comp"
-                    />
+                  <FontAwesomeIcon
+                    icon={faUser}
+                    style={linkStyle}
+                    className="link-comp"
+                  />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
                   <DropdownMenuGroup>
                     <DropdownMenuItem>
-                      <Link to="register">Register</Link>
+                      <button onClick={register} type="button">
+                        Register
+                      </button>
                     </DropdownMenuItem>
                     <DropdownMenuItem>
-                      <Link to="login" >Login</Link>
+                      <button onClick={login} type="button">
+                        Log In
+                      </button>
                     </DropdownMenuItem>
                     <DropdownMenuItem>
-                      <Link to="profile" >My account</Link>
+                      <Link to="profile">My account</Link>
                     </DropdownMenuItem>
                   </DropdownMenuGroup>
-                  <DropdownMenuSeparator/>
+                  <DropdownMenuSeparator />
                   <DropdownMenuGroup>
                     <DropdownMenuItem>
-                      <Link to="logout">Logout</Link>
+                      <button onClick={logout} type="button">
+                        Logout
+                      </button>
                     </DropdownMenuItem>
                   </DropdownMenuGroup>
                 </DropdownMenuContent>
@@ -243,32 +253,38 @@ const Header = () => {
             <li className="header profile link">
               <DropdownMenu>
                 <DropdownMenuTrigger>
-                    <FontAwesomeIcon
-                  icon={faUser}
-                  style={linkStyle}
-                  className="link-comp"
-                  onClick={() => {
-                    setIsMenuOpen(!isMenuOpen);
-                    showMenu();
-                  }}
-                    />
+                  <FontAwesomeIcon
+                    icon={faUser}
+                    style={linkStyle}
+                    className="link-comp"
+                    onClick={() => {
+                      setIsMenuOpen(!isMenuOpen);
+                      showMenu();
+                    }}
+                  />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
                   <DropdownMenuGroup>
                     <DropdownMenuItem>
-                      <Link to="register">Register</Link>
+                    <button onClick={register} type="button">
+                        Register
+                      </button>
                     </DropdownMenuItem>
                     <DropdownMenuItem>
-                      <Link to="login" >Login</Link>
+                    <button onClick={login} type="button">
+                        Log In
+                      </button>
                     </DropdownMenuItem>
                     <DropdownMenuItem>
-                      <Link to="profile" >My account</Link>
+                      <Link to="profile">My account</Link>
                     </DropdownMenuItem>
                   </DropdownMenuGroup>
-                  <DropdownMenuSeparator/>
+                  <DropdownMenuSeparator />
                   <DropdownMenuGroup>
                     <DropdownMenuItem>
-                      <Link to="logout">Logout</Link>
+                    <button onClick={logout} type="button">
+                        Logout
+                      </button>
                     </DropdownMenuItem>
                   </DropdownMenuGroup>
                 </DropdownMenuContent>

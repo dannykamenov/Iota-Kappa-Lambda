@@ -43,7 +43,6 @@ const Home = () => {
             if (event.summary.length > 50) {
               event.summary = event.summary.substring(0, 25) + "...";
             }
-
             return (
               <div key={index} className="event-calendar-box">
                 <div className="event-calendar-info">

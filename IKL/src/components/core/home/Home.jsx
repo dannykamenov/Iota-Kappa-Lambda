@@ -12,7 +12,7 @@ const Home = () => {
   useEffect(() => {
     getLatestEvents().then((res) => {
       setEvents(res.data.events);
-      console.log(events);
+      console.log(res.data.events);
     });
   }, []);
 
@@ -34,10 +34,17 @@ const Home = () => {
           </p>
         </div>
         <div className="calendar-box">
-          <div
-            className="elfsight-app-7f5905de-8f48-4964-8149-c1826666edc7 widget"
-            data-elfsight-app-lazy
-          ></div>
+          {events.map((event, index) => {
+            return (
+              <div key={index} className="event-box">
+                <div className="event-info">
+                  <h1 className="event-title">{event.title}</h1>
+                  <p className="event-summary">{event.summary}</p>
+                  <p className="event-date">{event.date}</p>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
       <div className="slogan-div">

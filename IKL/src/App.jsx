@@ -28,7 +28,6 @@ function App() {
           <Route path="/help" element={<Help />} />
           <Route path="/events-and-photos" element={<Events />} />
           <Route path="/events-and-photos/:id" element={<EventLoaded />} />
-          <Route path="/register" element={<Register />} />
         </Routes>
         <Footer />
       </Router>

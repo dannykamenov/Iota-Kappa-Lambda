@@ -6,15 +6,31 @@ import { CarouselDemo } from "./CarouselDemo";
 import { useEffect, useState } from "react";
 import { getLatestEvents } from "@/components/api/eventApi";
 import { faClock } from "@fortawesome/free-solid-svg-icons";
+import { format, parseISO } from 'date-fns';
 
 const Home = () => {
   const [events, setEvents] = useState([]);
+  const [activeEvent, setActiveEvent] = useState(null);
 
   useEffect(() => {
     getLatestEvents().then((res) => {
       setEvents(res.data.events);
     });
   }, []);
+
+  const handleEventClick = (event) => {
+    setActiveEvent(event); // Set the clicked event as active
+  };
+
+  // Close the full-screen view
+  const handleClose = () => {
+    setActiveEvent(null); // Reset the active event
+  };
+
+  let formattedDate = "";
+  if (activeEvent) {
+    formattedDate = format(parseISO(activeEvent.date), "EEEE, MMMM d, yyyy");
+  }
 
   return (
     <main>
@@ -37,7 +53,9 @@ const Home = () => {
           {events.map((event, index) => {
             const date = new Date(event.date);
             const day = date.getDate();
-            const month = date.toLocaleString("default", { month: "short" }).toUpperCase();
+            const month = date
+              .toLocaleString("default", { month: "short" })
+              .toUpperCase();
             const year = date.getFullYear();
             let eventDay = `${day} `;
             let eventMonth = `${month} ${year}`;
@@ -45,18 +63,52 @@ const Home = () => {
               event.summary = event.summary.substring(0, 25) + "...";
             }
             return (
-              <div key={index} className="event-calendar-box">
+              <div
+                key={index}
+                className="event-calendar-box hover:cursor-pointer"
+                onClick={() => handleEventClick(event)}
+              >
                 <div className="event-calendar-info">
                   <p className="event-calendar-month">{eventMonth}</p>
                   <h1 className="event-calendar-day"> {eventDay} </h1>
-                  <h1 className="event-calendar-title">{event.title}</h1>
+                  <h1 className="event-calendar-title hover:underline hover:cursor-pointer">
+                    {event.title}
+                  </h1>
                   <p className="event-calendar-summary">{event.summary}</p>
-                  <p className="event-calendar-time"><FontAwesomeIcon icon={faClock} className="clock-icon"/> {event.time}</p>
+                  <p className="event-calendar-time">
+                    <FontAwesomeIcon icon={faClock} className="clock-icon" />{" "}
+                    {event.time}
+                  </p>
                 </div>
               </div>
             );
           })}
         </div>
+        {activeEvent && (
+          <div className="full-screen-view">
+            <div className="full-screen-event">
+              <div className="btn-holder">
+                <button onClick={handleClose} className="event-closebtn">
+                  x
+                </button>
+              </div>
+              <h1 className="event-expand-title">{activeEvent.title}</h1>
+              <img
+                src={activeEvent.mainImg}
+                alt=""
+                className="event-expand-img"
+              />
+              <div className="info-event-holder">
+                <p className="event-expand-summary">{activeEvent.summary}</p>
+                <p className="event-expand-desc">{activeEvent.description}</p>
+                <p className="event-expand-when"><FontAwesomeIcon icon={faClock} className="when-icon"/>WHEN</p>
+                <p className="event-expand-date">
+                  {formattedDate} @ {activeEvent.time}
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
       <div className="slogan-div">
         <h1 className="slogan-text">
@@ -115,9 +167,14 @@ const Home = () => {
           please follow the links to contact us and support us and our efforts
           for a better Syracuse.
         </p>
-        <a href="https://www.paypal.com/donate?token=Qy9ToviYwgBiC0m9h172Ro5CqTureDKe_PD0yULw03wDL_TsFDjZti-qIw0rXttpa8-78Ask6tuddAaD" target="_blank" rel="noreferrer" className="donate-button">
-            <FontAwesomeIcon icon={faPaypal} className="donate-icon" />
-            <p className="donate-text">Donate</p>
+        <a
+          href="https://www.paypal.com/donate?token=Qy9ToviYwgBiC0m9h172Ro5CqTureDKe_PD0yULw03wDL_TsFDjZti-qIw0rXttpa8-78Ask6tuddAaD"
+          target="_blank"
+          rel="noreferrer"
+          className="donate-button"
+        >
+          <FontAwesomeIcon icon={faPaypal} className="donate-icon" />
+          <p className="donate-text">Donate</p>
         </a>
       </div>
     </main>

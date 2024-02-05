@@ -279,8 +279,9 @@
 
 .info-event-holder {
     padding: 5px 20px;
-    width: 100%;
+    width: 95%;
     max-width: 820px;
+    margin: 0 auto;
 }
 
 .event-expand-date {

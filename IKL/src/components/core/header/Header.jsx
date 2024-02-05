@@ -5,6 +5,21 @@ import logo from "../../../assets/logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuPortal,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+
 const linkStyle = {
   textDecoration: "none",
   fontSize: "1.5rem",
@@ -103,13 +118,34 @@ const Header = () => {
               </Link>
             </li>
             <li className="header profile link">
-              <Link to="profile" style={linkStyle}>
-                <FontAwesomeIcon
-                  icon={faUser}
-                  style={linkStyle}
-                  className="link-comp"
-                />
-              </Link>
+              <DropdownMenu>
+                <DropdownMenuTrigger>
+                    <FontAwesomeIcon
+                      icon={faUser}
+                      style={linkStyle}
+                      className="link-comp"
+                    />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  <DropdownMenuGroup>
+                    <DropdownMenuItem>
+                      <Link to="register">Register</Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>
+                      <Link to="login" >Login</Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>
+                      <Link to="profile" >My account</Link>
+                    </DropdownMenuItem>
+                  </DropdownMenuGroup>
+                  <DropdownMenuSeparator/>
+                  <DropdownMenuGroup>
+                    <DropdownMenuItem>
+                      <Link to="logout">Logout</Link>
+                    </DropdownMenuItem>
+                  </DropdownMenuGroup>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </li>
           </div>
         </ul>
@@ -205,8 +241,9 @@ const Header = () => {
               </Link>
             </li>
             <li className="header profile link">
-              <Link to="profile" style={linkStyle}>
-                <FontAwesomeIcon
+              <DropdownMenu>
+                <DropdownMenuTrigger>
+                    <FontAwesomeIcon
                   icon={faUser}
                   style={linkStyle}
                   className="link-comp"
@@ -214,8 +251,28 @@ const Header = () => {
                     setIsMenuOpen(!isMenuOpen);
                     showMenu();
                   }}
-                />
-              </Link>
+                    />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  <DropdownMenuGroup>
+                    <DropdownMenuItem>
+                      <Link to="register">Register</Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>
+                      <Link to="login" >Login</Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>
+                      <Link to="profile" >My account</Link>
+                    </DropdownMenuItem>
+                  </DropdownMenuGroup>
+                  <DropdownMenuSeparator/>
+                  <DropdownMenuGroup>
+                    <DropdownMenuItem>
+                      <Link to="logout">Logout</Link>
+                    </DropdownMenuItem>
+                  </DropdownMenuGroup>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </li>
           </div>
         </div>

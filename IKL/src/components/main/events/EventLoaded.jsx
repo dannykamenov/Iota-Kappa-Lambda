@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import "./Events.css";
 import PaginationDemo from "./paginationDemo";
 import { getEventsByYear } from "@/components/api/eventApi";
+import {useParams} from 'react-router-dom'
 
 const EventLoaded = () => {
   const [events, setEvents] = useState([]);
+  const {id} = useParams()
 
   const handleYearChange = (year) => {
     getEventsByYear(year).then((res) => {
@@ -13,12 +15,10 @@ const EventLoaded = () => {
   };
 
   useEffect(() => {
-    //get year from url
-    const url = window.location.href;
-    const year = url.split("/").pop();
-    //get events by year
-    handleYearChange(year);
-  }, []);
+    if(id){
+      handleYearChange(id)
+    }
+  }, [id]);
 
   return (
     <>

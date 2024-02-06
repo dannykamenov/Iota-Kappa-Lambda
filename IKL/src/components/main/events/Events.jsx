@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 import "./Events.css";
 import PaginationDemo from "./paginationDemo";
+import { useNavigate } from 'react-router-dom'
 
 const Events = () => {
+  const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1);
   useEffect(() => {
-    setCurrentPage(new Date().getFullYear().toString());
-    window.location.href = `events-and-photos/${currentPage}`;
+    const currentYear = new Date().getFullYear().toString();
+    setCurrentPage(currentYear);
+    navigate(`/events-and-photos/${currentYear}`);
   });
 
   return (

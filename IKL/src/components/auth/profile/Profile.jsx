@@ -89,14 +89,6 @@ const Profile = () => {
                         />
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="password">Password</Label>
-                        <Input
-                          id="password"
-                          placeholder="Enter your password"
-                          type="password"
-                        />
-                      </div>
-                      <div className="space-y-2">
                         <Label htmlFor="bio">Bio</Label>
                         <Textarea
                           className="min-h-[100px]"

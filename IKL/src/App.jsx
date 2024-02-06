@@ -19,6 +19,7 @@ function App() {
       domain="https://sorostdev.kinde.com"
       redirectUri="http://localhost:5173/profile"
       logoutUri="http://localhost:5173"
+      isDangerouslyUseLocalStorage={true}
     >
       <Router>
         <Header />

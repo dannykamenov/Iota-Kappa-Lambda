@@ -51,10 +51,10 @@ const Profile = () => {
 
   return (
     <div className=" mt-48 ">
-      <div className="w-full overflow-hidden mb-8">
+      <div className="w-full overflow-hidden pb-8 bg-white">
         <div className="flex flex-col">
-            <div className="flex items-center gap-4">
-              <h1 className="font-semibold text-lg md:text-xl">My Profile</h1>
+            <div className="flex items-center gap-4 mx-auto">
+              <h1 className="font-semibold text-4xl p-3">My Profile</h1>
             </div>
             <div className="flex mx-auto">
               <div className="md:col-span-4 lg:col-span-3 xl:col-span-4 flex flex-col gap-6">
@@ -69,14 +69,14 @@ const Profile = () => {
                           <Label htmlFor="firstName">First Name</Label>
                           <Input
                             id="firstName"
-                            placeholder="Enter your first name"
+                            placeholder={user.given_name}
                           />
                         </div>
                         <div className="space-y-2">
                           <Label htmlFor="lastName">Last Name</Label>
                           <Input
                             id="lastName"
-                            placeholder="Enter your last name"
+                            placeholder={user.family_name}
                           />
                         </div>
                       </div>
@@ -84,7 +84,7 @@ const Profile = () => {
                         <Label htmlFor="email">Email</Label>
                         <Input
                           id="email"
-                          placeholder="Enter your email"
+                          placeholder={user.email}
                           type="email"
                         />
                       </div>

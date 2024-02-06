@@ -8,6 +8,7 @@ import Help from "./components/main/help/Help";
 import Contact from "./components/main/contact/Contact";
 import Events from "./components/main/events/Events";
 import EventLoaded from "./components/main/events/EventLoaded";
+import Profile from "./components/auth/profile/Profile";
 
 import { KindeProvider } from "@kinde-oss/kinde-auth-react";
 
@@ -16,7 +17,7 @@ function App() {
     <KindeProvider
       clientId="30fc6ebf2cd4425d93709c21a580eeb2"
       domain="https://sorostdev.kinde.com"
-      redirectUri="http://localhost:5173"
+      redirectUri="http://localhost:5173/profile"
       logoutUri="http://localhost:5173"
     >
       <Router>
@@ -28,6 +29,7 @@ function App() {
           <Route path="/help" element={<Help />} />
           <Route path="/events-and-photos" element={<Events />} />
           <Route path="/events-and-photos/:id" element={<EventLoaded />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
         <Footer />
       </Router>

@@ -44,7 +44,7 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 800);
 
-  const { login, register, logout } = useKindeAuth();
+  const { login, register, logout, isAuthenticated } = useKindeAuth();
 
   const handleScroll = () => {
     const offset = window.scrollY;
@@ -132,28 +132,36 @@ const Header = () => {
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
                   <DropdownMenuGroup>
-                    <DropdownMenuItem>
-                      <button onClick={register} type="button">
-                        Register
-                      </button>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem>
-                      <button onClick={login} type="button">
-                        Log In
-                      </button>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem>
-                      <Link to="profile">My account</Link>
-                    </DropdownMenuItem>
+                    {!isAuthenticated && (
+                      <DropdownMenuItem>
+                        <button onClick={register} type="button">
+                          Register
+                        </button>
+                      </DropdownMenuItem>
+                    )}
+                    {!isAuthenticated && (
+                      <DropdownMenuItem>
+                        <button onClick={login} type="button">
+                          Log In
+                        </button>
+                      </DropdownMenuItem>
+                    )}
+                    {isAuthenticated && (
+                      <DropdownMenuItem>
+                        <Link to="profile">My account</Link>
+                      </DropdownMenuItem>
+                    )}
                   </DropdownMenuGroup>
                   <DropdownMenuSeparator />
-                  <DropdownMenuGroup>
-                    <DropdownMenuItem>
-                      <button onClick={logout} type="button">
-                        Logout
-                      </button>
-                    </DropdownMenuItem>
-                  </DropdownMenuGroup>
+                  {isAuthenticated && (
+                    <DropdownMenuGroup>
+                      <DropdownMenuItem>
+                        <button onClick={logout} type="button">
+                          Logout
+                        </button>
+                      </DropdownMenuItem>
+                    </DropdownMenuGroup>
+                  )}
                 </DropdownMenuContent>
               </DropdownMenu>
             </li>
@@ -265,28 +273,36 @@ const Header = () => {
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
                   <DropdownMenuGroup>
-                    <DropdownMenuItem>
-                    <button onClick={register} type="button">
-                        Register
-                      </button>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem>
-                    <button onClick={login} type="button">
-                        Log In
-                      </button>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem>
-                      <Link to="profile">My account</Link>
-                    </DropdownMenuItem>
+                    {!isAuthenticated && (
+                      <DropdownMenuItem>
+                        <button onClick={register} type="button">
+                          Register
+                        </button>
+                      </DropdownMenuItem>
+                    )}
+                    {!isAuthenticated && (
+                      <DropdownMenuItem>
+                        <button onClick={login} type="button">
+                          Log In
+                        </button>
+                      </DropdownMenuItem>
+                    )}
+                    {isAuthenticated && (
+                      <DropdownMenuItem>
+                        <Link to="profile">My account</Link>
+                      </DropdownMenuItem>
+                    )}
                   </DropdownMenuGroup>
                   <DropdownMenuSeparator />
-                  <DropdownMenuGroup>
-                    <DropdownMenuItem>
-                    <button onClick={logout} type="button">
-                        Logout
-                      </button>
-                    </DropdownMenuItem>
-                  </DropdownMenuGroup>
+                  {isAuthenticated && (
+                    <DropdownMenuGroup>
+                      <DropdownMenuItem>
+                        <button onClick={logout} type="button">
+                          Logout
+                        </button>
+                      </DropdownMenuItem>
+                    </DropdownMenuGroup>
+                  )}
                 </DropdownMenuContent>
               </DropdownMenu>
             </li>

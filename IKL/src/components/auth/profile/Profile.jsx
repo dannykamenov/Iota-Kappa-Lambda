@@ -175,7 +175,7 @@ const Profile = () => {
                         </CardHeader>
                         <CardContent>
                           <div className="grid gap-1">
-                            <div>$100/year</div>
+                            <p>$100/year</p>
                             {userData.subscriptionDate && (
                               <div className="text-sm text-gray-500 dark:text-gray">
                                 {`Subscribed on: ${subDate.toDateString()}`}{" "}

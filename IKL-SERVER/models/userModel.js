@@ -32,6 +32,10 @@ const userSchema = new mongoose.Schema({
     subscriptionDate: {
         type: Date,
     },
+    customerId: {
+        type: String,
+        default: '',
+    }
 });
 
 

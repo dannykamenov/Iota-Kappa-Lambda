@@ -45,7 +45,7 @@ async function createCheckoutSession(req, res) {
 
     const session = await stripe.checkout.sessions.create({
         mode: "subscription",
-        payment_method_types: ["card"],
+        payment_method_types: ["card","paypal"],
         line_items: [
             {
                 price: priceId,
@@ -80,6 +80,7 @@ async function confirmCheckoutSession(req, res) {
                 subscriptionId: subscription.id,
                 subscriptionStatus: subscription.status,
                 subscriptionDate: new Date(subscription.current_period_start * 1000),
+                customerId: subscription.customer,
             });
         } catch (error) {
             res.status(500).json({ message: error.message });

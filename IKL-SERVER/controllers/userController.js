@@ -31,7 +31,7 @@ async function getUser(req, res) {
     try {
         const user = await User.findOne({ email: id });
         if (user) {
-            if (user.subscriptionDate !== "") {
+            if (user.subscriptionDate !== null) {
                 const currentDate = new Date();
                 const subscriptionDate = new Date(user.subscriptionDate);
                 const nextYear = new Date(subscriptionDate.setFullYear(subscriptionDate.getFullYear() + 1));
@@ -40,9 +40,9 @@ async function getUser(req, res) {
                         subscriptionDate: currentDate,
                     });
                     res.status(200).json(updatedUser);
-                } else if(user.customerId && user.subscriptionStatus === "inactive") {
+                } else if(currentDate >= nextYear && user.subscriptionStatus === "inactive") {
                     const updatedUser = await User.findOneAndUpdate({ email: id }, {
-                        subscriptionDate: "",
+                        subscriptionDate: null,
                     });
                 } else {
                     res.status(200).json(user);
@@ -117,7 +117,6 @@ async function cancelSubscription(req, res) {
                 subscriptionStatus: "inactive",
                 sessionId: "",
                 subscriptionId: "",
-                subscriptionDate: "",
                 customerId: "",
             });
             res.status(200).json({ message: "Subscription cancelled" });

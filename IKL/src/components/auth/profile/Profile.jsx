@@ -202,7 +202,8 @@ const Profile = () => {
                           <CardFooter>
                             <Button
                               className="ml-auto"
-                              onClick={createStripeSubscription}
+                              onClick={createStripeSubscription}        
+                              disabled={userData.subscriptionId !== null}               
                             >
                               Subscribe
                             </Button>

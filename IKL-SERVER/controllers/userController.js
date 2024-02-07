@@ -74,15 +74,17 @@ async function confirmCheckoutSession(req, res) {
     const session = await stripe.checkout.sessions.retrieve(sessionId);
 
     if (session.payment_status === "paid") {
+        const subId = session.subscription;
+        console.log(subId);
         try {
-            const subscription = await stripe.subscriptions.retrieve(session.subscription);
+            const subscription = await stripe.subscriptions.retrieve(subId);
             const user = await User.findOneAndUpdate(userId, {
                 subscriptionId: subscription.id,
                 subscriptionStatus: subscription.status,
                 subscriptionDate: new Date(subscription.current_period_start * 1000),
             });
         } catch (error) {
-            res.status(500).json({ message: "Internal server error" });
+            res.status(500).json({ message: error.message });
         }
     } else {
         res.status(400).json({ message: "Subscription failed" });

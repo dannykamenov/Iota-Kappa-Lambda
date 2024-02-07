@@ -14,6 +14,7 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Link } from "react-router-dom";
+import { ConfirmToast } from "react-confirm-toast";
 
 const Profile = () => {
   const { user } = useKindeAuth();
@@ -32,9 +33,7 @@ const Profile = () => {
         role: "user",
       };
       createUser(userData)
-        .then((response) => {
-          console.log(response.message);
-        })
+        .then((response) => {})
         .catch((err) => {
           console.error("Error creating user:", err);
         });
@@ -44,12 +43,12 @@ const Profile = () => {
       getUser(user.email)
         .then((response) => {
           setUserData(response);
-            if (response.subscriptionDate) {
-                setSubDate(new Date(response.subscriptionDate));
-                const expiryDateTemp = new Date(response.subscriptionDate);
-                expiryDateTemp.setFullYear(expiryDateTemp.getFullYear() + 1);
-                setExpiryDate(expiryDateTemp.toDateString());
-            }
+          if (response.subscriptionDate) {
+            setSubDate(new Date(response.subscriptionDate));
+            const expiryDateTemp = new Date(response.subscriptionDate);
+            expiryDateTemp.setFullYear(expiryDateTemp.getFullYear() + 1);
+            setExpiryDate(expiryDateTemp.toDateString());
+          }
         })
         .catch((err) => {
           console.error("Error getting user:", err);
@@ -86,8 +85,12 @@ const Profile = () => {
       });
   };
 
+  const cancelStripeSubscription = () => {
+    console.log("Cancelling subscription");
+  };
+
   return (
-    <div className=" mt-48 ">
+    <div className=" mt-48 custom-profile-box ">
       <div className="w-full overflow-hidden pb-8 bg-white">
         <div className="flex flex-col">
           <div className="flex items-center gap-4 mx-auto">
@@ -158,18 +161,22 @@ const Profile = () => {
                             <div>$100/year</div>
                             {userData.subscriptionDate && (
                               <div className="text-sm text-gray-500 dark:text-gray">
-                                {`Subscribed on: ${subDate.toDateString()}`} <br />
+                                {`Subscribed on: ${subDate.toDateString()}`}{" "}
+                                <br />
                                 {`Expires on: ${expiryDate}`}
                               </div>
-                              
                             )}
                           </div>
                         </CardContent>
                         {userData.subscriptionStatus === "active" ? (
                           <CardFooter>
-                            <Button className="ml-auto">
-                              <Link to="/contact-us">Cancel</Link>
-                            </Button>
+                            <ConfirmToast customFunction={cancelStripeSubscription}>
+                              <Button
+                                className="ml-auto"
+                              >
+                                Cancel
+                              </Button>
+                            </ConfirmToast>
                           </CardFooter>
                         ) : (
                           <CardFooter>

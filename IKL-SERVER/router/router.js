@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { createEvent, getAllEvents, deleteEvent, getEvent, editEvent, getEventByYear, getUpcomingEvents } = require('../controllers/eventController');
 const { createPhoto, getAllPhotos, deletePhoto } = require('../controllers/photoController');
-const { createUser, getUser, createCheckoutSession, confirmCheckoutSession } = require('../controllers/userController');
+const { createUser, getUser, createCheckoutSession, confirmCheckoutSession, cancelSubscription } = require('../controllers/userController');
 
 router.post('/events', createEvent);
 router.get('/events', getAllEvents);
@@ -17,6 +17,7 @@ router.post('/users', createUser);
 router.get('/users/:id', getUser);
 router.post('/create-checkout-session', createCheckoutSession);
 router.post('/confirm-checkout-session', confirmCheckoutSession);
+router.delete('/cancel-subscription/:id', cancelSubscription);
 
 
 module.exports = router;

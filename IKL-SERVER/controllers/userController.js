@@ -90,9 +90,33 @@ async function confirmCheckoutSession(req, res) {
     }
 }
 
+async function cancelSubscription(req, res) {
+    const { id } = req.params;
+    const user = await User.findOne({ subscriptionId: id });
+    if(user) {
+        const subscription = await stripe.subscriptions.cancel(id);
+        if(subscription.status === "canceled") {
+            const updatedUser = await User.findOneAndUpdate({ subscriptionId: id }, {
+                subscriptionStatus: "inactive",
+                sessionId: "",
+                subscriptionId: "",
+                subscriptionDate: "",
+                customerId: "",
+            });
+            res.status(200).json({ message: "Subscription cancelled" });
+        } else {
+            res.status(400).json({ message: "Subscription cancellation failed" });
+        }
+    } else {
+        res.status(404).json({ message: "User not found" });
+    }
+}
+
+
 module.exports = {
     createUser,
     getUser,
     createCheckoutSession,
-    confirmCheckoutSession
+    confirmCheckoutSession,
+    cancelSubscription
 };

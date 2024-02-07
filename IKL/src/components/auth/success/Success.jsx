@@ -39,11 +39,12 @@ const Success = () => {
             return response.json().then((json) => Promise.reject(json));
           })
           .then((data) => {
-            navigate("/profile");
+            navigate("/");
           })
           .catch((err) => {
             console.error("Error creating session:", err);
           });
+        navigate("/");
       }
     }
   }, [user, navigate, userData._id, userData.sessionId, userData]);

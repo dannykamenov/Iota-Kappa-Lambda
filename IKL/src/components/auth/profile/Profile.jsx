@@ -59,6 +59,8 @@ const Profile = () => {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({ priceId: productId, customerId: user._id }),
+        credentials: "include",
+        mode: "cors",
     })
     .then((res) => {
         if (res.ok) return res.json();

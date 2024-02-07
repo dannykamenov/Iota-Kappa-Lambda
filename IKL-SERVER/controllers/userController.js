@@ -31,7 +31,21 @@ async function getUser(req, res) {
     try {
         const user = await User.findOne({ email: id });
         if (user) {
-            res.status(200).json(user);
+            if (user.subscriptionDate !== "") {
+                const currentDate = new Date();
+                const subscriptionDate = new Date(user.subscriptionDate);
+                const nextYear = new Date(subscriptionDate.setFullYear(subscriptionDate.getFullYear() + 1));
+                if (currentDate >= nextYear) {
+                    const updatedUser = await User.findOneAndUpdate({ email: id }, {
+                        subscriptionDate: currentDate,
+                    });
+                    res.status(200).json(updatedUser);
+                } else {
+                    res.status(200).json(user);
+                }
+            } else {
+                res.status(200).json(user);
+            }
         } else {
             res.status(404).json({ message: "User not found" });
         }

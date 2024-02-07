@@ -31,6 +31,7 @@ const userSchema = new mongoose.Schema({
     },
     subscriptionDate: {
         type: Date,
+        default: '',
     },
     customerId: {
         type: String,

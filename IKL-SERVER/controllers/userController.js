@@ -40,7 +40,7 @@ async function getUser(req, res) {
                         subscriptionDate: currentDate,
                     });
                     res.status(200).json(updatedUser);
-                } else if(currentDate >= nextYear && user.subscriptionStatus === "inactive") {
+                } else if(user.customerId && user.subscriptionStatus === "inactive") {
                     const updatedUser = await User.findOneAndUpdate({ email: id }, {
                         subscriptionDate: "",
                     });
@@ -98,7 +98,6 @@ async function confirmCheckoutSession(req, res) {
                 subscriptionId: subscription.id,
                 subscriptionStatus: subscription.status,
                 subscriptionDate: new Date(subscription.current_period_start * 1000),
-                customerId: subscription.customer,
             });
         } catch (error) {
             res.status(500).json({ message: error.message });

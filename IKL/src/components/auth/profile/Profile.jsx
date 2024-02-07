@@ -68,7 +68,7 @@ const Profile = () => {
         return res.json().then((json) => Promise.reject(json));
     })
     .then((session) => {
-        window.location = session.url;
+        window.location = session.id;
     })
     .catch((error) => {
         console.error("Error:", error);

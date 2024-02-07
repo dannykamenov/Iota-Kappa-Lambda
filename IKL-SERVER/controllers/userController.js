@@ -52,10 +52,11 @@ async function createCheckoutSession(req, res) {
                 quantity: 1,
             },
         ],
-        mode: "subscription",
         success_url: "http://localhost:5173/success",
         cancel_url: "http://localhost:5173/cancel",
     });
+
+    console.log(session);
 
     await User.findByIdAndUpdate(customerId, {
         sessionId: session.id,

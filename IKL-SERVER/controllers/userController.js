@@ -78,7 +78,7 @@ async function confirmCheckoutSession(req, res) {
         console.log(subId);
         try {
             const subscription = await stripe.subscriptions.retrieve(subId);
-            const user = await User.findOneAndUpdate(userId, {
+            const user = await User.findOneAndUpdate({_id: mongoose.Types.ObjectId(userId)}, {
                 subscriptionId: subscription.id,
                 subscriptionStatus: subscription.status,
                 subscriptionDate: new Date(subscription.current_period_start * 1000),

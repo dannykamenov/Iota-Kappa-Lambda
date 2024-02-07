@@ -19,6 +19,8 @@ const Profile = () => {
   const { user } = useKindeAuth();
   const requestSentRef = useRef(false);
   const [userData, setUserData] = useState({});
+  const [subDate, setSubDate] = useState("");
+  const [expiryDate, setExpiryDate] = useState("");
 
   useEffect(() => {
     if (user && !requestSentRef.current) {
@@ -42,6 +44,12 @@ const Profile = () => {
       getUser(user.email)
         .then((response) => {
           setUserData(response);
+            if (response.subscriptionDate) {
+                setSubDate(new Date(response.subscriptionDate));
+                const expiryDateTemp = new Date(response.subscriptionDate);
+                expiryDateTemp.setFullYear(expiryDateTemp.getFullYear() + 1);
+                setExpiryDate(expiryDateTemp.toDateString());
+            }
         })
         .catch((err) => {
           console.error("Error getting user:", err);
@@ -53,26 +61,29 @@ const Profile = () => {
 
   const createStripeSubscription = () => {
     const productId = "price_1Oh9FYEOFAKdfkEnhxgm2VcM";
-    fetch("https://iota-kappa-lambda.onrender.com/api/create-checkout-session", {
+    fetch(
+      "https://iota-kappa-lambda.onrender.com/api/create-checkout-session",
+      {
         method: "POST",
         headers: {
-            "Content-Type": "application/json",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ priceId: productId, customerId: userData._id }),
         credentials: "include",
         mode: "cors",
-    })
-    .then((res) => {
+      }
+    )
+      .then((res) => {
         if (res.ok) return res.json();
         console.log(res);
         return res.json().then((json) => Promise.reject(json));
-    })
-    .then((session) => {
+      })
+      .then((session) => {
         window.location = session.session.url;
-    })
-    .catch((error) => {
+      })
+      .catch((error) => {
         console.error("Error:", error);
-    });
+      });
   };
 
   return (
@@ -145,29 +156,31 @@ const Profile = () => {
                         <CardContent>
                           <div className="grid gap-1">
                             <div>$100/year</div>
-
-                            {userData.subscriptionDate &&
-                              (() => {
-                                const date = new Date(
-                                  userData.subscriptionDate
-                                );
-                                return (
-                                  <div className="text-sm text-gray-500 dark:text-gray">
-                                    {`Subscribed on: ${date.toDateString()}`}
-                                  </div>
-                                );
-                              })}
+                            {userData.subscriptionDate && (
+                              <div className="text-sm text-gray-500 dark:text-gray">
+                                {`Subscribed on: ${subDate.toDateString()}`} <br />
+                                {`Expires on: ${expiryDate}`}
+                              </div>
+                              
+                            )}
                           </div>
                         </CardContent>
-                        <CardFooter>
-                          {userData.subscriptionStatus === "active" ? (
+                        {userData.subscriptionStatus === "active" ? (
+                          <CardFooter>
                             <Button className="ml-auto">
                               <Link to="/contact-us">Cancel</Link>
                             </Button>
-                          ) : (
-                            <Button className="ml-auto" onClick={createStripeSubscription}>Subscribe</Button>
-                          )}
-                        </CardFooter>
+                          </CardFooter>
+                        ) : (
+                          <CardFooter>
+                            <Button
+                              className="ml-auto"
+                              onClick={createStripeSubscription}
+                            >
+                              Subscribe
+                            </Button>
+                          </CardFooter>
+                        )}
                       </Card>
                     </div>
                   </CardContent>

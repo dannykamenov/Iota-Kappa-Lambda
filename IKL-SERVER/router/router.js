@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { createEvent, getAllEvents, deleteEvent, getEvent, editEvent, getEventByYear, getUpcomingEvents } = require('../controllers/eventController');
 const { createPhoto, getAllPhotos, deletePhoto } = require('../controllers/photoController');
-const { createUser } = require('../controllers/userController');
+const { createUser, getUser } = require('../controllers/userController');
 
 router.post('/events', createEvent);
 router.get('/events', getAllEvents);
@@ -14,6 +14,7 @@ router.delete('/photos/:id', deletePhoto);
 router.get('/events/year/:year', getEventByYear);
 router.get('/home', getUpcomingEvents);
 router.post('/users', createUser);  
+router.get('/users/:id', getUser)
 
 
 module.exports = router;

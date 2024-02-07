@@ -9,6 +9,7 @@ import Contact from "./components/main/contact/Contact";
 import Events from "./components/main/events/Events";
 import EventLoaded from "./components/main/events/EventLoaded";
 import Profile from "./components/auth/profile/Profile";
+import Success from "./components/auth/success/Success";
 
 import { KindeProvider } from "@kinde-oss/kinde-auth-react";
 
@@ -31,6 +32,7 @@ function App() {
           <Route path="/events-and-photos" element={<Events />} />
           <Route path="/events-and-photos/:id" element={<EventLoaded />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/success" element={<Success />} />
         </Routes>
         <Footer />
       </Router>

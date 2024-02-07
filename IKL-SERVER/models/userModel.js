@@ -30,8 +30,8 @@ const userSchema = new mongoose.Schema({
         default: 'inactive',
     },
     subscriptionDate: {
-        type: Date,
-        default: '',
+        type: [Date, null],
+        default: null,
     },
     customerId: {
         type: String,

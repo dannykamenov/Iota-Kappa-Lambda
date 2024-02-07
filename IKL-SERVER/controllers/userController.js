@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const User = require("../models/userModel");
-
+const stripe_secret = process.env.STRIPE_SECRET;
+const stripe = require("stripe")(stripe_secret);
 
 async function createUser(req, res) {
     const { name, email, role } = req.body;
@@ -39,7 +40,33 @@ async function getUser(req, res) {
     }
 }
 
+async function createCheckoutSession(req, res) {
+    const { priceId, customerId } = req.body;
+
+    const session = await stripe.checkout.sessions.create({
+        mode: "subscription",
+        payment_method_types: ["card"],
+        line_items: [
+            {
+                price: priceId,
+                quantity: 1,
+            },
+        ],
+        mode: "subscription",
+        success_url: "http://localhost:5173/success",
+        cancel_url: "http://localhost:5173/cancel",
+    });
+
+    const user = await User.findById(customerId); 
+    user.sessionId = session.id;
+    await user.save();
+
+    res.status(200).json({ id: session.id });
+
+}
+
 module.exports = {
     createUser,
     getUser,
+    createCheckoutSession
 };

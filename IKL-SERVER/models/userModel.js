@@ -17,6 +17,10 @@ const userSchema = new mongoose.Schema({
         enum: ['user', 'admin'],
         default: 'user',
     },
+    sessionId: {
+        type: String,
+        default: '',
+    },
     subscriptionId: {
         type: String,
         default: '',

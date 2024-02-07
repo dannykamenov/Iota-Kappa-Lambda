@@ -18,6 +18,7 @@ import { Link } from "react-router-dom";
 const Profile = () => {
   const { user } = useKindeAuth();
   const requestSentRef = useRef(false);
+  const [userData, setUserData] = useState({});
 
   useEffect(() => {
     if (user && !requestSentRef.current) {
@@ -37,14 +38,41 @@ const Profile = () => {
         });
     }
 
-    getUser(user.email).then((response) => {
-        console.log(response);
-    }).catch((err) => {
-        console.error("Error getting user:", err);
-    });
+    if (user) {
+      getUser(user.email)
+        .then((response) => {
+          setUserData(response);
+        })
+        .catch((err) => {
+          console.error("Error getting user:", err);
+        });
+    }
   }, [user]);
 
   if (!user) return null;
+
+  const createStripeSubscription = () => {
+    const productId = "price_1Oh9FYEOFAKdfkEnhxgm2VcM";
+    fetch("https://iota-kappa-lambda.onrender.com/api/create-checkout-session", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        mode: "cors",
+        body: JSON.stringify({ priceId: productId, customerId: user._id }),
+    })
+    .then((res) => {
+        if (res.ok) return res.json();
+        console.log(res);
+        return res.json().then((json) => Promise.reject(json));
+    })
+    .then((session) => {
+        window.location = session.url;
+    })
+    .catch((error) => {
+        console.error("Error:", error);
+    });
+  };
 
   return (
     <div className=" mt-48 ">
@@ -111,20 +139,33 @@ const Profile = () => {
                     <div className="grid gap-4">
                       <Card>
                         <CardHeader>
-                          <CardTitle>Acme Pro</CardTitle>
+                          <CardTitle>IKL Membership</CardTitle>
                         </CardHeader>
                         <CardContent>
                           <div className="grid gap-1">
-                            <div>$29/month</div>
-                            <div className="text-sm text-gray-500 dark:text-gray-400">
-                              Next payment: January 1, 2023
-                            </div>
+                            <div>$100/year</div>
+
+                            {userData.subscriptionDate &&
+                              (() => {
+                                const date = new Date(
+                                  userData.subscriptionDate
+                                );
+                                return (
+                                  <div className="text-sm text-gray-500 dark:text-gray">
+                                    {`Subscribed on: ${date.toDateString()}`}
+                                  </div>
+                                );
+                              })}
                           </div>
                         </CardContent>
                         <CardFooter>
-                          <Button className="ml-auto" variant="outline">
-                            Cancel
-                          </Button>
+                          {userData.subscriptionStatus === "active" ? (
+                            <Button className="ml-auto">
+                              <Link to="/contact-us">Cancel</Link>
+                            </Button>
+                          ) : (
+                            <Button className="ml-auto" onClick={createStripeSubscription}>Subscribe</Button>
+                          )}
                         </CardFooter>
                       </Card>
                     </div>

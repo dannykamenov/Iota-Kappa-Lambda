@@ -58,11 +58,15 @@ async function createCheckoutSession(req, res) {
 
     console.log(session);
 
-    await User.findByIdAndUpdate(customerId, {
+    const user = await User.findByIdAndUpdate({_id: customerId}, {
         sessionId: session.id,
     });
 
-    res.status(200).json({ session });
+    if(user) {
+        res.status(200).json({ session });
+    } else {
+        res.status(404).json({ message: "User not found" });
+    }
 
 }
 

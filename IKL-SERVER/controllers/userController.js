@@ -70,7 +70,7 @@ async function createCheckoutSession(req, res) {
 
 async function confirmCheckoutSession(req, res) {
     const { sessionId, userId } = req.body;
-
+    console.log(userId);
     const session = await stripe.checkout.sessions.retrieve(sessionId);
 
     if (session.payment_status === "paid") {
@@ -78,7 +78,7 @@ async function confirmCheckoutSession(req, res) {
         console.log(subId);
         try {
             const subscription = await stripe.subscriptions.retrieve(subId);
-            const user = await User.findOneAndUpdate({_id: mongoose.Types.ObjectId(userId)}, {
+            const user = await User.findByIdAndUpdate(userId, {
                 subscriptionId: subscription.id,
                 subscriptionStatus: subscription.status,
                 subscriptionDate: new Date(subscription.current_period_start * 1000),

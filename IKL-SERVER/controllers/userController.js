@@ -57,9 +57,9 @@ async function createCheckoutSession(req, res) {
         cancel_url: "http://localhost:5173/cancel",
     });
 
-    const user = await User.findById(customerId); 
-    user.sessionId = session.id;
-    await user.save();
+    await User.findByIdAndUpdate(customerId, {
+        sessionId: session.id,
+    });
 
     res.status(200).json({ id: session.id });
 

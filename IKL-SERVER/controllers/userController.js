@@ -43,7 +43,9 @@ async function getUser(req, res) {
 async function createCheckoutSession(req, res) {
     const { priceId, customerId } = req.body;
 
-    const session = await stripe.checkout.sessions.create({
+    console.log(priceId, customerId);
+
+/*     const session = await stripe.checkout.sessions.create({
         mode: "subscription",
         payment_method_types: ["card"],
         line_items: [
@@ -66,7 +68,7 @@ async function createCheckoutSession(req, res) {
         res.status(200).json({ session });
     } else {
         res.status(404).json({ message: "User not found" });
-    }
+    } */
 
 }
 

@@ -86,7 +86,6 @@ const Profile = () => {
   };
 
   const cancelStripeSubscription = () => {
-    console.log("Cancelling subscription");
     fetch(`https://iota-kappa-lambda.onrender.com/api/cancel-subscription/${userData.subscriptionId}`, {
         method: "DELETE",
         headers: {
@@ -104,6 +103,10 @@ const Profile = () => {
             });
         }
     })
+    .catch((error) => {
+        console.error("Error:", error);
+    });
+    setUserData({})
   };
 
   return (

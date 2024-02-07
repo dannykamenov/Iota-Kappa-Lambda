@@ -40,6 +40,10 @@ async function getUser(req, res) {
                         subscriptionDate: currentDate,
                     });
                     res.status(200).json(updatedUser);
+                } else if(currentDate >= nextYear && user.subscriptionStatus === "inactive") {
+                    const updatedUser = await User.findOneAndUpdate({ email: id }, {
+                        subscriptionDate: "",
+                    });
                 } else {
                     res.status(200).json(user);
                 }

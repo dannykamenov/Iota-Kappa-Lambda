@@ -31,6 +31,11 @@ export function NavigationMenuDemo() {
               Photo Gallery
           </Link>
         </NavigationMenuItem>
+        <NavigationMenuItem>
+          <Link to="/user-list" className={navigationMenuTriggerStyle()}>
+              User List
+          </Link>
+        </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
   )

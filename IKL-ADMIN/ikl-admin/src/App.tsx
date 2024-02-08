@@ -9,6 +9,7 @@ import EditComponent from "./components/core/manage/EditComponent";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import PhotosComponent from "./components/core/photos/Photos";
+import UserList from "./components/core/userlist/UserList";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
             <Route path="/manage-events" element={<ManageComponent />} />
             <Route path="/dashboard/:id" element={<EditComponent />} />
             <Route path="/photo-gallery" element={<PhotosComponent />} />
+            <Route path="/user-list" element={<UserList />} />
           </Routes>
         </Router>
       </ThemeProvider>

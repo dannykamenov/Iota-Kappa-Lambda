@@ -62,20 +62,22 @@ const UserList = () => {
 
             const date: Date = new Date(user.subscriptionDate);
             const oneYearAhead: Date = new Date(date.setFullYear(date.getFullYear() + 1));
+            const initials = user.name.split(" ").map((n: string) => n[0].toUpperCase()).join("");
+            const subscriptionStatus = user.subscriptionStatus.charAt(0).toUpperCase() + user.subscriptionStatus.slice(1);
 
             return (
               <TableRow key={index}>
                 <TableCell className="flex items-center gap-4">
                   <Avatar className="w-8 h-8">
-                    <AvatarImage alt="Avatar" src="/placeholder-user.jpg" />
-                    <AvatarFallback>AM</AvatarFallback>
+                    <AvatarImage alt="Avatar" src={user.profilePic} />
+                    <AvatarFallback>{initials}</AvatarFallback>
                   </Avatar>
                   <div className="font-medium">{user.name}</div>
                 </TableCell>
                 <TableCell>{user.email}</TableCell>
                 <TableCell>
                   {user.subscriptionStatus == "active" ? (<CheckIcon className="h-4 w-4 mr-2 text-green-500" />) : (<XIcon className="h-4 w-4 mr-2 text-red-500" />)}
-                  {user.subscriptionStatus.toUpperCase()}
+                  {subscriptionStatus}
                 </TableCell>
                 <TableCell className="pl-6">{oneYearAhead.toLocaleString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</TableCell>
               </TableRow>

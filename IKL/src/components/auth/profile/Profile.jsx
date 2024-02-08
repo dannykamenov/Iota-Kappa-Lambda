@@ -204,7 +204,7 @@ const Profile = () => {
                             <Button
                               className="ml-auto"
                               onClick={createStripeSubscription}        
-                              disabled={userData.subscriptionId !== null}               
+                              disabled={userData.subscriptionDate !== null}               
                             >
                               Subscribe
                             </Button>

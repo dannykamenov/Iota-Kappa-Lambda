@@ -69,8 +69,6 @@ const Profile = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ priceId: productId, customerId: userData._id }),
-        credentials: "include",
-        mode: "cors",
       }
     )
       .then((res) => {

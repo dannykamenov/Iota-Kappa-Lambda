@@ -75,11 +75,13 @@ const UserList = () => {
                   <div className="font-medium">{user.name}</div>
                 </TableCell>
                 <TableCell>{user.email}</TableCell>
-                <TableCell>
+                <TableCell className="">
                   {user.subscriptionStatus == "active" ? (<CheckIcon className="h-4 w-4 mr-2 text-green-500" />) : (<XIcon className="h-4 w-4 mr-2 text-red-500" />)}
                   {subscriptionStatus}
                 </TableCell>
-                <TableCell className="pl-6">{oneYearAhead.toLocaleString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</TableCell>
+                <TableCell className="pl-6">
+                  {user.subscriptionDate == null ? "N/A" : oneYearAhead.toLocaleString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                </TableCell>
               </TableRow>
             );
           })}

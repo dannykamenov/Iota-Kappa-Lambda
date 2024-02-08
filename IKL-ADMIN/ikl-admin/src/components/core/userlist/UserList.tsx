@@ -19,7 +19,6 @@ import { useEffect, useState } from "react";
 import { getAllUsers } from "@/components/api/userApi";
 
 const UserList = () => {
-
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -59,21 +58,29 @@ const UserList = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          <TableRow>
-            <TableCell className="flex items-center gap-4">
-              <Avatar className="w-8 h-8">
-                <AvatarImage alt="Avatar" src="/placeholder-user.jpg" />
-                <AvatarFallback>AM</AvatarFallback>
-              </Avatar>
-              <div className="font-medium">Alice Morgan</div>
-            </TableCell>
-            <TableCell>alice@example.com</TableCell>
-            <TableCell>
-              <CheckIcon className="h-4 w-4 mr-2 text-green-500" />
-              Active
-            </TableCell>
-            <TableCell>2023-10-08</TableCell>
-          </TableRow>
+          {users.map((user: any, index) => {
+
+            const date: Date = new Date(user.subscriptionDate);
+            const oneYearAhead: Date = new Date(date.setFullYear(date.getFullYear() + 1));
+
+            return (
+              <TableRow key={index}>
+                <TableCell className="flex items-center gap-4">
+                  <Avatar className="w-8 h-8">
+                    <AvatarImage alt="Avatar" src="/placeholder-user.jpg" />
+                    <AvatarFallback>AM</AvatarFallback>
+                  </Avatar>
+                  <div className="font-medium">{user.name}</div>
+                </TableCell>
+                <TableCell>{user.email}</TableCell>
+                <TableCell>
+                  {user.subscriptionStatus == "active" ? (<CheckIcon className="h-4 w-4 mr-2 text-green-500" />) : (<XIcon className="h-4 w-4 mr-2 text-red-500" />)}
+                  {user.subscriptionStatus.toUpperCase()}
+                </TableCell>
+                <TableCell className="pl-6">{oneYearAhead.toLocaleString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</TableCell>
+              </TableRow>
+            );
+          })}
         </TableBody>
       </Table>
     </div>

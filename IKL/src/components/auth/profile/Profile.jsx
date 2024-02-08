@@ -31,6 +31,7 @@ const Profile = () => {
         name,
         email: user.email,
         role: "user",
+        profilePic: user.picture || "",
       };
       createUser(userData)
         .then((response) => {})

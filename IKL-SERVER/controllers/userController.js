@@ -4,7 +4,7 @@ const stripe_secret = process.env.STRIPE_SECRET;
 const stripe = require("stripe")(stripe_secret);
 
 async function createUser(req, res) {
-    const { name, email, role } = req.body;
+    const { name, email, role, profilePic } = req.body;
 
     const existingUser = await User.findOne({ email: email });
     if (existingUser) {
@@ -15,6 +15,7 @@ async function createUser(req, res) {
         name,
         email,
         role,
+        profilePic,
     });
 
     try {

@@ -36,7 +36,11 @@ const userSchema = new mongoose.Schema({
     customerId: {
         type: String,
         default: '',
-    }
+    },
+    profilePic: {
+        type: String,
+        default: '',
+    },
 });
 
 

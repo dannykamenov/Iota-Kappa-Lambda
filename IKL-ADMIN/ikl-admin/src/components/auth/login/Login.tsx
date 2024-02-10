@@ -8,7 +8,6 @@ const Login = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log(isAuthenticated, user);
     if (isAuthenticated) {
       navigate("/dashboard");
     }

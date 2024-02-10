@@ -2,20 +2,19 @@ import { useKindeAuth } from '@kinde-oss/kinde-auth-react';
 import './Dashboard.css'
 import DashboardComponent from './DashboardComponent';
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
 const Dashboard = () => {
 
-    const { login, register, user, getOrganization } = useKindeAuth();
+    const { isAuthenticated } = useKindeAuth();
+    const navigate = useNavigate();
 
     useEffect(() => {
-        if (user) {
-            console.log(user);
-            console.log(getOrganization())
-        } else {
-            console.log('no user');
+        if (!isAuthenticated) {
+            navigate('/');
         }
-    }, [user]);
+    });
 
     return (
         <>

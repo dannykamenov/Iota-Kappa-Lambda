@@ -1,15 +1,14 @@
 import { useKindeAuth } from "@kinde-oss/kinde-auth-react";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const { login, register, user } = useKindeAuth();
-
+  const { login, register, user, isAuthenticated } = useKindeAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (user) {
-        console.log(user);
-    } else {
-        console.log('no user');
+    if (isAuthenticated) {
+      navigate("/dashboard");
     }
   });
 

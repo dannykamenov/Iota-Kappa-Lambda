@@ -17,15 +17,23 @@ import {
 import { AvatarImage, AvatarFallback, Avatar } from "@/components/ui/avatar";
 import { useEffect, useState } from "react";
 import { getAllUsers } from "@/components/api/userApi";
+import { useKindeAuth } from "@kinde-oss/kinde-auth-react";
+import { useNavigate } from "react-router-dom";
 
 const UserList = () => {
   const [users, setUsers] = useState([]);
+  const { isAuthenticated } = useKindeAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
+    if (!isAuthenticated) {
+      navigate("/");
+    }
+
     getAllUsers().then((data) => {
       setUsers(data);
     });
-  }, []);
+  });
 
   return (
     <div className=" w-3/4 mt-32 mx-auto ">

@@ -22,6 +22,8 @@ import { getEvent, editEvent } from "@/components/api/eventApi";
 import { toast } from "react-toastify";
 import { useParams } from "react-router-dom";
 import { storage } from "@/firebase";
+import { useKindeAuth } from "@kinde-oss/kinde-auth-react";
+import { useNavigate } from "react-router-dom";
 
 const EditComponent = () => {
   const { id } = useParams<{ id: string | undefined }>();
@@ -34,8 +36,14 @@ const EditComponent = () => {
   const [description, setDescription] = React.useState<string>("");
   const [originalTitle, setOriginalTitle] = React.useState<string>("");
   const [location, setLocation] = React.useState<string>("");
+  const { isAuthenticated } = useKindeAuth();
+  const navigate = useNavigate();
 
   React.useEffect(() => {
+    if (!isAuthenticated) {
+      navigate("/");
+    }
+
     const getEventById = async () => {
       const res = await getEvent(id);
       const event = res.data.event;

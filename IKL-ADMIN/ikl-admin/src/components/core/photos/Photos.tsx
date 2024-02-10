@@ -6,12 +6,19 @@ import { toast } from "react-toastify";
 import { storage } from "@/firebase";
 import "./Photos.css";
 import { uploadPhoto, getPhotos, deletePhoto } from "@/components/api/photoApi";
+import { useNavigate } from "react-router-dom";
+import { useKindeAuth } from "@kinde-oss/kinde-auth-react";
 
 const PhotosComponent = () => {
   const [files, setFiles] = React.useState<File[] | null>(null);
   const [photos, setPhotos] = React.useState<any[]>([]);
+  const { isAuthenticated } = useKindeAuth();
+  const navigate = useNavigate();
 
   React.useEffect(() => {
+    if (!isAuthenticated) {
+      navigate("/");
+    }
     getPhotos().then((res) => {
       setPhotos(res.data.photos);
     });

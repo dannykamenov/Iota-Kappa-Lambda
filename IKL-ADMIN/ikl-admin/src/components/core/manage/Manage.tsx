@@ -19,17 +19,22 @@ import {
 } from "@/components/ui/carousel";
 
 import { Button, buttonVariants } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { storage } from "@/firebase";
-import { deleteObject } from "firebase/storage";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useKindeAuth } from "@kinde-oss/kinde-auth-react";
 
 
 const ManageComponent = () => {
   const [events, setEvents] = useState<any[]>([]);
+  const { isAuthenticated } = useKindeAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
+    if (!isAuthenticated) {
+      navigate('/');
+  }
     getEvents().then((res) => {
       setEvents(res.data.events);
     });

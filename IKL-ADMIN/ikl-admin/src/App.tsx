@@ -7,14 +7,21 @@ import "./firebase";
 import ManageComponent from "./components/core/manage/Manage";
 import EditComponent from "./components/core/manage/EditComponent";
 import { ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 import PhotosComponent from "./components/core/photos/Photos";
 import UserList from "./components/core/userlist/UserList";
 import Login from "./components/auth/login/Login";
+import { KindeProvider } from "@kinde-oss/kinde-auth-react";
 
 function App() {
   return (
-    <>
+    <KindeProvider
+      clientId="0ecd8efccd5c416f87112d8e6582c44d"
+      domain="https://sorostadmin.kinde.com"
+      redirectUri="http://localhost:5174/dashboard"
+      logoutUri="http://localhost:5174/"
+      isDangerouslyUseLocalStorage={true}
+    >
       <ToastContainer
         position="top-right"
         autoClose={5000}
@@ -39,7 +46,7 @@ function App() {
           </Routes>
         </Router>
       </ThemeProvider>
-    </>
+    </KindeProvider>
   );
 }
 

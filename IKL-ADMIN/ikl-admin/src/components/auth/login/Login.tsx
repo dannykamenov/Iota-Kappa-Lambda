@@ -1,9 +1,10 @@
 import { useKindeAuth } from "@kinde-oss/kinde-auth-react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
 const Login = () => {
-  const { login, register, user, isAuthenticated } = useKindeAuth();
+  const { login, isAuthenticated } = useKindeAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -13,13 +14,13 @@ const Login = () => {
   });
 
   return (
-    <div>
-      <button onClick={register} type="button">
-        Register
-      </button>
-      <button onClick={login} type="button">
-        Log In
-      </button>
+    <div className="flex justify-center align-middle min-h-screen items-center ">
+      <div className="text-center">
+        <h1 className="pb-5 text-4xl">Welcome to IKL Admin Panel!</h1>
+        <Button onClick={login} type="button" className="mx-auto my-auto">
+          Log In
+        </Button>
+      </div>
     </div>
   );
 };

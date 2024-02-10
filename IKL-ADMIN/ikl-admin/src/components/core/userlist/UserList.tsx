@@ -47,7 +47,7 @@ const UserList = () => {
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button className="flex items-center gap-1" variant="ghost">
-                    Next Billing Date
+                    Subscription End
                     <ArrowUpDownIcon className="w-4 h-4" />
                   </Button>
                 </DropdownMenuTrigger>

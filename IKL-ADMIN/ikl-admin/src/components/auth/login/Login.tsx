@@ -4,14 +4,16 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
 const Login = () => {
-  const { login, isAuthenticated } = useKindeAuth();
+  const { login, isAuthenticated, user } = useKindeAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
+    console.log(isAuthenticated, user);
     if (isAuthenticated) {
       navigate("/dashboard");
     }
   });
+
 
   return (
     <div className="flex justify-center align-middle min-h-screen items-center ">

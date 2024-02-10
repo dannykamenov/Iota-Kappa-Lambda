@@ -18,8 +18,8 @@ function App() {
     <KindeProvider
       clientId="0ecd8efccd5c416f87112d8e6582c44d"
       domain="https://sorostadmin.kinde.com"
-      redirectUri="http://localhost:5174/dashboard"
-      logoutUri="http://localhost:5174/"
+      redirectUri="http://localhost:5174"
+      logoutUri="http://localhost:5174"
       isDangerouslyUseLocalStorage={true}
     >
       <ToastContainer

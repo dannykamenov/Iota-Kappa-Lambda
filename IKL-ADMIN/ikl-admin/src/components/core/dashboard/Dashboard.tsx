@@ -11,6 +11,7 @@ const Dashboard = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
+        console.log(isAuthenticated);
         if (!isAuthenticated) {
             navigate('/');
         }

@@ -18,7 +18,7 @@ function App() {
     <KindeProvider
       clientId="30fc6ebf2cd4425d93709c21a580eeb2"
       domain="https://sorostdev.kinde.com"
-      redirectUri="http://localhost:5173/profile"
+      redirectUri="http://localhost:5173"
       logoutUri="http://localhost:5173"
       isDangerouslyUseLocalStorage={true}
     >

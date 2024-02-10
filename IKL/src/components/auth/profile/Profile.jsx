@@ -180,7 +180,7 @@ const Profile = () => {
                             <p>$100/year</p>
                             {userData.subscriptionDate && (
                               <div className="text-sm text-gray-500 dark:text-gray">
-                                {`Subscribed on: ${subDate.toDateString()}`}{" "}
+                                {`Subscribed on: ${subDate.toDateString()}`}
                                 <br />
                                 {`Expires on: ${expiryDate}`}
                               </div>

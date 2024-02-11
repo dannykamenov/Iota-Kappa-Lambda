@@ -19,12 +19,11 @@ const Home = () => {
   }, []);
 
   const handleEventClick = (event) => {
-    setActiveEvent(event); // Set the clicked event as active
+    setActiveEvent(event); 
   };
 
-  // Close the full-screen view
   const handleClose = () => {
-    setActiveEvent(null); // Reset the active event
+    setActiveEvent(null); 
   };
 
   let formattedDate = "";

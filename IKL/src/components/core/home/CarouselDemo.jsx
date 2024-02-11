@@ -20,13 +20,13 @@ export function CarouselDemo() {
   }, [])
 
   return (
-    <Carousel className=" w-2/3 bg-black">
-      <CarouselContent className="bg-black">
+    <Carousel className=" w-2/3">
+      <CarouselContent className="">
         {photos.map((photo, index) => (
-          <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 bg-black">
+          <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
             <div className="">
-              <Card className="bg-black">
-                <CardContent className="flex aspect-square items-center justify-center p-0 bg-black">
+              <Card className="">
+                <CardContent className="flex aspect-square items-center justify-center p-0">
                   <img src={photo.photoUrl} alt="" className="w-full h-full rounded-md border-5 border-black  object-cover "/>
                 </CardContent>
               </Card>

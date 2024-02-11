@@ -6,7 +6,16 @@ import { CarouselDemo } from "./CarouselDemo";
 import { useEffect, useState } from "react";
 import { getLatestEvents } from "@/components/api/eventApi";
 import { faClock } from "@fortawesome/free-solid-svg-icons";
-import { format, parseISO } from 'date-fns';
+import { format, parseISO } from "date-fns";
+
+import { Card, CardContent } from "@/components/ui/card";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const Home = () => {
   const [events, setEvents] = useState([]);
@@ -19,11 +28,11 @@ const Home = () => {
   }, []);
 
   const handleEventClick = (event) => {
-    setActiveEvent(event); 
+    setActiveEvent(event);
   };
 
   const handleClose = () => {
-    setActiveEvent(null); 
+    setActiveEvent(null);
   };
 
   let formattedDate = "";
@@ -84,8 +93,8 @@ const Home = () => {
           })}
         </div>
         {activeEvent && (
-          <div className="full-screen-view">
-            <div className="full-screen-event">
+          <div className="full-screen-view ">
+            <div className="full-screen-event overflow-y-auto">
               <div className="btn-holder">
                 <button onClick={handleClose} className="event-closebtn">
                   x
@@ -100,10 +109,37 @@ const Home = () => {
               <div className="info-event-holder">
                 <p className="event-expand-summary">{activeEvent.summary}</p>
                 <p className="event-expand-desc">{activeEvent.description}</p>
-                <p className="event-expand-when"><FontAwesomeIcon icon={faClock} className="when-icon"/>WHEN</p>
+                <p className="event-expand-when">
+                  <FontAwesomeIcon icon={faClock} className="when-icon" />
+                  WHEN
+                </p>
                 <p className="event-expand-date">
                   {formattedDate} @ {activeEvent.time}
                 </p>
+                <Carousel className=" w-10/12 bg-transparent mx-auto">
+                  <CarouselContent className="bg-transparent ">
+                    {activeEvent.images.map((photo, index) => (
+                      <CarouselItem
+                        key={index}
+                        className="md:basis-1/2 lg:basis-1/3 bg-transparent "
+                      >
+                        <div className="">
+                          <Card className="">
+                            <CardContent className="flex aspect-square items-center justify-center p-0 bg-transparent">
+                              <img
+                                src={photo}
+                                alt=""
+                                className="w-full h-full rounded-md border-5 border-black  object-cover "
+                              />
+                            </CardContent>
+                          </Card>
+                        </div>
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                  <CarouselPrevious />
+                  <CarouselNext />
+                </Carousel>
               </div>
             </div>
           </div>

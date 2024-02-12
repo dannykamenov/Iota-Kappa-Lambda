@@ -86,7 +86,7 @@ const DashboardComponent = () => {
             placeholder="Quick Summary"
             type="text"
             onChange={(e) => {
-              setSummary(e.target.value);
+              setSummary(e.target.value.trim());
             }}
           />
         </div>
@@ -155,7 +155,7 @@ const DashboardComponent = () => {
             maxLength={500}
             className=" resize-none "
             onChange={(e) => {
-              setDescription(e.target.value);
+              setDescription(e.target.value.trim());
             }}
           />
         </div>

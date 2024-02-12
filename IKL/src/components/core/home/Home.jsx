@@ -67,8 +67,9 @@ const Home = () => {
             const year = date.getFullYear();
             let eventDay = `${day} `;
             let eventMonth = `${month} ${year}`;
-            if (event.summary.length > 50) {
-              event.summary = event.summary.substring(0, 25) + "...";
+            let eventSummary;
+            if (event.summary.length > 25) {
+              eventSummary = event.summary.substring(0, 28) + "...";
             }
             return (
               <div
@@ -76,13 +77,13 @@ const Home = () => {
                 className="event-calendar-box hover:cursor-pointer"
                 onClick={() => handleEventClick(event)}
               >
-                <div className="event-calendar-info">
+                <div className="event-calendar-info max-w-full">
                   <p className="event-calendar-month">{eventMonth}</p>
                   <h1 className="event-calendar-day"> {eventDay} </h1>
                   <h1 className="event-calendar-title hover:underline hover:cursor-pointer">
                     {event.title}
                   </h1>
-                  <p className="event-calendar-summary">{event.summary}</p>
+                  <p className="event-calendar-summary">{eventSummary}</p>
                   <p className="event-calendar-time">
                     <FontAwesomeIcon icon={faClock} className="clock-icon" />{" "}
                     {event.time}

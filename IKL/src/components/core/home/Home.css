@@ -257,6 +257,7 @@
     border-radius: 15px;
     overflow-y: auto;
     max-height: 100vh;
+    width: 60%;
 }
 
 .full-screen-event::-webkit-scrollbar {
@@ -319,6 +320,9 @@
     font-size: 1rem;
 }
 
+.event-expand-img {
+  margin: 0 auto;
+}
 
 @media screen and (max-width: 1450px) {
   .section1-box {

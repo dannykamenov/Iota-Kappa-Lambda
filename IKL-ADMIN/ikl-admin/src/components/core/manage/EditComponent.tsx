@@ -165,7 +165,6 @@ const EditComponent = () => {
 
     if (files) {
       imageUrls = (await uploadFiles(files, title, year || 0)) || [];
-      //add imageUrls to formDataEvent.images
       for(const image of imageUrls) {
         formDataEvent.images.push(image)
       }

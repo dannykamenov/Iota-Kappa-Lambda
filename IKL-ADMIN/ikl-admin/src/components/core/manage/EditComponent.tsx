@@ -24,6 +24,7 @@ import { useParams } from "react-router-dom";
 import { storage } from "@/firebase";
 import { useKindeAuth } from "@kinde-oss/kinde-auth-react";
 import { useNavigate } from "react-router-dom";
+import uploadFiles from "@/components/middleware/uploadFiles";
 
 const EditComponent = () => {
   const { id } = useParams<{ id: string | undefined }>();
@@ -37,6 +38,7 @@ const EditComponent = () => {
   const [originalTitle, setOriginalTitle] = React.useState<string>("");
   const [location, setLocation] = React.useState<string>("");
   const { isAuthenticated } = useKindeAuth();
+  const [files, setFiles] = React.useState<File[] | null>(null);
   const navigate = useNavigate();
 
   React.useEffect(() => {
@@ -75,6 +77,7 @@ const EditComponent = () => {
 
   const handleForm = async (e: any) => {
     e.preventDefault();
+    let imageUrls = [];
 
     const formDataEvent = {
       title,
@@ -157,6 +160,14 @@ const EditComponent = () => {
         );
       } catch (error) {
         console.error("Error updating event folder:", error);
+      }
+    }
+
+    if (files) {
+      imageUrls = (await uploadFiles(files, title, year || 0)) || [];
+      //add imageUrls to formDataEvent.images
+      for(const image of imageUrls) {
+        formDataEvent.images.push(image)
       }
     }
 
@@ -275,6 +286,25 @@ const EditComponent = () => {
               value={description}
             />
           </div>
+          <div className="p-5 px-5 pb-2 grid max-w-sm items-center gap-1.5 justify-center mx-auto">
+          <Label htmlFor="imgLib" className="custom-file-upload">
+            Upload Image Library
+          </Label>
+          <Input
+            placeholder="Title"
+            type="file"
+            id="imgLib"
+            className="file-upload-btn2 cursor-pointer"
+            onChange={(e) => {
+              if (e.target.files && e.target.files.length > 0) {
+                setFiles(Array.from(e.target.files));
+              } else {
+                setFiles(null);
+              }
+            }}
+            multiple
+          />
+        </div>
           <div className="p-2 px-5 text-center">
             <Button type="submit">Submit</Button>
           </div>

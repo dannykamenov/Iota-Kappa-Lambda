@@ -167,7 +167,7 @@ const Profile = () => {
                 </Card>
                 <Card className="md:col-span-1">
                   <CardHeader>
-                    <CardTitle>Subscriptions</CardTitle>
+                    <CardTitle>Membership Fee</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="grid gap-4">
@@ -204,7 +204,7 @@ const Profile = () => {
                               onClick={createStripeSubscription}        
                               disabled={userData.subscriptionDate !== null}               
                             >
-                              Subscribe
+                              Pay Dues
                             </Button>
                           </CardFooter>
                         )}

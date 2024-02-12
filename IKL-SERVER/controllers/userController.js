@@ -72,7 +72,7 @@ async function createCheckoutSession(req, res) {
             },
         ],
         success_url: "http://localhost:5173/success",
-        cancel_url: "http://localhost:5173/cancel",
+        cancel_url: "http://localhost:5173",
     });
 
     const user = await User.findByIdAndUpdate(customerId, {

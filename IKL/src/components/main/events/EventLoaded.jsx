@@ -57,22 +57,13 @@ const EventLoaded = () => {
         </div>
         <div className="w-9/12 flex mx-auto my-10 justify-center flex-wrap xs:my-5 xs:w-full">
           {events.map((event, index) => {
-            const date = new Date(event.date);
-            const day = date.getDate();
-            const month = date
-              .toLocaleString("default", { month: "short" })
-              .toUpperCase();
-            const year = date.getFullYear();
-            let eventDay = `${day} `;
-            let eventMonth = `${month} ${year}`;
-            let eventSummary;
-            if (event.summary.length > 25) {
-              eventSummary = event.summary.substring(0, 28) + "...";
-            }
+
+            const shortSummary = event.summary.substring(0, 28) + "...";
+
             return (
               <div
                 key={index}
-                className="flex items-center justify-center large:basis-3/5 m-4 large:w-11/12 xmedium:basis-9/12"
+                className="flex items-center justify-center large:basis-3/5 m-4 large:w-11/12 xmedium:basis-9/12 hover:cursor-pointer hover:shadow-lg hover:transform hover:scale-105 hover:transition-all hover:duration-300"
                 onClick={() => handleEventClick(event)}
               >
                 <div className="text-center">
@@ -81,11 +72,11 @@ const EventLoaded = () => {
                     alt=""
                     className=" w-80 h-80 rounded-md object-contain mx-auto medium:w-full medium:h-full"
                   />
-                  <h1 className="text-3xl font-bold text-center current-event-title">
+                  <h1 className="text-3xl font-bold text-center current-event-title hover:underline">
                     {event.title}
                   </h1>
                   <p className=" text-lg font-semibold text-center text-white">
-                    {event.summary}
+                    {shortSummary}
                   </p>
                   <p className="text-md font-semibold text-center text-white italic ">
                     {event.location}

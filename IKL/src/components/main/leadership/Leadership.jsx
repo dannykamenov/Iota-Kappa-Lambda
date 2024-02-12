@@ -4,6 +4,7 @@ import president from "../../../assets/President.png";
 import vp from "../../../assets/VP.png";
 import treasurer from "../../../assets/Treasurer.png";
 import secretary from "../../../assets/Secretary.png";
+import home from "../../../assets/HOME.jpg";
 
 const Leadership = () => {
   return (
@@ -63,6 +64,7 @@ const Leadership = () => {
           </div>
         </div>
         <h1 className="chapter-officers">Chapter Officers</h1>
+        <img src={home} alt="" className="chapter-officers-photo"/>
         <div className="chapter-officers-info">
             <div className="officer-info">
                 <h1 className="officer-title">Historian</h1>

@@ -139,11 +139,25 @@ async function getAllUsers(req, res) {
     }
 }
 
+async function addUserAlphaId(req, res) {
+    const { email, alphaId, initiationDate } = req.body;
+    const user = await User.findOneAndUpdate({ email: email }, {
+        alphaId,
+        initiationDate,
+    });
+    if(user) {
+        res.status(200).json({ message: "Alpha Id added successfully" });
+    } else {
+        res.status(404).json({ message: "User not found" });
+    }
+}
+
 module.exports = {
     createUser,
     getUser,
     createCheckoutSession,
     confirmCheckoutSession,
     cancelSubscription,
-    getAllUsers
+    getAllUsers,
+    addUserAlphaId
 };

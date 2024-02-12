@@ -41,6 +41,14 @@ const userSchema = new mongoose.Schema({
         type: String,
         default: '',
     },
+    alphaId: {
+        type: String,
+        default: '',
+    },
+    initiationDate: {
+        type: Date,
+        default: null,
+    },
 });
 
 

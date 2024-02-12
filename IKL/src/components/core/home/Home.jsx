@@ -83,7 +83,7 @@ const Home = () => {
                   <h1 className="event-calendar-title hover:underline hover:cursor-pointer">
                     {event.title}
                   </h1>
-                  <p className="event-calendar-summary">{eventSummary}</p>
+                  <p className="event-calendar-summary break-words">{eventSummary}</p>
                   <p className="event-calendar-time">
                     <FontAwesomeIcon icon={faClock} className="clock-icon" />{" "}
                     {event.time}
@@ -108,8 +108,8 @@ const Home = () => {
                 className="event-expand-img"
               />
               <div className="info-event-holder">
-                <p className="event-expand-summary">{activeEvent.summary}</p>
-                <p className="event-expand-desc">{activeEvent.description}</p>
+                <p className="event-expand-summary break-words">{activeEvent.summary}</p>
+                <p className="event-expand-desc break-words">{activeEvent.description}</p>
                 <p className="event-expand-when">
                   <FontAwesomeIcon icon={faClock} className="when-icon" />
                   WHEN

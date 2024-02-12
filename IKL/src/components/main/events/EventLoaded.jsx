@@ -102,8 +102,8 @@ const EventLoaded = () => {
               className="event-expand-img"
             />
             <div className="info-event-holder">
-              <p className="event-expand-summary">{activeEvent.summary}</p>
-              <p className="event-expand-desc">{activeEvent.description}</p>
+              <p className="event-expand-summary break-words">{activeEvent.summary}</p>
+              <p className="event-expand-desc break-words">{activeEvent.description}</p>
               <p className="event-expand-when">
                 <FontAwesomeIcon icon={faClock} className="when-icon" />
                 WHEN

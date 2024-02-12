@@ -87,11 +87,11 @@ const ManageComponent = () => {
             <CardContent>
               <CardDescription>
                 <strong>Summary: </strong>
-                {event.summary}
+                {event.summary.trim()}
               </CardDescription>
             </CardContent>
             <CardContent>
-              <CardDescription>
+              <CardDescription className="break-words">
                 <strong>Description: </strong>
                 {event.description}
               </CardDescription>

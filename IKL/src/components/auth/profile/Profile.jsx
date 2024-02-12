@@ -1,7 +1,7 @@
 import "./Profile.css";
 import { useEffect, useRef, useState } from "react";
 import { useKindeAuth } from "@kinde-oss/kinde-auth-react";
-import { createUser, getUser } from "@/components/api/userApi";
+import { createUser, getUser, updateProfile } from "@/components/api/userApi";
 import { Button } from "@/components/ui/button";
 import {
   CardTitle,
@@ -22,6 +22,8 @@ const Profile = () => {
   const [userData, setUserData] = useState({});
   const [subDate, setSubDate] = useState("");
   const [expiryDate, setExpiryDate] = useState("");
+  const [alphaId, setAlphaId] = useState("");
+  const [crossingDate, setCrossingDate] = useState("");
 
   useEffect(() => {
     if (user && !requestSentRef.current) {
@@ -85,28 +87,60 @@ const Profile = () => {
   };
 
   const cancelStripeSubscription = () => {
-    fetch(`https://iota-kappa-lambda.onrender.com/api/cancel-subscription/${userData.subscriptionId}`, {
+    fetch(
+      `https://iota-kappa-lambda.onrender.com/api/cancel-subscription/${userData.subscriptionId}`,
+      {
         method: "DELETE",
         headers: {
-            "Content-Type": "application/json",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ customerId: userData._id }),
-        }).then((res) => {
+      }
+    )
+      .then((res) => {
         if (res.ok) {
-            getUser(user.email)
+          getUser(user.email)
             .then((response) => {
-                setUserData(response);
+              setUserData(response);
             })
             .catch((err) => {
-                console.error("Error getting user:", err);
+              console.error("Error getting user:", err);
             });
         }
-    })
-    .catch((error) => {
+      })
+      .catch((error) => {
         console.error("Error:", error);
-    });
-    setUserData({})
+      });
+    setUserData({});
   };
+
+  const handleUpdate = () => {
+    const updatedData = {
+      email: user.email,
+      alphaId,
+      initiationDate: crossingDate,
+    }
+    updateProfile(updatedData)
+      .then((response) => {
+        getUser(user.email)
+          .then((response) => {
+            setUserData(response);
+          })
+          .catch((err) => {
+            console.error("Error getting user:", err);
+          });
+      })
+      .catch((err) => {
+        console.error("Error updating user:", err);
+      });
+
+
+  };
+
+  function formatDate(dateString) {
+    const formattedDate = new Date(dateString).toISOString().split("T")[0];
+    return formattedDate;
+  }
 
   return (
     <div className=" mt-48 custom-profile-box ">
@@ -151,17 +185,42 @@ const Profile = () => {
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="bio">Bio</Label>
-                      <Textarea
-                        className="min-h-[100px]"
-                        id="bio"
-                        placeholder="Enter your bio"
+                      <Label htmlFor="alphaId">Alpha Id</Label>
+                      <Input
+                        className=""
+                        id="alphaId"
+                        type="number"
+                        placeholder="Enter your Alpha Id"
+                        onChange={(e) => setAlphaId(e.target.value)}
+                        value={
+                          userData && userData.alphaId ? userData.alphaId : ""
+                        }
+                        disabled={userData && userData.alphaId}
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="crossingDate">Crossing Date</Label>
+                      <Input
+                        className=""
+                        id="crossingDate"
+                        type="date"
+                        placeholder="Enter your Crossing Date"
+                        onChange={(e) => setCrossingDate(e.target.value)}
+                        value={
+                          userData && userData.initiationDate
+                            ? formatDate(userData.initiationDate)
+                            : ""
+                        }
+                        disabled={userData && userData.initiationDate}
                       />
                     </div>
                   </CardContent>
                   <CardFooter>
-                    <Button className="ml-auto">
-                      <Link to="/contact-us">Request Name Change</Link>
+                    <Button className="ml-auto" 
+                    onClick={handleUpdate}
+                    disabled={userData && userData.alphaId && userData.initiationDate}
+                    >
+                      Update Profile
                     </Button>
                   </CardFooter>
                 </Card>
@@ -189,20 +248,18 @@ const Profile = () => {
                         </CardContent>
                         {userData.subscriptionStatus === "active" ? (
                           <CardFooter>
-                            <ConfirmToast customFunction={cancelStripeSubscription}>
-                              <Button
-                                className="ml-auto"
-                              >
-                                Cancel
-                              </Button>
+                            <ConfirmToast
+                              customFunction={cancelStripeSubscription}
+                            >
+                              <Button className="ml-auto">Cancel</Button>
                             </ConfirmToast>
                           </CardFooter>
                         ) : (
                           <CardFooter>
                             <Button
                               className="ml-auto"
-                              onClick={createStripeSubscription}        
-                              disabled={userData.subscriptionDate !== null}               
+                              onClick={createStripeSubscription}
+                              disabled={userData.subscriptionDate !== null}
                             >
                               Pay Dues
                             </Button>

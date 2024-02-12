@@ -40,3 +40,18 @@ export const getUser = (id) => {
         .catch((err) => console.log(err));
 };
 
+export const updateProfile = (userData) => {
+    return fetch(`${api}/alpha-id`, {
+        method: "PUT",
+        headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
+    })
+        .then((response) => {
+        return response.json();
+        })
+        .catch((err) => console.log(err));
+};
+

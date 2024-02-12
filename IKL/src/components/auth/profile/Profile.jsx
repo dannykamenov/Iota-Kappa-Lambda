@@ -115,6 +115,9 @@ const Profile = () => {
   };
 
   const handleUpdate = () => {
+    if(!alphaId || !crossingDate){
+      return;
+    }
     const updatedData = {
       email: user.email,
       alphaId,
@@ -193,7 +196,7 @@ const Profile = () => {
                         placeholder="Enter your Alpha Id"
                         onChange={(e) => setAlphaId(e.target.value)}
                         value={
-                          userData && userData.alphaId ? userData.alphaId : ""
+                          userData && userData.alphaId ? userData.alphaId : alphaId
                         }
                         disabled={userData && userData.alphaId}
                       />
@@ -209,7 +212,7 @@ const Profile = () => {
                         value={
                           userData && userData.initiationDate
                             ? formatDate(userData.initiationDate)
-                            : ""
+                            : crossingDate
                         }
                         disabled={userData && userData.initiationDate}
                       />

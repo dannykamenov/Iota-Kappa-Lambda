@@ -12,8 +12,6 @@ import {
 } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Link } from "react-router-dom";
 import { ConfirmToast } from "react-confirm-toast";
 
 const Profile = () => {
@@ -254,7 +252,7 @@ const Profile = () => {
                             <ConfirmToast
                               customFunction={cancelStripeSubscription}
                             >
-                              <Button className="ml-auto">Cancel</Button>
+                              <Button className="ml-auto" variant="destructive">Cancel</Button>
                             </ConfirmToast>
                           </CardFooter>
                         ) : (

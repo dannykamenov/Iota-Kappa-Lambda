@@ -24,6 +24,7 @@ const UserList = () => {
   const [users, setUsers] = useState([]);
   const { isAuthenticated } = useKindeAuth();
   const navigate = useNavigate();
+  const [sortOrder, setSortOrder] = useState("");
 
   useEffect(() => {
     if (!isAuthenticated) {
@@ -31,15 +32,33 @@ const UserList = () => {
     }
 
     getAllUsers().then((data) => {
-      setUsers(data);
+      const sortedData = sortUsers(data, sortOrder);
+      setUsers(sortedData);
     });
   });
+
+  const sortUsers = (users, order) => {
+    return users.slice().sort((a, b) => {
+      if (order === 'ascending') {
+        return new Date(a.subscriptionDate) - new Date(b.subscriptionDate);
+      } else if (order === 'descending') {
+        return new Date(b.subscriptionDate) - new Date(a.subscriptionDate);
+      } else {
+        return users;
+      }
+    });
+  };
+
+  const handleSortChange = (newOrder) => {
+    setSortOrder(newOrder);
+  };
 
   return (
     <div className=" w-3/4 mt-32 mx-auto ">
       <Table>
         <TableHeader>
           <TableRow>
+            <TableHead className="">Alpha ID</TableHead>
             <TableHead className="min-w-[200px]">Name</TableHead>
             <TableHead>Email</TableHead>
             <TableHead>Subscription Status</TableHead>
@@ -52,7 +71,7 @@ const UserList = () => {
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end" className="w-[200px]">
-                  <DropdownMenuRadioGroup value="ascending">
+                  <DropdownMenuRadioGroup value={sortOrder} onValueChange={handleSortChange}>
                     <DropdownMenuRadioItem value="ascending">
                       Ascending
                     </DropdownMenuRadioItem>
@@ -75,6 +94,7 @@ const UserList = () => {
 
             return (
               <TableRow key={index}>
+                <TableCell>{user.alphaId}</TableCell>
                 <TableCell className="flex items-center gap-4">
                   <Avatar className="w-8 h-8">
                     <AvatarImage alt="Avatar" src={user.profilePic} />

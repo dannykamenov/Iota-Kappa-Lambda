@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { createEvent, getAllEvents, deleteEvent, getEvent, editEvent, getEventByYear, getUpcomingEvents } = require('../controllers/eventController');
 const { createPhoto, getAllPhotos, deletePhoto } = require('../controllers/photoController');
 const { createUser, getUser, createCheckoutSession, confirmCheckoutSession, cancelSubscription, getAllUsers, addUserAlphaId } = require('../controllers/userController');
+const { generateCustomToken } = require('../controllers/authController');
 
 router.post('/events', createEvent);
 router.get('/events', getAllEvents);
@@ -20,6 +21,7 @@ router.post('/create-checkout-session', createCheckoutSession);
 router.post('/confirm-checkout-session', confirmCheckoutSession);
 router.delete('/cancel-subscription/:id', cancelSubscription);
 router.put('/alpha-id', addUserAlphaId);
+router.post('/generateCustomToken', generateCustomToken)
 
 
 module.exports = router;

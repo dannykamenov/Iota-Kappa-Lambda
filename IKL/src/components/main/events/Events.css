@@ -43,3 +43,19 @@
 .current-event-title {
     color: #938807;
 }
+
+.vintage-title {
+    font-size: 30px;
+    font-family: 'Inria Serif', serif;
+    color: #938807;
+    padding-top: 50px;
+    text-align: center;
+    width: 50%;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 1000px){
+    .vintage-title {
+        width: 80%;
+    } 
+}

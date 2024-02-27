@@ -39,6 +39,15 @@ const DashboardComponent = () => {
     let mainImgUrl = "";
     let imageUrls = [];
 
+    if(!description) {
+      setDescription("No description provided.");
+    }
+
+    if(!title || !summary || !location || !date || !selectedTime || !file) {
+      toast.error("Please fill in all the fields");
+      return;
+    }
+
     const formDataEvent = {
       title,
       summary,
@@ -60,10 +69,24 @@ const DashboardComponent = () => {
     }
     try {
       const res = await uploadEvent(formDataEvent);
+      if(res.status === 'fail'){
+        toast.error(`Failed to upload the event. ${res.message}`);
+        return;
+      }
+      // Reset the form
+      setTitle("");
+      setSummary("");
+      setLocation("");
+      setDate(new Date());
+      setSelectedTime(null);
+      setDescription("");
+      setFile(null);
+      setFiles(null);
+      e.target.reset();
       toast.success("Event uploaded successfully");
     } catch (error) {
       console.error("Error uploading event:", error);
-      toast.error("Failed to upload the event. Please try again.");
+      toast.error(`Failed to upload the event. ${error}`);
     }
   };
 

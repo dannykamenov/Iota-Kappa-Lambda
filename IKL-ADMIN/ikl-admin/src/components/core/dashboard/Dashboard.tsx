@@ -3,16 +3,38 @@ import './Dashboard.css'
 import DashboardComponent from './DashboardComponent';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { getAuth, signInWithCustomToken } from "firebase/auth";
 
 
 const Dashboard = () => {
 
-    const { isAuthenticated } = useKindeAuth();
+    const { isAuthenticated ,user } = useKindeAuth();
     const navigate = useNavigate();
 
     useEffect(() => {
         if (!isAuthenticated) {
             navigate('/');
+        }
+        if(user) {
+            fetch('https://iota-kappa-lambda.onrender.com/api/generateCustomToken', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ token: user.id }),
+            }).then((response) => response.json()).then((data) => {
+                const { firebaseToken } = data;
+                if(firebaseToken) {
+                    const auth = getAuth();
+                    signInWithCustomToken(auth, firebaseToken).then((userCredential) => {
+                        const user = userCredential.user;
+                    }).catch((error) => {
+                        console.error('Error:', error);
+                    });
+                }
+            }).catch((error) => {
+                console.error('Error:', error);
+            }); 
         }
     });
 
